@@ -27,6 +27,6 @@ class WebPage extends Model
 
     public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->belongsToMany(Article::class);
     }
 }

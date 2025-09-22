@@ -4,89 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81f969f74aa20e14f689f519746c1483",
+    "content-hash": "7be9407bb83659dede33b1cf73679afc",
     "packages": [
-        {
-            "name": "acme/classic-white",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "frontend-themes/classic-white",
-                "reference": "96e5dd34f56e57f960967216c32c9eb608d50b52"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ClassicWhite\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ClassicWhite\\": "src/"
-                }
-            },
-            "description": "Default frontend theme",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "acme/theme-default",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "frontend-themes/theme-default",
-                "reference": "c81d8249e30d367eadd46f732dc46a92926e274d"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ThemeDefault\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ThemeDefault\\": "src/"
-                }
-            },
-            "description": "Default frontend theme",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "acme/theme-freelancer",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "frontend-themes/theme-freelancer",
-                "reference": "1be431f26616b98e8f22de9e5a6abda1a38187ce"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ThemeFreelancer\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ThemeFreelancer\\": "src/"
-                }
-            },
-            "description": "Default frontend theme",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
         {
             "name": "brick/math",
             "version": "0.13.1",
@@ -9066,11 +8985,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "acme/classic-white": 20,
-        "acme/theme-default": 20,
-        "acme/theme-freelancer": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
