@@ -1,0 +1,17 @@
+{
+    "name": "acme/theme-freelancer",
+    "description": "Default frontend theme",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "ThemeFreelancer\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ThemeFreelancer\\ServiceProvider"
+            ]
+        }
+    }
+}

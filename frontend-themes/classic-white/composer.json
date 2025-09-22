@@ -1,0 +1,17 @@
+{
+    "name": "acme/classic-white",
+    "description": "Default frontend theme",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "ClassicWhite\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ClassicWhite\\ServiceProvider"
+            ]
+        }
+    }
+}

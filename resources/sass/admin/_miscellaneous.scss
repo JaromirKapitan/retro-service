@@ -1,0 +1,27 @@
+
+.navbar-brand{
+    min-width: 70px;
+}
+
+.badge{
+    &.content-status-draft {
+        color: $black;
+        background-color: $warning;
+    }
+
+    &.content-status-published {
+        color: white;
+        background-color: $success;
+    }
+
+    &.content-status-archived {
+        color: white;
+        background-color: $danger;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .text-hover-#{$color}:hover{
+        color: #{$value} !important;
+    }
+}

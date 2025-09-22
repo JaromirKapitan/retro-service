@@ -1,0 +1,17 @@
+{
+    "name": "acme/theme-default",
+    "description": "Default frontend theme",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "ThemeDefault\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ThemeDefault\\ServiceProvider"
+            ]
+        }
+    }
+}

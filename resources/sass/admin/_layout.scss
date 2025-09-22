@@ -1,0 +1,38 @@
+html, body {
+    bottom: 0px;
+    height: 100%;
+}
+
+body{
+    @media (min-width: 768px) {
+        padding-left: $menu-size;
+    }
+
+    &>nav{
+        position: fixed;
+        width: $menu-size;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        overflow-y: auto;
+        background-color: $gray-200;
+
+        direction: rtl;
+        text-align: left;
+        scrollbar-width: thin;
+
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+
+        >*{
+            min-height: 100%;
+            direction: ltr;
+        }
+    }
+}
+
+.navbar{
+    height: 55px;
+}
