@@ -33,7 +33,7 @@ body{
         //background-color: white;
 
         min-height: 80vh;
-        padding: 5vh 0;
+        padding: 2vh 0;
     }
 }
 
@@ -50,4 +50,16 @@ h1, h2, h3, h4, .fc { font-family: 'Parisienne', sans-serif; }
 a:has(h1, h2, h3, h4){
     text-decoration: none;
     text-underline: none;
+}
+
+#articleCarousel{
+    margin-bottom: 10px;
+
+    @media (min-width: 768px) {
+        float: left;
+        margin-right: 10px;
+        width: 50%;
+    }
+
+
 }

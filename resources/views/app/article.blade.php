@@ -1,11 +1,13 @@
 @extends('app.layout')
 
 @section('content')
+    <h1>{!! $model->title !!}</h1>
+
     @if($model->getMedia('images'))
-        <div id="carouselExampleIndicators" class="carousel slide">
+        <div id="articleCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 @foreach($model->getMedia('images') as $key => $image)
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}" @if($key == 0) class="active"
+                    <button type="button" data-bs-target="#articleCarousel" data-bs-slide-to="{{ $key }}" @if($key == 0) class="active"
                             aria-current="true" @endif></button>
                 @endforeach
             </div>
@@ -16,14 +18,16 @@
                     </div>
                 @endforeach
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#articleCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#articleCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
     @endif
+
+    {!! $model->content !!}
 @endsection
