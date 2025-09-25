@@ -12,7 +12,7 @@
                         @endif
                     </a>
                     <p>
-                        {!! $article->content !!}
+                        {!! $article->description !!}
                     </p>
 
                     <div class="text-end">
