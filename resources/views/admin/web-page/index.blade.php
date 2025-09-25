@@ -40,6 +40,7 @@
                 </td>
                 @endif
                 <td class="text-end">
+                    <a href="{{ route('admin.web-pages.show', $item) }}" class="text-secondary text-hover-info"><i class="fa fa-info"></i></a>
                     <a href="{{ route('admin.web-pages.edit', $item) }}" class="text-warning"><i class="fa fa-pencil"></i></a>
 
                     <a class="text-danger submit-form" href="#" data-ask="{{ __('Do you really want to delete this record?') }}">

@@ -42,6 +42,7 @@
                 @endif
 
                 <td class="text-end">
+                    <a href="{{ route('admin.articles.show', $item) }}" class="text-secondary text-hover-info"><i class="fa fa-info"></i></a>
                     <a href="{{ route('admin.articles.edit', $item) }}" class="text-secondary text-hover-warning"><i class="fa fa-pencil"></i></a>
 
                     <a class="text-secondary text-hover-danger submit-form" href="#" data-ask="{{ __('Do you really want to delete this record?') }}">

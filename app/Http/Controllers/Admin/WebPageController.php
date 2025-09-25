@@ -21,6 +21,13 @@ class WebPageController extends Controller
         ]);
     }
 
+    public function show(WebPage $webPage)
+    {
+        return view('admin.web-page.show', [
+            'model' => $webPage,
+        ]);
+    }
+
     public function create(Request $request)
     {
         return view('admin.web-page.form', [
