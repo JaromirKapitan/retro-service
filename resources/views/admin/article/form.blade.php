@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <x-form.textarea name="content" :label="__('Content')" addClass="ck editor">{{ $model->content }}</x-form.textarea>
+                        <x-form.textarea name="content" :label="__('Content')" addClass="ckeditor">{{ $model->content }}</x-form.textarea>
                     </div>
 
                     <div class="mb-3 text-end">

@@ -48,12 +48,12 @@ export default function init() {
         LinkImage,
         List,
         ListProperties,
-        Markdown,
+        // Markdown,
         MediaEmbed,
         Mention,
         PageBreak,
         Paragraph,
-        PasteFromMarkdownExperimental,
+        // PasteFromMarkdownExperimental,
         PasteFromOffice,
         PlainTableOutput,
         RemoveFormat,
@@ -134,7 +134,7 @@ export default function init() {
                 'pageBreak',
                 'link',
                 // 'bookmark',
-                // 'insertImage',
+                'insertImage',
                 // 'mediaEmbed',
                 'insertTable',
                 // 'insertTableLayout',
@@ -199,12 +199,12 @@ export default function init() {
             LinkImage,
             List,
             ListProperties,
-            Markdown,
+            // Markdown,
             MediaEmbed,
             Mention,
             PageBreak,
             Paragraph,
-            PasteFromMarkdownExperimental,
+            // PasteFromMarkdownExperimental,
             PasteFromOffice,
             PlainTableOutput,
             RemoveFormat,
@@ -405,6 +405,12 @@ export default function init() {
         },
         table: {
             contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+        },
+        simpleUpload: {
+            uploadUrl: '/admin/ckeditor-uploader',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            }
         }
     };
 

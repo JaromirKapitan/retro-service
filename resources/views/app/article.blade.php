@@ -3,6 +3,11 @@
 @section('content')
     <h1>{!! $model->title !!}</h1>
 
+
+    <div class="ck ck-content" lang="en" dir="ltr" role="textbox" >
+        {!! $model->content !!}
+    </div>
+
     @if($model->getMedia('images'))
         <div id="articleCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -29,5 +34,4 @@
         </div>
     @endif
 
-    {!! $model->content !!}
 @endsection
