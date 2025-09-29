@@ -31,9 +31,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // media uploader
         Route::post('/ckeditor-uploader', [\App\Http\Controllers\Admin\CkeditorController::class, 'upload'])->name('ckeditor.uploader');
 
+        // users
+        Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+
         // web-pages
         Route::resource('web-pages', \App\Http\Controllers\Admin\WebPageController::class);
-
         Route::get('/web-menu/edit', [\App\Http\Controllers\Admin\WebMenuController::class, 'edit'])->name('web-menu.edit');
 
         // articles

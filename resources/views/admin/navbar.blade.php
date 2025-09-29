@@ -30,6 +30,11 @@
                             <i class="fa fa-newspaper"></i>
                         </a>
                     </li>
+                    <li class="nav-item" title="{{ __('Users') }}">
+                        <a @class(['nav-link', 'active'=>request()->routeIs('admin.users.*')]) href="{{ route('admin.users.index') }}">
+                            <i class="fa fa-user"></i>
+                        </a>
+                    </li>
 
 
                     {{--                    <li class="nav-item">--}}
