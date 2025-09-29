@@ -31,7 +31,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // media uploader
         Route::post('/ckeditor-uploader', [\App\Http\Controllers\Admin\CkeditorController::class, 'upload'])->name('ckeditor.uploader');
 
-        // users
+        Route::resource('admins', \App\Http\Controllers\Admin\AdminController::class);
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
         // web-pages

@@ -1,8 +1,8 @@
-@extends('admin.user.layout')
+@extends('admin.admin.layout')
 
 @section('content')
     <div class="container-fluid">
-        <form method="post" action="{{ $model->id ? route('admin.users.update', $model) : route('admin.users.store') }}">
+        <form method="post" action="{{ $model->id ? route('admin.admins.update', $model) : route('admin.admins.store') }}">
             @csrf
             @if($model->id)
                 @method('PUT')
@@ -10,7 +10,7 @@
 
             <div class="card h-100 mb-3">
                 <div class="card-header">
-                    {{ __('Users') }}
+                    {{ __('Admins') }}
                 </div>
 
                 <div class="card-body">

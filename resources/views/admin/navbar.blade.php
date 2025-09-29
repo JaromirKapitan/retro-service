@@ -77,6 +77,11 @@
                             </li>
                         @endif
                     @else
+                        <li class="nav-item" title="{{ __('Admins') }}">
+                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.admins.*')]) href="{{ route('admin.admins.index') }}">
+                                <i class="fa fa-user"></i>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 {{ Auth::user()->name }}
