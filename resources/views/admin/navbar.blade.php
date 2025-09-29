@@ -77,6 +77,11 @@
                             </li>
                         @endif
                     @else
+                        <li class="nav-item" title="{{ __('admin.update_codes') }}">
+                            <a class='nav-link' href="{{ route('admin.pull') }}">
+                                <i class="fa fa-code-pull-request"></i>
+                            </a>
+                        </li>
                         <li class="nav-item" title="{{ __('admin.admins') }}">
                             <a @class(['nav-link', 'active'=>request()->routeIs('admin.admins.*')]) href="{{ route('admin.admins.index') }}">
                                 <i class="fa fa-user"></i>

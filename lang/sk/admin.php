@@ -35,4 +35,5 @@ return [
     'form' => 'Formulár',
     'new_password' => 'Nové heslo',
     'email' => 'E-mail',
+    'update_codes' => 'Aktualizovať zdrojové kódy',
 ];

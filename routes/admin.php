@@ -28,6 +28,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.dashboard');
         })->name('dashboard');
 
+        Route::get('/pull', [\App\Http\Controllers\Admin\SystemController::class, 'pull'])->name('pull');
         // media uploader
         Route::post('/ckeditor-uploader', [\App\Http\Controllers\Admin\CkeditorController::class, 'upload'])->name('ckeditor.uploader');
 

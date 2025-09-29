@@ -14,7 +14,7 @@
   - vyzadovana zmena hesla pri prvom prihlaseni
 
 - testy
-- preklady
-
+- preklady (Ciastocne -> potrebne skontrolovat)
 - admin navbar: pri mobilnej verzii
+- popup notifikacie
 
