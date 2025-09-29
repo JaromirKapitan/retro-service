@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="{{ route('admin.admins.index') }}">{{ __('Admins') }}</a>
+        <a class="navbar-brand" href="{{ route('admin.admins.index') }}">{{ __('admin.admins') }}</a>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbarSubLeft" aria-labelledby="offcanvasNavbarSubLeftLabel">
             <div class="offcanvas-header">
@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link submit-form text-hover-danger" href="#" data-ask="{{ __('Do you really want to delete this record?') }}">
+                            <a class="nav-link submit-form text-hover-danger" href="#" data-ask="{{ __('admin.do_you_really_want_to_delete_this_record') }}">
                                 <i class="fa fa-trash-can"></i>
                             </a>
                             <form action="{{ route('admin.admins.destroy', $model) }}" method="POST" class="d-none">

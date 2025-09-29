@@ -4,6 +4,6 @@
                {{ $value == $status ? "checked='checked'" : "" }} value="{{ $status }}"
         >
         <label class="btn btn-outline-{{ \App\Enums\ContentStatus::cssClass($status) }}"
-               for="status-{{ $status }}">{{ __($status) }}</label>
+               for="status-{{ $status }}">{{ __('admin.'.$status) }}</label>
     @endforeach
 </div>

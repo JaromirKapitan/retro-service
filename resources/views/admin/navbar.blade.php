@@ -15,22 +15,22 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-                    <li class="nav-item">
+                    <li class="nav-item" title="{{ __('admin.dashboard') }}">
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">
                             <i class="fa fa-home"></i>
                         </a>
                     </li>
-                    <li class="nav-item" title="{{ __('Pages') }}">
+                    <li class="nav-item" title="{{ __('admin.web_pages') }}">
                         <a @class(['nav-link', 'active'=>request()->routeIs('admin.web-pages.*')]) href="{{ route('admin.web-pages.index') }}">
                             <i class="fa fa-globe"></i>
                         </a>
                     </li>
-                    <li class="nav-item" title="{{ __('Articles') }}">
+                    <li class="nav-item" title="{{ __('admin.articles') }}">
                         <a @class(['nav-link', 'active'=>request()->routeIs('admin.articles.*')]) href="{{ route('admin.articles.index') }}">
                             <i class="fa fa-newspaper"></i>
                         </a>
                     </li>
-                    <li class="nav-item" title="{{ __('Users') }}">
+                    <li class="nav-item" title="{{ __('admin.users') }}">
                         <a @class(['nav-link', 'active'=>request()->routeIs('admin.users.*')]) href="{{ route('admin.users.index') }}">
                             <i class="fa fa-user"></i>
                         </a>
@@ -73,11 +73,11 @@
                     @guest
                         @if (Route::has('admin.login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('admin.login') }}">{{ __('admin.login') }}</a>
                             </li>
                         @endif
                     @else
-                        <li class="nav-item" title="{{ __('Admins') }}">
+                        <li class="nav-item" title="{{ __('admin.admins') }}">
                             <a @class(['nav-link', 'active'=>request()->routeIs('admin.admins.*')]) href="{{ route('admin.admins.index') }}">
                                 <i class="fa fa-user"></i>
                             </a>
@@ -88,7 +88,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.logout') }}"
+                            <a class="nav-link" href="{{ route('admin.logout') }}" title="{{ __('admin.logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{--                                {{ __('Logout') }}--}}

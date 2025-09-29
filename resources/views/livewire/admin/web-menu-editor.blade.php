@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-6">
-        <h2>Menu</h2>
+        <h2>{{ __('admin.menu') }}</h2>
         <div id="menu-list">
             <ul x-sortable>
                 @foreach($webMenuList as $webMenuItem)
@@ -14,15 +14,15 @@
         </div>
 
         <div class="text-end">
-            <button type="button" class="btn btn-success" id="save-menu">save</button>
+            <button type="button" class="btn btn-success" id="save-menu">{{ __('admin.save') }}</button>
         </div>
     </div>
 
     <div class="col-6">
-        <h2>Form</h2>
+        <h2>{{ __('admin.form') }}</h2>
         <form>
             <div class="mb-2">
-                <label class="form-label">{{ __('Type') }}</label>
+                <label class="form-label">{{ __('admin.type') }}</label>
                 <select class="form-control" wire:model.live="modelClass">
                     @foreach($this->getModels() as $modelClass => $modelName)
                         <option value="{{ $modelClass }}">{{ $modelName }}</option>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="mb-2">
-                <label class="form-label">{{ __('Option') }}</label>
+                <label class="form-label">{{ __('admin.option') }}</label>
                 <select class="form-control" wire:model.live="modelId">
                     <option>-- EMPTY --</option>
                     @foreach($this->getOptions() as $option)
@@ -41,7 +41,7 @@
             </div>
 
             <div class="text-end">
-                <button type="button" class="btn btn-success" wire:click="add">Add</button>
+                <button type="button" class="btn btn-success" wire:click="add">{{ __('admin.add') }}</button>
             </div>
         </form>
     </div>

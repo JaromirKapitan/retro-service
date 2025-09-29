@@ -16,3 +16,5 @@
 - testy
 - preklady
 
+- admin navbar: pri mobilnej verzii
+

@@ -24,10 +24,10 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Type</th>
-            <th class="text-end">Actions</th>
+            <th>{{ __('admin.name') }}</th>
+            <th>{{ __('admin.size') }}</th>
+            <th>{{ __('admin.type') }}</th>
+            <th class="text-end">{{ __('admin.actions') }}</th>
         </tr>
         </thead>
 

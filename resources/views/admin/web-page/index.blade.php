@@ -5,10 +5,10 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>{{ __('title') }}</th>
-            <th>{{ __('status') }}</th>
+            <th>{{ __('admin.title') }}</th>
+            <th>{{ __('admin.status') }}</th>
             @if(\App\Enums\Lang::isMultilang())
-                <th>{{ __('lang') }}</th>
+                <th>{{ __('admin.lang') }}</th>
             @endif
             <th></th>
         </tr>
@@ -21,7 +21,7 @@
                 <td>{{ $item->title }}</td>
                 <td>
                     <span class=" w-75 badge rounded-pill content-status-{{ $item->status }}">
-                        {{ __($item->status) }}
+                        {{ __('admin.'.$item->status) }}
                     </span>
                 </td>
                 @if(\App\Enums\Lang::isMultilang())
@@ -43,7 +43,7 @@
                     <a href="{{ route('admin.web-pages.show', $item) }}" class="text-secondary text-hover-info"><i class="fa fa-info"></i></a>
                     <a href="{{ route('admin.web-pages.edit', $item) }}" class="text-warning"><i class="fa fa-pencil"></i></a>
 
-                    <a class="text-danger submit-form" href="#" data-ask="{{ __('Do you really want to delete this record?') }}">
+                    <a class="text-danger submit-form" href="#" data-ask="{{ __('admin.do_you_really_want_to_delete_this_record') }}">
                         <i class="fa fa-trash-can"></i>
                     </a>
                     <form action="{{ route('admin.web-pages.destroy', $item->id) }}" method="POST" class="d-none">

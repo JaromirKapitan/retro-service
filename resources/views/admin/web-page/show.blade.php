@@ -1,4 +1,4 @@
-@extends('admin.article.layout')
+@extends('admin.web-page.layout')
 
 @section('content')
     <ul class="nav nav-tabs" id="myTab" role="tablist">

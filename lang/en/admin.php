@@ -1,0 +1,37 @@
+<?php
+
+return [
+    'login' => 'Login',
+    'logout' => 'Logout',
+    'admins' => 'Admins',
+    'users' => 'Users',
+    'articles' => 'Articles',
+    'web_pages' => 'Web pages',
+    'web_page' => 'Web page',
+    'dashboard' => 'Dashboard',
+    'do_you_really_want_to_delete_this_record' => 'Do you really want to delete this record?',
+    'forgot_your_password' => 'Forgot Your Password?',
+
+    'title' => 'Title',
+    'status' => 'Status',
+    'description' => 'Description',
+    'detail' => 'Detail',
+    'images' => 'Images',
+    'files' => 'Files',
+    'name' => 'Name',
+    'size' => 'Size',
+    'type' => 'Type',
+    'actions' => 'Actions',
+    'content' => 'Content',
+
+    'draft' => 'Draft',
+    'published' => 'Published',
+    'archived' => 'Archived',
+    'save' => 'Save',
+    'option' => 'Option',
+    'add' => 'Add',
+    'menu' => 'Menu',
+    'form' => 'Form',
+    'new_password' => 'New password',
+    'email' => 'E-mail',
+];
