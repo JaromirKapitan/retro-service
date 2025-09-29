@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,6 +14,10 @@ class Article extends Model implements HasMedia
     use SoftDeletes, HasFactory, Seoble, InteractsWithMedia, LangMutation;
 
     protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id'];
+
+    protected $attributes = [
+        'status' => ContentStatus::Draft->value
+    ];
 
     public function webPages()
     {

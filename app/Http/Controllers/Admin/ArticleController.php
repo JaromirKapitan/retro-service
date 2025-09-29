@@ -30,7 +30,6 @@ class ArticleController extends Controller
     {
         return view('admin.article.form', [
             'model' => new Article(session()->get('_old_input') ?? [
-                'status' => ContentStatus::Draft->value,
                 'lang' => $request->get('lang') ?? config('app.locale'),
                 'parent_id' => $request->get('parent_id') ?? null,
             ]),

@@ -32,7 +32,6 @@ class WebPageController extends Controller
     {
         return view('admin.web-page.form', [
             'model' => new WebPage(session()->get('_old_input') ?? [
-                'status' => ContentStatus::Draft->value,
                 'lang' => $request->get('lang') ?? config('app.locale'),
                 'parent_id' => $request->get('parent_id') ?? null,
             ]),

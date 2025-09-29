@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentStatus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,12 +16,9 @@ class WebPage extends Model implements HasMedia
 
     protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id'];
 
-//    protected static function booted()
-//    {
-//        static::addGlobalScope('parents', function (Builder $builder) {
-//            $builder->whereNull('parent_id');
-//        });
-//    }
+    protected $attributes = [
+        'status' => ContentStatus::Draft->value
+    ];
 
     public function scopeParents(Builder $query)
     {
