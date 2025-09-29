@@ -24,10 +24,12 @@ return [
     'actions' => 'Actions',
     'content' => 'Content',
 
+    'record_deleted' => 'Record was deleted',
     'draft' => 'Draft',
     'published' => 'Published',
     'archived' => 'Archived',
     'save' => 'Save',
+    'saved' => 'Data saved',
     'option' => 'Option',
     'add' => 'Add',
     'menu' => 'Menu',

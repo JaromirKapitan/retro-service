@@ -44,7 +44,7 @@ class ArticleController extends Controller
 
         return redirect()
             ->route('admin.articles.index')
-            ->with('success', trans('Data stored successfully.'));
+            ->with('success', trans('admin.saved'));
     }
 
     protected function validateRequest(Request $request)
@@ -74,7 +74,7 @@ class ArticleController extends Controller
 
         return redirect()
             ->route('admin.articles.index')
-            ->with('success', trans('Data updated successfully.'));
+            ->with('success', trans('admin.saved'));
     }
 
     public function destroy(Article $article)
@@ -82,7 +82,7 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()
             ->route('admin.articles.index')
-            ->with('success', trans('Data deleted successfully.'));
+            ->with('success', trans('admin.record_deleted'));
     }
 
     protected function getMediaParams($id)

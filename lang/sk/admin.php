@@ -25,10 +25,12 @@ return [
     'actions' => 'Operácie',
     'content' => 'Obsah',
 
+    'record_deleted' => 'Záznam bol vymazaný',
     'draft' => 'Koncept',
     'published' => 'Publikované',
     'archived' => 'Archivované',
     'save' => 'Uložiť',
+    'saved' => 'Uložené',
     'option' => 'Možnosť',
     'add' => 'Pridať',
     'menu' => 'Menu',

@@ -46,7 +46,7 @@ class UserController extends Controller
 
         return redirect()
             ->route('admin.users.index')
-            ->with('success', trans('Data stored successfully.'));
+            ->with('success', trans('admin.saved'));
     }
 
     protected function prepareData($data)
@@ -88,7 +88,7 @@ class UserController extends Controller
 
         return redirect()
             ->route('admin.users.index')
-            ->with('success', trans('Data updated successfully.'));
+            ->with('success', trans('admin.saved'));
     }
 
     public function destroy(User $user)
@@ -96,6 +96,6 @@ class UserController extends Controller
         $user->delete();
         return redirect()
             ->route('admin.users.index')
-            ->with('success', trans('Data deleted successfully.'));
+            ->with('success', trans('admin.record_deleted'));
     }
 }

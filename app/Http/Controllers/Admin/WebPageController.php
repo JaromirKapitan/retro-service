@@ -46,7 +46,7 @@ class WebPageController extends Controller
 
         return redirect()
             ->route('admin.web-pages.index')
-            ->with('success', trans('Data stored successfully.'));
+            ->with('success', trans('admin.saved'));
     }
 
     protected function validateRequest(Request $request)
@@ -75,14 +75,15 @@ class WebPageController extends Controller
 
         return redirect()
             ->route('admin.web-pages.index')
-            ->with('success', trans('Data updated successfully.'));
+            ->with('success', trans('admin.saved'));
     }
 
     public function destroy(WebPage $webPage)
     {
         $webPage->delete();
+
         return redirect()
             ->route('admin.web-pages.index')
-            ->with('success', trans('Data deleted successfully.'));
+            ->with('success', trans('admin.record_deleted'));
     }
 }

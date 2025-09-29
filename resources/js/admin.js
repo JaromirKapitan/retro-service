@@ -19,6 +19,7 @@ window.slug = slug;
 
 import SeoForm from './seo-form.js';
 import ckeditorInit from './ckeditor.js';
+import Notification from './notify.js';
 
 import sortable from './sortable'
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
@@ -37,7 +38,6 @@ $(function (){
 
     ckeditorInit();
 
-
     $('.submit-form').click(function (e){
         e.preventDefault();
 
@@ -51,4 +51,6 @@ $(function (){
         $form.submit();
         return false;
     })
+
+    window.notify = new Notification();
 })

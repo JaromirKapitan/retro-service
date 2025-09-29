@@ -46,7 +46,7 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.admins.index')
-            ->with('success', trans('Data stored successfully.'));
+            ->with('success', trans('admin.saved'));
     }
 
     protected function prepareData($data)
@@ -91,7 +91,7 @@ class AdminController extends Controller
 
         return redirect()
             ->route('admin.admins.index')
-            ->with('success', trans('Data updated successfully.'));
+            ->with('success', trans('admin.saved'));
     }
 
     public function destroy(Admin $admin)
@@ -99,6 +99,6 @@ class AdminController extends Controller
         $admin->delete();
         return redirect()
             ->route('admin.admins.index')
-            ->with('success', trans('Data deleted successfully.'));
+            ->with('success', trans('admin.record_deleted'));
     }
 }
