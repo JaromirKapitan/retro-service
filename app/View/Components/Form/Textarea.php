@@ -11,7 +11,7 @@ class Textarea extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $name, public $label, public $inputAttributes = [], public $addClass = '')
+    public function __construct(public $name, public $label = '', public $inputAttributes = [], public $addClass = '')
     {
         if(empty($this->inputAttributes['id'])) $this->inputAttributes['id'] = $name;
         if(empty($this->inputAttributes['name'])) $this->inputAttributes['name'] = $name;

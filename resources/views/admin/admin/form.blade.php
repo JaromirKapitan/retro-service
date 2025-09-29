@@ -21,7 +21,7 @@
                         <x-form.input name="email" :value="$model->email" :label="__('E-mail')"/>
                     </div>
                     <div class="mb-3">
-                        <x-form.input name="password" :label="__('New password')"/>
+                        <x-form.password name="password" :label="__('New password')"/>
                     </div>
                 </div>
             </div>

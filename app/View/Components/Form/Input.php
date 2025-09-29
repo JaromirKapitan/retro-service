@@ -11,7 +11,7 @@ class Input extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $name, public $label, public $value = null, public $inputAttributes = [])
+    public function __construct(public $name, public $label = '', public $value = null, public $inputAttributes = [])
     {
         if(empty($this->inputAttributes['id'])) $this->inputAttributes['id'] = $name;
         if(empty($this->inputAttributes['name'])) $this->inputAttributes['name'] = $name;
