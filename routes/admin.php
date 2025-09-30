@@ -32,6 +32,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // media uploader
         Route::post('/ckeditor-uploader', [\App\Http\Controllers\Admin\CkeditorController::class, 'upload'])->name('ckeditor.uploader');
 
+        Route::get('/password', [\App\Http\Controllers\Admin\PasswordController::class, 'create'])->name('password.create');
+        Route::post('/password', [\App\Http\Controllers\Admin\PasswordController::class, 'store'])->name('password.store');
+
         Route::resource('admins', \App\Http\Controllers\Admin\AdminController::class);
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 

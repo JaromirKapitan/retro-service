@@ -87,6 +87,11 @@
                                 <i class="fa fa-user"></i>
                             </a>
                         </li>
+                        <li class="nav-item" title="{{ __('admin.change_password') }}">
+                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.password.create')]) href="{{ route('admin.password.create') }}">
+                                <i class="fa fa-key"></i>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 {{ Auth::user()->name }}

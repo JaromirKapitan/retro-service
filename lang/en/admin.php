@@ -12,6 +12,11 @@ return [
     'do_you_really_want_to_delete_this_record' => 'Do you really want to delete this record?',
     'forgot_your_password' => 'Forgot Your Password?',
     'remember_me' => 'Remember me',
+    'change_password' => 'Change password',
+    'current_password' => 'Current password',
+    'new_password' => 'New password',
+    'confirm_password' => 'Confirm password',
+    'password_changed' => 'Password was changed',
 
     'title' => 'Title',
     'status' => 'Status',
@@ -35,7 +40,6 @@ return [
     'add' => 'Add',
     'menu' => 'Menu',
     'form' => 'Form',
-    'new_password' => 'New password',
     'email' => 'E-mail',
     'content_status' => 'Status',
 ];
