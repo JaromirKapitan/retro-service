@@ -11,6 +11,7 @@ return [
     'dashboard' => 'Dashboard',
     'do_you_really_want_to_delete_this_record' => 'Do you really want to delete this record?',
     'forgot_your_password' => 'Forgot Your Password?',
+    'remember_me' => 'Remember me',
 
     'title' => 'Title',
     'status' => 'Status',
@@ -36,4 +37,5 @@ return [
     'form' => 'Form',
     'new_password' => 'New password',
     'email' => 'E-mail',
+    'content_status' => 'Status',
 ];

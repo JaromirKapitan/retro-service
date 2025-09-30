@@ -12,6 +12,7 @@ return [
 
     'do_you_really_want_to_delete_this_record' => 'Skutočne chcete vymazať tento záznam?',
     'forgot_your_password' => 'Zabudli ste heslo?',
+    'remember_me' => 'Zapamätať',
 
     'title' => 'Title',
     'status' => 'Stav',
@@ -38,4 +39,5 @@ return [
     'new_password' => 'Nové heslo',
     'email' => 'E-mail',
     'update_codes' => 'Aktualizovať zdrojové kódy',
+    'content_status' => 'Stav',
 ];
