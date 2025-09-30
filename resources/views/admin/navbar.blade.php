@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="#">{{ config('app.name', 'Laravel') }}</a>
+        <a class="navbar-brand" href="{{ route('admin.dashboard') }}">{{ config('app.name', 'Laravel') }}</a>
 
         @guest
         @else

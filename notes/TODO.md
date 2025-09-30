@@ -16,6 +16,5 @@
 - testy
 - preklady (Ciastocne -> potrebne skontrolovat)
 - admin navbar: pri mobilnej verzii
-- popup notifikacie
 - logovanie
 
