@@ -18,16 +18,13 @@
                     <input type="hidden" id="lang" name="lang" value="{{ $model->lang ?? '' }}">
 
                     <div class="mb-3">
-                        <label for="page" class="form-label">{{ __('admin.web_page') }}</label>
-                        <select class="form-select select2 @error('web_pages') is-invalid @enderror" id="web_pages" name="web_pages[]" multiple>
-                            @foreach(\App\Models\WebPage::all() as $page)
-                                <option value="{{ $page->id }}" {{ $model->webPages->contains($page) ? 'selected' : '' }}>{{ $page->title }}</option>
-                            @endforeach
-                        </select>
-
-                        @error('web_pages')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <x-form.select name="web_pages"
+                                       :value="optional($model->seo)->slug"
+                                       :label="__('admin.web_page')"
+                                       :options="$form->web_page_options"
+                                       :multiple="true"
+                                       addClass="select2"
+                        />
                     </div>
 
                     <div class="mb-3">
@@ -36,7 +33,7 @@
                                 <x-form.input name="title" :value="$model->title" :label="__('admin.title')" :inputAttributes="['data-seo' => 'slug']"/>
                             </div>
                             <div class="col-sm-6">
-                                <x-form.input name="slug" :value="optional($model->seo)->slug" :label="__('Slug')"/>
+                                <x-form.input name="slug" :value="optional($model->seo)->slug" :label="__('admin.slug')"/>
                             </div>
                         </div>
                     </div>

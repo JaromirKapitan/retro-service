@@ -6,6 +6,7 @@ use App\Enums\ContentStatus;
 use App\Enums\Lang;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\WebPage;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -28,12 +29,27 @@ class ArticleController extends Controller
 
     public function create(Request $request)
     {
-        return view('admin.article.form', [
-            'model' => new Article(session()->get('_old_input') ?? [
-                'lang' => $request->get('lang') ?? config('app.locale'),
-                'parent_id' => $request->get('parent_id') ?? null,
-            ]),
+        $article = new Article(session()->get('_old_input') ?? [
+            'lang' => $request->get('lang') ?? config('app.locale'),
+            'parent_id' => $request->get('parent_id') ?? null,
         ]);
+
+        return view('admin.article.form', [
+            'model' => $article,
+            'form' => $this->getFormData($article),
+        ]);
+    }
+
+    protected function getFormData(Article $article){
+        return (object)[
+            'web_page_options' => WebPage::all()->map(function ($item) use ($article){
+                return (object)[
+                    'value' => $item->id,
+                    'title' => $item->title,
+                    'selected' => $article->webPages->contains($item) ? 'selected' : '',
+                ];
+            })
+        ];
     }
 
     public function store(Request $request)
@@ -62,6 +78,7 @@ class ArticleController extends Controller
     {
         return view('admin.article.form', [
             'model' => $article,
+            'form' => $this->getFormData($article),
         ]);
     }
 

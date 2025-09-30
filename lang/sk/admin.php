@@ -44,4 +44,5 @@ return [
     'email' => 'E-mail',
     'update_codes' => 'Aktualizovať zdrojové kódy',
     'content_status' => 'Stav',
+    'slug' => 'Slug',
 ];

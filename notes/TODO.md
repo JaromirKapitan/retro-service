@@ -18,3 +18,5 @@
 - admin navbar: pri mobilnej verzii
 - logovanie
 
+# Vylepsenia 
+- pull mozny len ak bola nejaka zmena (farebne rozlisit)

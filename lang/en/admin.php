@@ -42,4 +42,5 @@ return [
     'form' => 'Form',
     'email' => 'E-mail',
     'content_status' => 'Status',
+    'slug' => 'Slug',
 ];
