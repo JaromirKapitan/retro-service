@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Process;
 
 class SystemController extends Controller
 {
@@ -13,10 +14,15 @@ class SystemController extends Controller
             return redirect()->back();
         }
 
-        // Spustenie deploy.sh skriptu
-        exec('cd '. base_path().' && ./deploy.sh &');
+        Process::path(base_path())->run('./deploy.sh', function (string $type, string $output){
+            if ($type == 'stdout') {
+                echo $output."<br/>";
+            }
+        });
 
-//        session()->flash('success', "System aktualizovany.");
+        sleep(5);
+
+        session()->flash('success', "System aktualizovany.");
         return redirect()->back();
     }
 }
