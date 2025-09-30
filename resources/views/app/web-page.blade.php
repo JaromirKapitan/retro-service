@@ -1,6 +1,11 @@
 @extends('app.layout')
 
 @section('content')
+    <h1>{{ $model->title }}</h1>
+    @if($model->content)
+        <p>{!! $model->content !!}</p>
+    @endif
+
     <div class="row">
         @if($model->articles)
             @foreach($model->articles as $article)

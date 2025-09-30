@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\SeoData;
 use App\Models\WebMenu;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -26,21 +25,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $menu = WebMenu::whereNull('parent_id')->get();
-        return view('app.home', compact('menu'));
+        return view('app.home', [
+            'menu' => $this->getMenu()
+        ]);
     }
 
     public function show($slug)
     {
         $seo = SeoData::slug($slug)->first();
 
-        if(empty($seo))
+        if(empty($seo) || !$seo->seoble->isPublished)
             return abort(404);
 
         return view($this->getTempleBySeo($seo), [
-            'menu' => WebMenu::whereNull('parent_id')->get(),
+            'menu' => $this->getMenu(),
             'model' => $seo->seoble
         ]);
+    }
+
+    protected function getMenu(){
+        return WebMenu::whereNull('parent_id')->get()->filter(function($item){
+            return $item->target->isPublished;
+        });
     }
 
     protected function getTempleBySeo(SeoData $seo)

@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Enums\ContentStatus;
+use App\Models\Traits\ContentAble;
+use App\Models\Traits\LangMutation;
+use App\Models\Traits\Seoble;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,7 +14,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Article extends Model implements HasMedia
 {
-    use SoftDeletes, HasFactory, Seoble, InteractsWithMedia, LangMutation;
+    use SoftDeletes, HasFactory, Seoble, InteractsWithMedia, LangMutation, ContentAble;
 
     protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id'];
 
