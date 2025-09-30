@@ -20,3 +20,5 @@
 
 # Vylepsenia 
 - pull mozny len ak bola nejaka zmena (farebne rozlisit)
+- presunut ContentStatus z modelu (stranka, clanok, ...) do SeoData
+  - zbavim sa tak 'trait' pre overenie ci bol dany model zverejneny alebo nie a zaroven sa zjednodusi overenie .. ?? aj pre menu ??

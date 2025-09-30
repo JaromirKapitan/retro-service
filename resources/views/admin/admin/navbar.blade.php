@@ -39,37 +39,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.admins.show')]) href="{{ route('admin.admins.show', $model) }}">
-                                <i class="fa fa-info"></i>
-                            </a>
-                        </li>
-{{--                        <li class="nav-item">--}}
-{{--                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.admins.images')]) href="{{ route('admin.admins.images', $model) }}">--}}
-{{--                                <i class="fa fa-image"></i>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.admins.files')]) href="{{ route('admin.admins.files', $model) }}">--}}
-{{--                                <i class="fa fa-file"></i>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-                        <li class="nav-item">
-                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.admins.edit')]) href="{{ route('admin.admins.edit', $model) }}">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link submit-form text-hover-danger" href="#" data-ask="{{ __('admin.do_you_really_want_to_delete_this_record') }}">
-                                <i class="fa fa-trash-can"></i>
-                            </a>
-                            <form action="{{ route('admin.admins.destroy', $model) }}" method="POST" class="d-none">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                        </li>
-                    </ul>
+                    <x-entity.detail-buttons entity="admins" :model="$model" />
                 </div>
             </div>
         @endif
