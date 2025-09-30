@@ -9,20 +9,20 @@ class SystemController extends Controller
 {
     public function pull()
     {
-        if(isLocalhost()) {
-//            session()->flash('warning', "Localhost nie je mozne aktualizovat.");
-            return redirect()->back();
-        }
+//        if(isLocalhost()) {
+////            session()->flash('warning', "Localhost nie je mozne aktualizovat.");
+//            return redirect()->back();
+//        }
 
-        Process::path(base_path())->run('./deploy.sh', function (string $type, string $output){
-            if ($type == 'stdout') {
-                echo $output."<br/>";
-            }
+        $result = Process::path(base_path())->run('bash deploy.sh', function (string $type, string $output){
+            echo $output."<br/>";
         });
 
         sleep(5);
 
-        session()->flash('success', "System aktualizovany.");
-        return redirect()->back();
+        dd('END'); // todo: TMP
+
+//        session()->flash('success', "System aktualizovany.");
+//        return redirect()->back();
     }
 }
