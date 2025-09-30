@@ -40,16 +40,7 @@
                 </td>
                 @endif
                 <td class="text-end">
-                    <a href="{{ route('admin.web-pages.show', $item) }}" class="text-secondary text-hover-info"><i class="fa fa-info"></i></a>
-                    <a href="{{ route('admin.web-pages.edit', $item) }}" class="text-warning"><i class="fa fa-pencil"></i></a>
-
-                    <a class="text-danger submit-form" href="#" data-ask="{{ __('admin.do_you_really_want_to_delete_this_record') }}">
-                        <i class="fa fa-trash-can"></i>
-                    </a>
-                    <form action="{{ route('admin.web-pages.destroy', $item->id) }}" method="POST" class="d-none">
-                        @csrf
-                        @method('DELETE')
-                    </form>
+                    <x-entity.table-buttons entity="web-pages" :item="$item" />
                 </td>
             </tr>
         @endforeach

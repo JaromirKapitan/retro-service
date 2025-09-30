@@ -14,7 +14,9 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active p-3" id="detail-tab-pane" role="tabpanel" aria-labelledby="detail-tab" tabindex="0">
-            detail
+            <h1>{{ $model->title }}</h1>
+            <div class="text-muted">{{ __('admin.slug') }}: {{ $model->seo->slug }}</div>
+            {!! $model->content !!}
         </div>
         <div class="tab-pane fade p-3" id="images-tab-pane" role="tabpanel" aria-labelledby="images-tab" tabindex="0">
             <livewire:Admin.MediaImages :model="$model" />
