@@ -78,7 +78,7 @@
                         @endif
                     @else
                         <li class="nav-item" title="{{ __('admin.update_codes') }}">
-                            <a @class(['nav-link', 'disabled'=>isLocalhost()]) href="{{ route('admin.pull') }}">
+                            <a @class(['nav-link', 'd-none', 'disabled'=>isLocalhost()]) href="{{ route('admin.pull') }}">
                                 <i class="fa fa-code-pull-request"></i>
                             </a>
                         </li>

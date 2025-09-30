@@ -9,6 +9,9 @@ class SystemController extends Controller
 {
     public function pull()
     {
+        session()->flash('warning', "Currently not working!!");
+        return redirect()->back();
+
 //        if(isLocalhost()) {
 ////            session()->flash('warning', "Localhost nie je mozne aktualizovat.");
 //            return redirect()->back();
