@@ -6,6 +6,7 @@ return [
     'admins' => 'Administrátori',
     'users' => 'Používatelia',
     'articles' => 'Články',
+    'article' => 'Článok',
     'web_pages' => 'Web stránky',
     'web_page' => 'Web page',
     'dashboard' => 'Dashboard',
@@ -45,4 +46,5 @@ return [
     'update_codes' => 'Aktualizovať zdrojové kódy',
     'content_status' => 'Stav',
     'slug' => 'Slug',
+    'lang' => 'Jazyk',
 ];

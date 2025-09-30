@@ -6,6 +6,7 @@ return [
     'admins' => 'Admins',
     'users' => 'Users',
     'articles' => 'Articles',
+    'article' => 'Article',
     'web_pages' => 'Web pages',
     'web_page' => 'Web page',
     'dashboard' => 'Dashboard',
@@ -43,4 +44,5 @@ return [
     'email' => 'E-mail',
     'content_status' => 'Status',
     'slug' => 'Slug',
+    'lang' => 'Language',
 ];
