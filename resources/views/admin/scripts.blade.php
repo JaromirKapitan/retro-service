@@ -3,6 +3,8 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/46.0.2/ckeditor5.umd.js"></script>
 
 <script>
+    window.ckeditor_licence_key = "{{ env('CKEDITOR_LICENSE_KEY') }}";
+
     window.notifications = [];
 
     @foreach(['info', 'success', 'warning', 'error'] as $type)
