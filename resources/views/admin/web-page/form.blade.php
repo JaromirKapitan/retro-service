@@ -39,8 +39,19 @@
                         <x-form.textarea name="content" :label="__('admin.content')" addClass="ckeditor">{{ $model->content }}</x-form.textarea>
                     </div>
 
-                    <div class="mb-3 text-end">
-                        <x-form.content-status :value="$model->status"/>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            @if(!$model->parent_id)
+                                <x-form.checkbox name="home"
+                                                 value="1"
+                                                 :label="__('admin.home_page')"
+                                                 :checked="$model->home"
+                                />
+                            @endif
+                        </div>
+                        <div class="col-sm-6 text-end">
+                            <x-form.content-status :value="$model->status"/>
+                        </div>
                     </div>
                 </div>
             </div>

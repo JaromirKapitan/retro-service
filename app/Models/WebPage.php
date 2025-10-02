@@ -17,7 +17,7 @@ class WebPage extends Model implements HasMedia
 {
     use SoftDeletes, HasFactory, Seoble, InteractsWithMedia, LangMutation, ContentAble;
 
-    protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id'];
+    protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id', 'home'];
 
     protected $attributes = [
         'status' => ContentStatus::Draft->value
@@ -31,5 +31,15 @@ class WebPage extends Model implements HasMedia
     public function articles()
     {
         return $this->belongsToMany(Article::class)->published();
+    }
+
+    public function setHomeAttribute($value)
+    {
+        // ak nastala zmena domovskej stranky zrus oznacenie pri ostatnych strankach
+        if ($value == 1) {
+            self::where('home', 1)->update(['home' => null]);
+        }
+
+        $this->attributes['home'] = $value;
     }
 }

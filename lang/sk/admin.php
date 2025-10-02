@@ -50,4 +50,5 @@ return [
     'content_status' => 'Stav',
     'slug' => 'Slug',
     'lang' => 'Jazyk',
+    'home_page' => 'Domovská stránka',
 ];

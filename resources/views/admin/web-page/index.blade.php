@@ -8,6 +8,7 @@
             <th>{{ __('admin.title') }}</th>
             <th>{{ __('admin.status') }}</th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
 
@@ -21,7 +22,12 @@
                         {{ __('admin.'.$item->status) }}
                     </span>
                 </td>
+                <td>
+                </td>
                 <td class="text-end">
+                    @if($item->home)
+                        <i class="fa fa-home text-secondary pe-5"></i>
+                    @endif
                     <x-entity.table-buttons entity="web-pages" :item="$item" :multilang="\App\Enums\Lang::isMultilang()"/>
                 </td>
             </tr>

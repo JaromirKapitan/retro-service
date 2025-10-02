@@ -2,17 +2,13 @@
 
 # TODO
 
-[//]: # (- preklady )
+- preklady 
+  - upravit podla nastavenia z .env.
+    - Ak nebude nastavena vyberie podla nastavenia systemu
+    - Ak bude tak prvy jazyk bude ako hlavny.
+      - moze nastat situacia ze jazyk systemu bude SK ale zakladny jazyk stranky v CZ
 
-[//]: # (  - upravit podla nastavenia z .env. )
-
-[//]: # (    - Ak nebude nastavena vyberie podla nastavenia systemu)
-
-[//]: # (    - Ak bude tak prvy jazyk bude ako hlavny.)
-
-[//]: # (      - moze nastat situacia ze jazyk systemu bude SK ale zakladny jazyk stranky v CZ)
-
-- testy
+- testy (In progress)
 
 - vytvorit nastavenia pre web
   - najake default nastavenia ako su kontaktne udaje, fakturacne udaje, odkazy na socialne media a pod 

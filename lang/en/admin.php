@@ -48,4 +48,5 @@ return [
     'content_status' => 'Status',
     'slug' => 'Slug',
     'lang' => 'Language',
+    'home_page' => 'Home page',
 ];

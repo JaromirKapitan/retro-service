@@ -55,6 +55,7 @@ class WebPageController extends Controller
             'description' => 'nullable|string|max:300',
             'content' => 'nullable|string',
             'status' => 'required|in:' . ContentStatus::valuesString(),
+            'home' => 'nullable|bool',
         ], $this->getSeoRules()));
     }
 

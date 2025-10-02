@@ -32,3 +32,5 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/tests/PlayWrite/Storage/*
+/.github/workflows/playwright.yml
