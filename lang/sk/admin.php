@@ -40,6 +40,8 @@ return [
     'saved' => 'Uložené',
     'option' => 'Možnosť',
     'add' => 'Pridať',
+    'edit' => 'Upraviť',
+    'delete' => 'Vymazať',
     'menu' => 'Menu',
     'form' => 'Formulár',
     'email' => 'E-mail',

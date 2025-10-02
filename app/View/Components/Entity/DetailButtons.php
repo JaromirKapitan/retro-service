@@ -11,7 +11,7 @@ class DetailButtons extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $entity, public $model)
+    public function __construct(public $entity, public $model, public $multilang = false)
     {
         //
     }

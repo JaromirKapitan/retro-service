@@ -29,12 +29,13 @@
                     <td>
                         @foreach($item->mutations as $lang=>$mutation)
                             @if($mutation)
-                                <a class="text-success" href="{{ route('admin.articles.edit', $mutation) }}">
-                                    {{ $lang }}
+                                <a class="text-success text-decoration-none" href="{{ route('admin.articles.edit', $mutation) }}" title="{{ __('admin.detail') }}">
+                                    {!! getFlagByLang($lang) !!}
                                 </a>
                             @else
-                                <a class="" href="{{ route('admin.articles.create', ['lang' => $lang, 'parent_id' => $item->id]) }}">
-                                    {{ $lang }}
+                                <a class="text-decoration-none" href="{{ route('admin.articles.create', ['lang' => $lang, 'parent_id' => $item->id]) }}" title="{{ __('admin.add') }}">
+                                    {!! getFlagByLang($lang) !!}
+                                    <i class="fa fa-plus"></i>
                                 </a>
                             @endif
                         @endforeach

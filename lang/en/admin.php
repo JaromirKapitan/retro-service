@@ -39,6 +39,8 @@ return [
     'saved' => 'Data saved',
     'option' => 'Option',
     'add' => 'Add',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
     'menu' => 'Menu',
     'form' => 'Form',
     'email' => 'E-mail',

@@ -16,7 +16,7 @@ class ArticleController extends Controller
     public function index()
     {
         return view('admin.article.index', [
-            'list' => Article::all(),
+            'list' => Article::whereNull('parent_id')->get(),
         ]);
     }
 
