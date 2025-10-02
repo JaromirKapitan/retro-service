@@ -1,4 +1,20 @@
 <div>
+    @if($multilang)
+        @foreach($item->mutations as $lang=>$mutation)
+            @if($mutation)
+                <a class="flag" href="{{ route('admin.'.$entity.'.edit', $mutation) }}" title="{{ __('admin.edit') }}">
+                    {!! getFlagByLang($lang) !!}
+                </a>
+            @else
+                <a class="flag flag-default" href="{{ route('admin.'.$entity.'.create', ['lang' => $lang, 'parent_id' => $item->id]) }}" title="{{ __('admin.add') }}">
+                    {!! getFlagByLang($lang) !!}
+                </a>
+            @endif
+        @endforeach
+
+        &nbsp;&nbsp;&nbsp;
+    @endif
+
     <a href="{{ route('admin.'.$entity.'.show', $item) }}" class="text-secondary text-hover-info" title="{{ __('admin.detail') }}"><i class="fa fa-info"></i></a>
     <a href="{{ route('admin.'.$entity.'.edit', $item) }}" class="text-secondary text-hover-warning" title="{{ __('admin.edit') }}"><i class="fa fa-pencil"></i></a>
 

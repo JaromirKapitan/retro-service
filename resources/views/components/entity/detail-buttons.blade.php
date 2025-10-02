@@ -3,19 +3,20 @@
         @foreach($model->mutations as $lang=>$mutation)
             @if($mutation)
                 <li class="nav-item">
-                    <a @class(['nav-link', 'active'=>request()->routeIs('admin.'.$entity.'.show')]) href="{{ route('admin.'.$entity.'.show', $mutation) }}" title="{{ __('admin.detail') }}">
+                    <a @class(['nav-link', 'flag', 'active'=>request()->routeIs('admin.'.$entity.'.show')]) href="{{ route('admin.'.$entity.'.show', $mutation) }}" title="{{ __('admin.detail') }}">
                         {!! getFlagByLang($lang) !!}
                     </a>
                 </li>
             @else
                 <li class="nav-item">
-                    <a @class(['nav-link']) href="{{ route('admin.'.$entity.'.create', ['lang' => $lang, 'parent_id' => $model->id]) }}" title="{{ __('admin.add') }}">
+                    <a @class(['nav-link', 'flag flag-default']) href="{{ route('admin.'.$entity.'.create', ['lang' => $lang, 'parent_id' => $model->id]) }}" title="{{ __('admin.add') }}">
                         {!! getFlagByLang($lang) !!}
-                        <i class="fa fa-plus"></i>
                     </a>
                 </li>
             @endif
         @endforeach
+
+        &nbsp;&nbsp;&nbsp;
     @endif
 
     <li class="nav-item">

@@ -7,9 +7,6 @@
             <th>#</th>
             <th>{{ __('admin.title') }}</th>
             <th>{{ __('admin.status') }}</th>
-            @if(\App\Enums\Lang::isMultilang())
-                <th>{{ __('admin.lang') }}</th>
-            @endif
             <th></th>
         </tr>
         </thead>
@@ -24,23 +21,8 @@
                         {{ __('admin.'.$item->status) }}
                     </span>
                 </td>
-                @if(\App\Enums\Lang::isMultilang())
-                <td>
-                    @foreach($item->mutations as $lang=>$mutation)
-                        @if($mutation)
-                            <a class="text-success" href="{{ route('admin.web-pages.edit', $mutation) }}">
-                                {{ $lang }}
-                            </a>
-                        @else
-                            <a class="" href="{{ route('admin.web-pages.create', ['lang' => $lang, 'parent_id' => $item->id]) }}">
-                                {{ $lang }}
-                            </a>
-                        @endif
-                    @endforeach
-                </td>
-                @endif
                 <td class="text-end">
-                    <x-entity.table-buttons entity="web-pages" :item="$item" />
+                    <x-entity.table-buttons entity="web-pages" :item="$item" :multilang="\App\Enums\Lang::isMultilang()"/>
                 </td>
             </tr>
         @endforeach

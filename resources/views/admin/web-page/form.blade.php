@@ -11,6 +11,9 @@
             <div class="card h-100 mb-3">
                 <div class="card-header">
                     {{ __('admin.web_pages') }}
+                    <div class="float-end">
+                        {!! getFlagByLang($model->lang) !!}
+                    </div>
                 </div>
 
                 <div class="card-body">

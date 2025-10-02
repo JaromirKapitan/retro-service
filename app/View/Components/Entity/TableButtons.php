@@ -11,7 +11,7 @@ class TableButtons extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $entity, public $item)
+    public function __construct(public $entity, public $item, public $multilang = false)
     {
         //
     }

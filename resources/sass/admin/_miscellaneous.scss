@@ -25,3 +25,17 @@
         color: #{$value} !important;
     }
 }
+
+.flag{
+    text-decoration: none;
+
+    .fi {
+        padding: 1px;
+    }
+
+    &.flag-default{
+        .fi:not(:hover){
+            filter: grayscale(1);
+        }
+    }
+}
