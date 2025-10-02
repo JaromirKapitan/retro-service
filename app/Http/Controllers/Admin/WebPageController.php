@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\ContentStatus;
 use App\Enums\Lang;
 use App\Http\Controllers\Controller;
-use App\Models\Language;
-use App\Models\SeoData;
 use App\Models\WebPage;
 use Illuminate\Http\Request;
 
@@ -32,7 +30,7 @@ class WebPageController extends Controller
     {
         return view('admin.web-page.form', [
             'model' => new WebPage(session()->get('_old_input') ?? [
-                'lang' => $request->get('lang') ?? config('app.locale'),
+                'lang' => $request->get('lang') ?? Lang::getPrimary(),
                 'parent_id' => $request->get('parent_id') ?? null,
             ]),
         ]);
