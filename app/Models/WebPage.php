@@ -23,6 +23,11 @@ class WebPage extends Model implements HasMedia
         'status' => ContentStatus::Draft->value
     ];
 
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
     public function scopeParents(Builder $query)
     {
         return $query->whereNull('parent_id');
@@ -37,9 +42,15 @@ class WebPage extends Model implements HasMedia
     {
         // ak nastala zmena domovskej stranky zrus oznacenie pri ostatnych strankach
         if ($value == 1) {
-            self::where('home', 1)->update(['home' => null]);
+            self::where('home', 1)->where('id', '!=', $this->id)->update(['home' => null]);
+            $this->attributes['home'] = 1;
+        }else{
+            $this->attributes['home'] = $value;
         }
+    }
 
-        $this->attributes['home'] = $value;
+    public function scopeHome(Builder $query)
+    {
+        $query->where('home', 1);
     }
 }

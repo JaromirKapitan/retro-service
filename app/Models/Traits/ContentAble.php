@@ -3,6 +3,7 @@
 namespace App\Models\Traits;
 
 use App\Enums\ContentStatus;
+use App\Enums\Lang;
 use Illuminate\Database\Eloquent\Builder;
 
 trait ContentAble
@@ -14,6 +15,7 @@ trait ContentAble
 
     public function getIsPublishedAttribute()
     {
-        return $this->status == ContentStatus::Published->value;
+        $status = optional($this->parent)->status ?? $this->status;
+        return $status == ContentStatus::Published->value;
     }
 }

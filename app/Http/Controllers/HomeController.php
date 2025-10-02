@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\SeoData;
 use App\Models\WebMenu;
+use App\Models\WebPage;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('app.home', [
-            'menu' => $this->getMenu()
+        $homePage = WebPage::home()->published()->first();
+
+        return view($homePage ? 'app.web-page' : 'app.home', [
+            'menu' => $this->getMenu(),
+            'model' => $homePage
         ]);
     }
 
