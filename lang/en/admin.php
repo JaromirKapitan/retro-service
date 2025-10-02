@@ -18,6 +18,7 @@ return [
     'new_password' => 'New password',
     'confirm_password' => 'Confirm password',
     'password_changed' => 'Password was changed',
+    'password' => 'Password',
 
     'title' => 'Title',
     'status' => 'Status',

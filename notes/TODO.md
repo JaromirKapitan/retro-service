@@ -1,11 +1,16 @@
 # DOLEZITE
 
 # TODO
-- preklady 
-  - upravit podla nastavenia z .env. 
-    - Ak nebude nastavena vyberie podla nastavenia systemu
-    - Ak bude tak prvy jazyk bude ako hlavny.
-      - moze nastat situacia ze jazyk systemu bude SK ale zakladny jazyk stranky v CZ
+
+[//]: # (- preklady )
+
+[//]: # (  - upravit podla nastavenia z .env. )
+
+[//]: # (    - Ak nebude nastavena vyberie podla nastavenia systemu)
+
+[//]: # (    - Ak bude tak prvy jazyk bude ako hlavny.)
+
+[//]: # (      - moze nastat situacia ze jazyk systemu bude SK ale zakladny jazyk stranky v CZ)
 
 - testy
 

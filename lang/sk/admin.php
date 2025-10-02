@@ -19,6 +19,7 @@ return [
     'new_password' => 'Nové heslo',
     'confirm_password' => 'Potvrdenie hesla',
     'password_changed' => 'Heslo bolo zmenené',
+    'password' => 'Heslo',
 
     'title' => 'Title',
     'status' => 'Stav',
