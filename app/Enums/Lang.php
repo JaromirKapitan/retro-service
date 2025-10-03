@@ -8,9 +8,26 @@ enum Lang: string
     case CS = 'cs';
     case EN = 'en';
 
+    public function getTitle(): string
+    {
+        return match ($this) {
+            self::SK => 'Slovenčina',
+            self::CS => 'Čeština',
+            self::EN => 'English',
+        };
+    }
+
     public static function getPrimary()
     {
         return self::values()[0];
+    }
+
+    public static function availible()
+    {
+        $langs = env('APP_LANGS') ? explode(',', env('APP_LANGS')) : [config('app.locale')];
+        return array_filter(self::cases(), function ($case) use ($langs){
+            return in_array($case->value, $langs);
+        });
     }
 
     // Voliteľné: Metóda na získanie všetkých hodnôt

@@ -3,6 +3,7 @@
 namespace App\Models\Traits;
 
 use App\Enums\Lang;
+use Illuminate\Database\Eloquent\Builder;
 
 trait LangMutation
 {
@@ -21,5 +22,10 @@ trait LangMutation
         }
 
         return $mutations;
+    }
+
+    public function scopeLang(Builder $query, string $value)
+    {
+        $query->where('lang', $value);
     }
 }

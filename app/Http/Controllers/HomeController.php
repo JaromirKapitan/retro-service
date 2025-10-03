@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Lang;
 use App\Models\Article;
 use App\Models\SeoData;
-use App\Models\WebMenu;
+use App\Models\Webmenu;
 use App\Models\WebPage;
 
 class HomeController extends Controller
@@ -26,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $homePage = WebPage::home()->published()->first();
+        $homePage = WebPage::home()->lang(app()->getLocale())->published()->first();
 
         return view($homePage ? 'app.web-page' : 'app.home', [
             'menu' => $this->getMenu(),
@@ -36,9 +37,17 @@ class HomeController extends Controller
 
     public function show($slug)
     {
-        $seo = SeoData::slug($slug)->first();
+        $seo = SeoData::slug($slug)->lang(app()->getLocale())->first();
 
-        if(empty($seo) || !$seo->seoble->isPublished)
+        if(empty($seo)) {
+            $seo = SeoData::slug($slug)->first();
+            if(!empty($seo)){
+                app()->setLocale($seo->lang);
+                session()->put('locale', $seo->lang);
+            }
+        }
+
+        if (empty($seo) || !$seo->seoble->isPublished)
             return abort(404);
 
         return view($this->getTempleBySeo($seo), [
@@ -47,17 +56,25 @@ class HomeController extends Controller
         ]);
     }
 
-    protected function getMenu(){
-        return WebMenu::whereNull('parent_id')->get()->filter(function($item){
-            return $item->target->isPublished;
-        });
+    protected function getMenu()
+    {
+        return Webmenu::whereNull('parent_id')->get()
+            ->map(function ($item) {
+                if (Lang::isMultilang() && app()->getLocale() != $item->target->lang) {
+                    return $item->target->childrens->firstWhere('lang', app()->getLocale());
+                }
+
+                return $item->target;
+            })->filter(function ($item) {
+                return !empty($item) && $item->isPublished;
+            });
     }
 
     protected function getTempleBySeo(SeoData $seo)
     {
         $class = get_class($seo->seoble);
 
-        switch ($class){
+        switch ($class) {
             case Article::class:
                 return 'app.article';
 

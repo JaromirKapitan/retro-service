@@ -1,12 +1,16 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
-@import url('http://fonts.googleapis.com/css?family=Parisienne');
+@import url('https://fonts.googleapis.com/css?family=Parisienne');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+// statne vlajky
+@import "flag-icons";
 
 html{
     //background: #eaeaea url("../assets/img/background.png");
@@ -45,7 +49,9 @@ body{
 }
 
 
-h1, h2, h3, h4, .fc { font-family: 'Parisienne', sans-serif; }
+h1, h2, h3, h4, .rs-font {
+    font-family: 'Lobster', sans-serif;
+}
 
 a:has(h1, h2, h3, h4){
     text-decoration: none;

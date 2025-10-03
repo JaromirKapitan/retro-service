@@ -15,6 +15,11 @@ class SeoData extends Model
         $query->where('slug', $slug);
     }
 
+    public function scopeLang(Builder $query, string $value)
+    {
+        $query->where('lang', $value);
+    }
+
     public function seoble()
     {
         return $this->morphTo();
