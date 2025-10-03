@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Lang;
 use App\Models\Article;
 use App\Models\SeoData;
-use App\Models\Webmenu;
+use App\Models\WebMenu;
 use App\Models\WebPage;
 
 class HomeController extends Controller
@@ -58,7 +58,7 @@ class HomeController extends Controller
 
     protected function getMenu()
     {
-        return Webmenu::whereNull('parent_id')->get()
+        return WebMenu::whereNull('parent_id')->get()
             ->map(function ($item) {
                 if (Lang::isMultilang() && app()->getLocale() != $item->target->lang) {
                     return $item->target->childrens->firstWhere('lang', app()->getLocale());
