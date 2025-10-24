@@ -1,62 +1,66 @@
 <!DOCTYPE HTML>
 <head>
-    <title>Classic White | Magazine</title>
+    <title>{{ config('app.name') }}</title>
     <meta charset="utf-8">
-    <!-- Google Fonts -->
-{{--    <link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet' type='text/css'>--}}
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>--}}
-
-    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/46.1.1/ckeditor5.css" crossorigin>
+        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/46.1.1/ckeditor5.css" crossorigin>
 
     <!-- CSS Files -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body class="container">
-
-<h1 class="rs-font" href="{{ config('app.url') }}">Retro Service</h1>
-<nav class="navbar navbar-expand-md rounded sticky-top rs-shadow">
+<body>
+<header class="site-header">
     <div class="container">
-{{--        <a class="navbar-brand rs-font" href="{{ config('app.url') }}">Retro Service</a>--}}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                @foreach($menu as $menuItem)
-                    <li class="nav-item">
-                        <a @class(['nav-link', 'active' => request()->routeIs('show', $menuItem->seo->slug)]) href="{{ route('show', $menuItem->seo->slug) }}">
-                            {{ $menuItem->title }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
+        <input id="navToggle" class="nav-toggle" type="checkbox" hidden>
+        <h1 class="logo">{{ config('app.name') }}</h1>
 
-            <ul class="navbar-nav justify-content-end flex-grow-1">
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="{{ route('admin.login') }}">{{ __('admin.login') }}</a>--}}
-{{--                </li>--}}
+        <nav class="main-nav">
+            @foreach($menu as $menuItem)
+                <a href="{{ route('show', $menuItem->seo->slug) }}">{{ $menuItem->title }}</a>
+            @endforeach
+        </nav>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-{{--                        Dropdown--}}
-                        {!! getFlagByLang(app()->getLocale()) !!}
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        @foreach(\App\Enums\Lang::availible() as $lang)
-                            <li><a class="dropdown-item" href="{{ route('language', $lang->value) }}">{!! getFlagByLang($lang->value) !!} {{ $lang->getTitle() }}</a></li>
-                        @endforeach
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        @if(\App\Enums\Lang::isMultilang())
+            <div class="lang-switcher" style="margin-left:12px">
+                <button class="lang-btn" aria-haspopup="true" aria-expanded="false">{{ strtoupper(config('app.locale')) }}</button>
+                <div class="lang-menu">
+                    @foreach(\App\Enums\Lang::availible() as $lang)
+                        <a class="lang-option" href="{{ route('language', $lang->value) }}">{{ strtoupper($lang->value) }}</a>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
+        <label for="navToggle" class="menu-toggle" aria-label="Toggle menu" role="button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
     </div>
-</nav>
+</header>
 
-<main class="container rounded mt-3 rs-shadow">
+<main class="container">
     @yield('content')
+
+    {{--        <section class="hero">--}}
+    {{--            <h2>Opravy a servis v tmavom vintage štýle</h2>--}}
+    {{--            <p>Komplexné návody, tipy na renovácie a kontakty na overené servisy.</p>--}}
+    {{--            <a class="btn" href="vehicles.html">Prejsť na vozidlá</a>--}}
+    {{--        </section>--}}
+
+    {{--        <section class="intro-cards">--}}
+    {{--            <article class="card">Návody a technické postupy</article>--}}
+    {{--            <article class="card">Predajcovia dielov</article>--}}
+    {{--            <article class="card">Miestne servisy a kontakty</article>--}}
+    {{--        </section>--}}
 </main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2025 {{ config('app.name') }}</p>
+    </div>
+</footer>
 
 </body>
 </html>

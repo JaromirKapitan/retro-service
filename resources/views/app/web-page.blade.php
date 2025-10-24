@@ -6,27 +6,22 @@
         <p>{!! $model->content !!}</p>
     @endif
 
-    <div class="row">
+    <section id="vehiclesList" class="cards-grid">
         @if($model->articles)
             @foreach($model->articles as $article)
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-                    <div class="heading-bg">
-                        <a href="{{ route('show', $article->seo->slug) }}">
-                            <h2>{{ $article->title }}</h2>
-                            @if($article->getMedia('images')->isNotEmpty())
-                                <img class="img-fluid mb-2" src="{{ $article->getMedia('images')->first()->getUrl() }}" style="width: 255px;height: 170px;">
-                            @endif
-                        </a>
-                        <p>
-                            {!! $article->description !!}
-                        </p>
-
-                        <div class="text-end">
-                            <a href="{{ route('show', $article->seo->slug) }}" class="fc">Show me more</a>
-                        </div>
+                <article class="card-vehicle">
+                    @if($article->getMedia('images')->isNotEmpty())
+                        <div class="thumb" style="background-image:url('{{ $article->getMedia('images')->first()->getUrl() }}')"></div>
+                    @endif
+                    <h4>{{ $article->title }} {{--  <small>(1963–1990)</small> --}}</h4>
+                    <p>{{ $article->description }}</p>
+                    <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+                        <a class="btn" href="{{ route('show', $article->seo->slug) }}">Detail</a>
+{{--                        <span style="color:var(--muted)">car</span>--}}
                     </div>
-                </div>
+                </article>
             @endforeach
         @endif
-    </div>
+    </section>
+
 @endsection

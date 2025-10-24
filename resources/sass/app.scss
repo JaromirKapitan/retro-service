@@ -1,59 +1,542 @@
-// Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css?family=Parisienne');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
-// Variables
-@import 'variables';
-
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-// statne vlajky
-@import "flag-icons";
+// Generated from style.css — SCSS version
+// Variables converted from :root CSS variables to SCSS variables for easier theming
+$bg: #0f0c0b; // near black
+$paper: #1c1816; // dark paper
+$sepia: #b79b6a; // warm sepia accents
+$muted: #9e9282; // muted text
+$card: #221f1d;
+$card-light: #2b2623; // slightly lighter card for nested blocks
+$shadow: rgba(0, 0, 0, 0.6);
+$muted-border: rgba(255, 255, 255, 0.03);
 
-html{
-    //background: #eaeaea url("../assets/img/background.png");
-    background: #eaeaea url("../assets/img/garage_background.jpg");
-    //background: #eaeaea url("../assets/img/bg.png");
-    background-repeat: no-repeat;
-    background-position: center left;
-    background-size: cover;
-    min-height: 100vh;
-    background-attachment: fixed;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    font-family: Georgia, "Times New Roman", Times, serif;
+body {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    background: $bg;
+    color: $muted;
+    margin: 0;
+}
 
-    padding: 2vh 3vh;
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 22px;
+}
 
-    background-color: rgba(255, 255, 255, 0.5);
-    //background: transparent;
+.site-header {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75));
+    border-bottom: 1px solid $muted-border;
 
-    >main{
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
 
-        //background-color: rgba(255, 255, 255, 0.9);
-        //background-color: white;
+    .logo {
+        font-family: 'Libre Baskerville', serif;
+        color: $sepia;
+        font-size: 26px;
+    }
 
-        min-height: 80vh;
-        padding: 2vh 0;
+    .main-nav {
+        a {
+            margin-left: 16px;
+            color: $muted;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: $sepia;
+        }
     }
 }
 
-.rs-shadow{
-    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
-    -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
-    background-color: rgba(255, 255, 255, 0.95);
+/* Reset top margin for headings inside main */
+main {
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+    }
 }
 
-
-h1, h2, h3, h4, .rs-font {
-    font-family: 'Lobster', sans-serif;
+/* Unified section block used for Description, Updates, Documents & Links */
+.section-block {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 8px;
 }
 
-a:has(h1, h2, h3, h4){
+/* Background / text color are provided by a complementary modifier class */
+.section--paper {
+    background: $paper;
+    color: $muted;
+}
+
+.section--paper {
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0 0 10px 0;
+        color: $sepia;
+    }
+}
+
+.section--card {
+    background: $card;
+    color: $muted;
+    box-shadow: 0 6px 18px $shadow;
+}
+
+/* Mobile menu */
+.site-header {
+    .menu-toggle {
+        display: none;
+        cursor: pointer;
+        border: 0;
+        background: transparent;
+        color: $muted;
+        font-size: 20px;
+
+        .bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: $muted;
+            margin: 5px 0;
+            border-radius: 2px;
+        }
+    }
+
+    .main-nav {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.lang-select {
+    background: transparent;
+    color: $muted;
+    border: 1px solid $muted-border;
+    padding: 6px;
+    border-radius: 6px;
+    margin-left: 12px;
+
+    option {
+        color: #000;
+    }
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: $muted;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.lang-menu {
+    position: absolute;
+    background: $card;
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    margin-top: 8px;
+    display: none;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+
+    .lang-option {
+        display: block;
+        background: transparent;
+        border: 0;
+        color: $muted;
+        padding: 8px 12px;
+        text-align: left;
+        width: 100%;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+    }
+}
+
+.lang-switcher {
+    position: relative;
+}
+
+/* show the language menu when the switcher or its children are focused/clicked */
+.lang-switcher:focus-within .lang-menu {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .site-header {
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .main-nav {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            background: $card;
+            flex-direction: column;
+            padding: 12px 18px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        /* Show mobile nav when the hidden checkbox is checked (label toggles it) - supports click toggle to open/close */
+        /* The header markup should include: <input id="navToggle" type="checkbox" class="nav-toggle" hidden> */
+        .nav-toggle:checked ~ .main-nav {
+            display: flex;
+        }
+        .main-nav a {
+            margin: 8px 0;
+        }
+        .menu-toggle {
+            display: block;
+        }
+    }
+}
+
+.hero {
+    padding: 36px;
+    background: linear-gradient(180deg, rgba(28, 24, 22, 0.6), rgba(28, 24, 22, 0.8));
+    border-radius: 8px;
+    margin: 18px 0;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: $sepia;
+        margin: 0;
+        font-family: 'Libre Baskerville', serif;
+    }
+}
+
+.btn {
+    background: transparent;
+    border: 1px solid $sepia;
+    color: $sepia;
+    padding: 10px 14px;
+    border-radius: 6px;
     text-decoration: none;
-    text-underline: none;
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid $muted-border;
+    color: $muted;
+}
+
+.intro-cards {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.card {
+    flex: 1;
+    background: $card;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 8px 26px $shadow;
+    color: $muted;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-size: 13px;
+    color: $muted;
+}
+
+.filter-group select, input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid $muted-border;
+    background: transparent;
+    color: $muted;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.card-vehicle {
+    background: $card;
+    padding: 14px;
+    border-radius: 8px;
+}
+
+.card-vehicle .thumb {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+}
+
+.card-vehicle h4 {
+    margin: 12px 0 6px;
+    color: $sepia;
+}
+
+.card-vehicle p {
+    color: $muted;
+    font-size: 14px;
+}
+
+.detail-hero {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 18px;
+    align-items: start;
+}
+
+.gallery {
+    background: $paper;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: transparent;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: $muted;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: $sepia;
+}
+
+.thumbs {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    align-items: center;
+}
+
+.thumbs img {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    flex: 0 0 auto;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.meta {
+    background: $card;
+    padding: 18px;
+    border-radius: 8px;
+}
+
+.doc-icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 8px;
+    opacity: 0.92;
+}
+
+.doc-label {
+    vertical-align: middle;
+}
+
+.specs {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+    color: $muted;
+}
+
+.specs li {
+    padding: 6px 0;
+}
+
+.files ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* long-desc kept for compatibility; prefer using .section-block + modifier classes */
+.long-desc {
+    --section: 1;
+}
+
+/* legacy hook - prefer using .section-block + modifier */
+/* Documents & Links block under Updates should match the Description block style
+  but use a slightly lighter background to separate it visually. */
+.updates-docs {
+    --section: 1;
+}
+
+/* legacy hook - prefer using .section-block + modifier */
+.updates-docs h3 {
+    margin: 0 0 10px 0;
+    color: $sepia;
+}
+
+.updates-docs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.updates-docs ul li {
+    padding: 8px 0;
+}
+
+.updates-docs ul li:last-child {
+    border-bottom: none;
+}
+
+.updates-docs ul, .updates-docs ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.updates-docs li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.updates-docs li::marker {
+    display: none;
+}
+
+.updates-docs a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    padding: 6px 0;
+    color: $sepia;
+    text-decoration: none;
+    border-bottom: none;
+    position: relative;
+}
+
+.updates-docs a:hover {
+    background: rgba(255, 255, 255, 0.02);
+    color: #fff;
+}
+
+/* Show inline SVG icons again (restore previous behavior) */
+.updates-docs .doc-icon {
+    opacity: 0.95;
+    margin-right: 6px;
+}
+
+/* No pseudo-element markers: icons are provided inline via SVG (.doc-icon) */
+.site-footer {
+    margin-top: 28px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 900px) {
+    .detail-hero {
+        grid-template-columns: 1fr;
+    }
+    .intro-cards {
+        flex-direction: column;
+    }
+}
+
+/* Make gallery and meta equal height on wide screens */
+@media (min-width: 901px) {
+    .detail-hero {
+        align-items: stretch;
+    }
+    .gallery, .meta {
+        display: flex;
+        flex-direction: column;
+    }
+    .gallery {
+        padding: 12px;
+    }
+    .gallery img {
+        flex: 1 1 auto;
+        height: auto;
+    }
+    .meta {
+        padding: 18px;
+    }
+}
+
+/* Link styles - replace default browser blue with warm vintage treatment */
+
+a, a:link, a:visited {
+    color: $sepia;
+    text-decoration: none;
+    transition: color 120ms ease, opacity 120ms ease;
+}
+
+a:hover, a:focus {
+    color: #fff;
+    opacity: 0.95;
+    outline: none;
+}
+
+/* Make inline links slightly prominent in body text */
+.content a {
+    font-weight: 600;
+}
+
+/* Styled link button variant for CTAs inside content */
+.link-btn {
+    display: inline-block;
+    padding: 6px 10px;
+    background: transparent;
+    border: 1px solid rgba(183, 155, 106, 0.18);
+    color: $sepia;
+    border-radius: 6px;
+    text-decoration: none;
+
+    &:hover {
+        background: rgba(183, 155, 106, 0.06);
+        color: #fff;
+    }
 }

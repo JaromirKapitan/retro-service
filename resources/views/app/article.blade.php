@@ -1,37 +1,60 @@
 @extends('app.layout')
 
 @section('content')
-    <h1>{!! $model->title !!}</h1>
+    {{--    <a class="back-link" href="{{ "" }}">← Späť</a>--}}
 
+    <section class="detail-hero">
+        @include('app.article.gallery')
 
-    <div class="ck ck-content" lang="en" dir="ltr" role="textbox" >
-        {!! $model->content !!}
-    </div>
+        <div class="meta">
+            <h2 id="title">{{ $model->title }}</h2>
 
-    @if($model->getMedia('images'))
-        <div id="articleCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                @foreach($model->getMedia('images') as $key => $image)
-                    <button type="button" data-bs-target="#articleCarousel" data-bs-slide-to="{{ $key }}" @if($key == 0) class="active"
-                            aria-current="true" @endif></button>
-                @endforeach
-            </div>
-            <div class="carousel-inner">
-                @foreach($model->getMedia('images') as $key => $image)
-                    <div @class(['carousel-item', 'active' => $key == 0])>
-                        <img src="{{ $image->getUrl() }}" class="d-block w-100" alt="...">
-                    </div>
-                @endforeach
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#articleCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#articleCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+            {!! $model->specs !!}
+            {{--            <ul class="specs">--}}
+            {{--                <li><strong>Výkon:</strong> <span id="power">19 kW</span></li>--}}
+            {{--                <li><strong>Objem motora:</strong> <span id="engine">594 cc</span></li>--}}
+            {{--                <li><strong>Max. rýchlosť:</strong> <span id="topSpeed">100 km/h</span></li>--}}
+            {{--                <li><strong>Hmotnosť:</strong> <span id="weight">615 kg</span></li>--}}
+            {{--                <li><strong>Nostnosť:</strong> <span id="payload">"Nobody knows" :-D</span></li>--}}
+            {{--            </ul>--}}
         </div>
+    </section>
+
+    <section class="section-block section--card">
+        <h3>{{ __('Description') }}</h3>
+        <div>{!! $model->content !!}</div>
+    </section>
+
+    @if($model->changes)
+        <section class="section-block">
+            <h3>{{ __('Modifications') }}</h3>
+            {!! $model->changes !!}
+            {{--            <ul>--}}
+            {{--                <li><strong>1971</strong> — Minor chassis and suspension adjustments to improve ride comfort.</li>--}}
+            {{--                <li><strong>1984</strong> — Upgraded front axle — improved geometry and durability (1984 update).</li>--}}
+            {{--                <li><strong>1986</strong> — Small interior trim improvements and optional heater upgrades introduced.</li>--}}
+            {{--            </ul>--}}
+        </section>
     @endif
 
+    <!-- Documents & Links block (visual copy of Description block) -->
+    @if($model->links)
+        <section class="section-block section--paper">
+            <h3>{{ __('Documents & links') }}</h3>
+            {!! $model->links !!}
+            {{--        <ul>--}}
+            {{--            <li>--}}
+            {{--                <a href="https://en.wikipedia.org/wiki/Trabant" target="_blank">--}}
+            {{--                    <svg class="doc-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">--}}
+            {{--                        <path d="M14 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5"></path>--}}
+            {{--                        <path d="M10 14L21 3" fill="none" stroke="currentColor" stroke-width="1.5"></path>--}}
+            {{--                        <path d="M21 21H3V3" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.04"></path>--}}
+            {{--                    </svg>--}}
+            {{--                    <span class="doc-label">Trabant — Wikipedia</span>--}}
+            {{--                </a>--}}
+            {{--            </li>--}}
+            {{--        </ul>--}}
+
+        </section>
+    @endif
 @endsection
