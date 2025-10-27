@@ -21,3 +21,13 @@ if (!function_exists('getFlagByLang')) {
         return "<i class='$class'></i>";
     }
 }
+
+if (!function_exists('isContentEmpty')) {
+    function isContentEmpty($content)
+    {
+        $strippedContent = strip_tags($content);
+        $trimmedContent = trim($strippedContent);
+
+        return empty($trimmedContent);
+    }
+}

@@ -18,7 +18,7 @@
         <div>{!! $model->content !!}</div>
     </section>
 
-    @if($model->modifications)
+    @if(isContentEmpty($model->modifications))
         <section class="section-block">
             <h3>{{ __('Modifications') }}</h3>
             {!! $model->modifications !!}
@@ -26,7 +26,7 @@
     @endif
 
     <!-- Documents & Links block (visual copy of Description block) -->
-    @if($model->links)
+    @if(isContentEmpty($model->links))
         <section class="section-block section--paper">
             <h3>{{ __('Documents & links') }}</h3>
             {!! $model->links !!}
