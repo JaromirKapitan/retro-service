@@ -26,8 +26,12 @@
                 </td>
                 <td class="text-end">
                     @if($item->home)
-                        <i class="fa fa-home text-secondary pe-5"></i>
+                        <i class="fa fa-home text-secondary"></i>
                     @endif
+                    @if($item->vehicles)
+                        <i class="fa fa-car text-secondary"></i>
+                    @endif
+                    <span class="pe-5"></span>
                     <x-entity.table-buttons entity="web-pages" :item="$item" :multilang="\App\Enums\Lang::isMultilang()"/>
                 </td>
             </tr>

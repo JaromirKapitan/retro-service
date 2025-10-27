@@ -17,7 +17,7 @@ class WebPage extends Model implements HasMedia
 {
     use SoftDeletes, HasFactory, Seoble, InteractsWithMedia, LangMutation, ContentAble;
 
-    protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id', 'home'];
+    protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id', 'home', 'vehicles'];
 
     protected $attributes = [
         'status' => ContentStatus::Draft->value
