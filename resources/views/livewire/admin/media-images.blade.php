@@ -28,12 +28,12 @@
                     <img src="{{ $file->getUrl() }}" class="img-thumbnail" alt="..."/>
                     <div class="card-body d-flex align-items-end">
                         <div class="btn-group btn-group-sm w-100" role="group" aria-label="Small button group">
-                            <button type="button" class="btn btn-outline-decondary disabled">
-                                <i class="fa fa-arrows-up-down-left-right"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-decondary disabled">
-                                <i class="fa fa-pencil"></i>
-                            </button>
+{{--                            <button type="button" class="btn btn-outline-decondary disabled">--}}
+{{--                                <i class="fa fa-arrows-up-down-left-right"></i>--}}
+{{--                            </button>--}}
+{{--                            <button type="button" class="btn btn-outline-decondary disabled">--}}
+{{--                                <i class="fa fa-pencil"></i>--}}
+{{--                            </button>--}}
                             <button type="button" class="btn btn-outline-danger" wire:click="delete({{$file->id}})">
                                 <i class="fa fa-trash-can"></i>
                             </button>

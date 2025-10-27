@@ -43,6 +43,12 @@ class WebPage extends Model implements HasMedia
         return $this->belongsToMany(Vehicle::class)->published();
     }
 
+    public function getListAttribute()
+    {
+        $collection = collect()->merge($this->articles)->merge($this->vehicles);
+        return $collection->sortBy('created_at')->reverse();
+    }
+
     public function setHomeAttribute($value)
     {
         // ak nastala zmena domovskej stranky zrus oznacenie pri ostatnych strankach

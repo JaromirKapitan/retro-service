@@ -14,19 +14,28 @@
             @endforeach
         </div>
         <div class="carousel-inner">
-            @foreach($model->getMedia('images') as $key => $image)
-                <div @class(['carousel-item', 'active' => $key == 0])>
-                    <img src="{{ $image->getUrl() }}" class="d-block w-100" alt="...">
+            @if($model->getMedia('images')->isNotEmpty())
+                @foreach($model->getMedia('images') as $key => $image)
+                    <div @class(['carousel-item', 'active' => $key == 0])>
+                        <img src="{{ $image->getUrl() }}" class="d-block w-100" alt="...">
+                    </div>
+                @endforeach
+            @else
+                <div @class(['carousel-item', 'active' => true])>
+                    <img src="/images/no_image_car.jpg" class="d-block w-100" alt="...">
                 </div>
-            @endforeach
+            @endif
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#articleCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#articleCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+
+        @if($model->getMedia('images')->isNotEmpty())
+            <button class="carousel-control-prev" type="button" data-bs-target="#articleCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#articleCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        @endif
     </div>
 </div>

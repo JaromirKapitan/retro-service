@@ -6,35 +6,20 @@
         <p>{!! $model->content !!}</p>
     @endif
 
-    {{-- todo: OPRAVIT -> najlepsie to mat v jednom zozname usporiadane podla datumu pridania --}}
     <section id="vehiclesList" class="cards-grid">
-        @if($model->articles)
-            @foreach($model->articles as $article)
+        @if($model->list)
+            @foreach($model->list as $item)
                 <article class="card-vehicle">
-                    @if($article->getMedia('images')->isNotEmpty())
-                        <div class="thumb" style="background-image:url('{{ $article->getMedia('images')->first()->getUrl() }}')"></div>
+                    @if($item->getMedia('images')->isNotEmpty())
+                        <div class="thumb" style="background-image:url('{{ $item->getMedia('images')->first()->getUrl() }}')"></div>
+                    @else
+                        <div class="thumb" style="background-image:url('/images/no_image_car.jpg');opacity:0.4;"></div>
                     @endif
-                    <h4>{{ $article->title }} {{--  <small>(1963–1990)</small> --}}</h4>
-                    <p>{{ $article->description }}</p>
+                    <h4>{{ $item->title }} {{--  <small>(1963–1990)</small> --}}</h4>
+                    <p>{{ $item->description }}</p>
                     <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
-                        <a class="btn" href="{{ route('show', $article->seo->slug) }}">Detail</a>
-                        {{--                        <span style="color:var(--muted)">car</span>--}}
-                    </div>
-                </article>
-            @endforeach
-        @endif
-
-        @if($model->vehicles)
-            @foreach($model->vehicles as $vehicle)
-                <article class="card-vehicle">
-                    @if($vehicle->getMedia('images')->isNotEmpty())
-                        <div class="thumb" style="background-image:url('{{ $vehicle->getMedia('images')->first()->getUrl() }}')"></div>
-                    @endif
-                    <h4>{{ $vehicle->title }} {{--  <small>(1963–1990)</small> --}}</h4>
-                    <p>{{ $vehicle->description }}</p>
-                    <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
-                        <a class="btn" href="{{ route('show', $vehicle->seo->slug) }}">Detail</a>
-                        {{--                        <span style="color:var(--muted)">car</span>--}}
+                        <a class="btn" href="{{ route('show', $item->seo->slug) }}">{{ __('Detail') }}</a>
+                        <span style="color:var(--muted)">{{ __(!empty($item->type) ? $item->type : 'article') }}</span>
                     </div>
                 </article>
             @endforeach
