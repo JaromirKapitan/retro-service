@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\ContentStatus;
 use App\Enums\Lang;
 use App\Http\Controllers\Controller;
+use App\Models\SeoData;
 use App\Models\WebPage;
 use Illuminate\Http\Request;
 
@@ -28,11 +29,18 @@ class WebPageController extends Controller
 
     public function create(Request $request)
     {
+
+        $webPage = new WebPage(session()->get('_old_input') ?? [
+            'lang' => $request->get('lang') ?? Lang::getPrimary(),
+            'parent_id' => $request->get('parent_id') ?? null,
+        ]);
+
+        if (!empty(session()->get('_old_input'))) {
+            $webPage->seo = new SeoData(session()->get('_old_input'));
+        }
+
         return view('admin.web-page.form', [
-            'model' => new WebPage(session()->get('_old_input') ?? [
-                'lang' => $request->get('lang') ?? Lang::getPrimary(),
-                'parent_id' => $request->get('parent_id') ?? null,
-            ]),
+            'model' => $webPage,
         ]);
     }
 

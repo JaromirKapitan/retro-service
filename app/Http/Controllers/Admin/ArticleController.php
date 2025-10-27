@@ -6,6 +6,7 @@ use App\Enums\ContentStatus;
 use App\Enums\Lang;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\SeoData;
 use App\Models\WebPage;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,10 @@ class ArticleController extends Controller
             'parent_id' => $request->get('parent_id') ?? null,
         ]);
 
+        if(!empty(session()->get('_old_input'))) {
+            $article->seo = new SeoData(session()->get('_old_input'));
+        }
+
         return view('admin.article.form', [
             'model' => $article,
             'form' => $this->getFormData($article),
@@ -56,6 +61,7 @@ class ArticleController extends Controller
     {
         $article = Article::create($this->validateRequest($request));
         $article->seo()->create($this->getSeoData());
+        $article->webPages()->sync($request->get('web_pages'));
 
         return redirect()
             ->route('admin.articles.index')

@@ -30,11 +30,16 @@
                             <i class="fa fa-newspaper"></i>
                         </a>
                     </li>
-                    <li class="nav-item" title="{{ __('admin.users') }}">
-                        <a @class(['nav-link', 'active'=>request()->routeIs('admin.users.*')]) href="{{ route('admin.users.index') }}">
-                            <i class="fa fa-user"></i>
+                    <li class="nav-item" title="{{ __('admin.vehicles') }}">
+                        <a @class(['nav-link', 'active'=>request()->routeIs('admin.vehicles.*')]) href="{{ route('admin.vehicles.index') }}">
+                            <i class="fa fa-car"></i>
                         </a>
                     </li>
+{{--                    <li class="nav-item" title="{{ __('admin.users') }}">--}}
+{{--                        <a @class(['nav-link', 'active'=>request()->routeIs('admin.users.*')]) href="{{ route('admin.users.index') }}">--}}
+{{--                            <i class="fa fa-user"></i>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
 
                     {{--                    <li class="nav-item">--}}

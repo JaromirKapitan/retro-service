@@ -51,4 +51,17 @@ return [
     'slug' => 'Slug',
     'lang' => 'Jazyk',
     'home_page' => 'Domovská stránka',
+    'not_required_but_nice_to_have' => 'Nie je povinné, ale je pekné to mať',
+    'modifications' => 'Modifikácie',
+    'modifications_on_vehicle' => 'Modifikácie na vozidle',
+    'specs' => 'Parametre',
+    'links' => 'Odkazy',
+
+    'vehicles' => 'Vozidlá',
+    'vehicle' => 'Vozidlo',
+    'brand' => 'Značka',
+    'model' => 'Model',
+    'production_year_from' => 'Produkcia od (rok)',
+    'production_year_to' => 'Produkcia do (rok)',
+    'select_option' => '-- vyber možnosť --',
 ];

@@ -24,7 +24,7 @@
                         <div class="col-sm-2">
                             <div class="mb-3">
                                 <label class="form-label">{{ __('admin.web_pages') }}</label>
-                                @foreach(\App\Models\WebPage::all() as $webPage)
+                                @foreach(\App\Models\WebPage::whereNull('parent_id')->get() as $webPage)
                                     <x-form.checkbox name="web_pages[]"
                                                      :value="$webPage->id"
                                                      :label="$webPage->title"
@@ -35,7 +35,6 @@
                             </div>
                         </div>
                         <div class="col-sm-10">
-
                             <div class="mb-3">
                                 <div class="row">
                                     <div class="col-sm-6">

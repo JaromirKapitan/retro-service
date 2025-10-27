@@ -53,4 +53,20 @@ class WebPage extends Model implements HasMedia
     {
         $query->where('home', 1);
     }
+
+    public function setVehiclesAttribute($value)
+    {
+        // ak nastala zmena domovskej stranky zrus oznacenie pri ostatnych strankach
+        if ($value == 1) {
+            self::where('vehicles', 1)->where('id', '!=', $this->id)->update(['vehicles' => null]);
+            $this->attributes['vehicles'] = 1;
+        }else{
+            $this->attributes['vehicles'] = $value;
+        }
+    }
+
+    public function scopeVehicles(Builder $query)
+    {
+        $query->where('vehicles', 1);
+    }
 }
