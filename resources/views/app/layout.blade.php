@@ -13,7 +13,9 @@
 <header class="site-header">
     <div class="container">
         <input id="navToggle" class="nav-toggle" type="checkbox" hidden>
-        <h1 class="logo">{{ config('app.name') }}</h1>
+        <a href="{{ config('app.url') }}">
+            <h1 class="logo">{{ config('app.name') }}</h1>
+        </a>
 
         <nav class="main-nav">
             @foreach($menu as $menuItem)

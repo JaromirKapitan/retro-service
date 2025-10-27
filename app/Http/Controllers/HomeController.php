@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Lang;
-use App\Models\Article;
 use App\Models\SeoData;
 use App\Models\WebMenu;
 use App\Models\WebPage;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -73,13 +73,7 @@ class HomeController extends Controller
     protected function getTempleBySeo(SeoData $seo)
     {
         $class = get_class($seo->seoble);
-
-        switch ($class) {
-            case Article::class:
-                return 'app.article';
-
-            default:
-                return 'app.web-page';
-        }
+        $view = 'app.'.Str::slug(basename($class));
+        return view()->exists($view) ? $view : 'app.web-page';
     }
 }

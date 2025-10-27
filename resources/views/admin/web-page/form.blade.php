@@ -29,10 +29,10 @@
                                                  :label="__('admin.home_page')"
                                                  :checked="$model->home"
                                 />
-                                <x-form.checkbox name="vehicles"
+                                <x-form.checkbox name="for_vehicles"
                                                  value="1"
                                                  :label="__('admin.vehicles')"
-                                                 :checked="$model->vehicles"
+                                                 :checked="$model->for_vehicles"
                                 />
                             @endif
                         </div>

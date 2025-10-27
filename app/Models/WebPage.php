@@ -17,7 +17,7 @@ class WebPage extends Model implements HasMedia
 {
     use SoftDeletes, HasFactory, Seoble, InteractsWithMedia, LangMutation, ContentAble;
 
-    protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id', 'home', 'vehicles'];
+    protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id', 'home', 'for_vehicles'];
 
     protected $attributes = [
         'status' => ContentStatus::Draft->value
@@ -38,6 +38,11 @@ class WebPage extends Model implements HasMedia
         return $this->belongsToMany(Article::class)->published();
     }
 
+    public function vehicles()
+    {
+        return $this->belongsToMany(Vehicle::class)->published();
+    }
+
     public function setHomeAttribute($value)
     {
         // ak nastala zmena domovskej stranky zrus oznacenie pri ostatnych strankach
@@ -54,19 +59,19 @@ class WebPage extends Model implements HasMedia
         $query->where('home', 1);
     }
 
-    public function setVehiclesAttribute($value)
+    public function setForVehiclesAttribute($value)
     {
         // ak nastala zmena domovskej stranky zrus oznacenie pri ostatnych strankach
         if ($value == 1) {
-            self::where('vehicles', 1)->where('id', '!=', $this->id)->update(['vehicles' => null]);
-            $this->attributes['vehicles'] = 1;
+            self::where('for_vehicles', 1)->where('id', '!=', $this->id)->update(['for_vehicles' => null]);
+            $this->attributes['for_vehicles'] = 1;
         }else{
-            $this->attributes['vehicles'] = $value;
+            $this->attributes['for_vehicles'] = $value;
         }
     }
 
-    public function scopeVehicles(Builder $query)
+    public function scopeForVehicles(Builder $query)
     {
-        $query->where('vehicles', 1);
+        $query->where('for_vehicles', 1);
     }
 }

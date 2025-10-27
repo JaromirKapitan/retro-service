@@ -28,7 +28,7 @@
                     @if($item->home)
                         <i class="fa fa-home text-secondary"></i>
                     @endif
-                    @if($item->vehicles)
+                    @if($item->for_vehicles)
                         <i class="fa fa-car text-secondary"></i>
                     @endif
                     <span class="pe-5"></span>
