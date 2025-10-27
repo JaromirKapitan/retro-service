@@ -29,7 +29,7 @@
                                                      :value="$webPage->id"
                                                      :label="$webPage->title"
                                                      :inputAttributes="['id'=>'web_page_'.$webPage->id]"
-                                                     :checked="$model->webPages->contains($webPage) || empty($model->id) && $webPage->vehicles"
+                                                     :checked="$model->webPages->contains($webPage) || empty($model->id) && $webPage->for_vehicles"
                                     />
                                 @endforeach
                             </div>
