@@ -1,5 +1,4 @@
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+
 
 // Generated from style.css — SCSS version
 // Variables converted from :root CSS variables to SCSS variables for easier theming
@@ -11,6 +10,13 @@ $card: #221f1d;
 $card-light: #2b2623; // slightly lighter card for nested blocks
 $shadow: rgba(0, 0, 0, 0.6);
 $muted-border: rgba(255, 255, 255, 0.03);
+
+$table-color: $muted;
+$table-bg: transparent;
+$table-border-width: 0px;
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
 
 * {
     box-sizing: border-box;

@@ -7,6 +7,7 @@
     - Ak nebude nastavena vyberie podla nastavenia systemu
     - Ak bude tak prvy jazyk bude ako hlavny.
       - moze nastat situacia ze jazyk systemu bude SK ale zakladny jazyk stranky v CZ
+    - rozdielne nastavenia jazyka pre admin a web
 
 - testy (In progress)
 
@@ -26,5 +27,6 @@
 
 # Vylepsenia 
 - pull mozny len ak bola nejaka zmena (farebne rozlisit)
+  - zmenit pozadie hlavicky alebo dopisat info ze sa vykona pull
 - presunut ContentStatus z modelu (stranka, clanok, ...) do SeoData
   - zbavim sa tak 'trait' pre overenie ci bol dany model zverejneny alebo nie a zaroven sa zjednodusi overenie .. ?? aj pre menu ??

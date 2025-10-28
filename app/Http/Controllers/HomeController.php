@@ -73,7 +73,7 @@ class HomeController extends Controller
     protected function getTempleBySeo(SeoData $seo)
     {
         $class = get_class($seo->seoble);
-        $view = 'app.'.Str::slug(basename($class));
+        $view = 'app.'.Str::slug(class_basename($class));
         return view()->exists($view) ? $view : 'app.web-page';
     }
 }
