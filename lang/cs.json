@@ -3,5 +3,9 @@
     "article": "Článek",
     "car": "Auto",
     "motorcycle": "Motocykl",
-    "bus": "Autobus"
+    "bus": "Autobus",
+
+    "Description": "Popis",
+    "Modifications": "Úpravy",
+    "Documents & links": "Dokumenty a odkazy"
 }
