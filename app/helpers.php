@@ -25,8 +25,11 @@ if (!function_exists('getFlagByLang')) {
 if (!function_exists('isContentEmpty')) {
     function isContentEmpty($content)
     {
-        $strippedContent = strip_tags($content);
-        $trimmedContent = trim($strippedContent);
+        // clear from all html tags and trim spaces
+        $trimmedContent = trim(strip_tags($content));
+
+        // remove hard spaces
+        $trimmedContent = str_replace('&nbsp;', '', $trimmedContent);
 
         return empty($trimmedContent);
     }
