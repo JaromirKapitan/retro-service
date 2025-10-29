@@ -2,6 +2,13 @@
 
 # TODO
 
+## Vozidla (WEB)
+- do vypisu a detailu vozidla doplnit roky vyroby
+- filtrovanie vozidiel na stranke modelu, typu, ... 
+  - pouzil by som livewire model na realtime filtrovanie
+- strankovanie 
+
+## INE
 - preklady 
   - upravit podla nastavenia z .env.
     - Ak nebude nastavena vyberie podla nastavenia systemu

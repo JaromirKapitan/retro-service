@@ -8,6 +8,7 @@
 
         <div class="meta">
             <h2 id="title">{{ $model->title }}</h2>
+            <small class="text-muted mb-3">{{ $model->subTitle }}</small>
 
             {!! $model->specs !!}
         </div>

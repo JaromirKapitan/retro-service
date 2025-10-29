@@ -18,4 +18,9 @@ trait ContentAble
         $status = optional($this->parent)->status ?? $this->status;
         return $status == ContentStatus::Published->value;
     }
+
+    public function getSubTitleAttribute()
+    {
+        return null;
+    }
 }
