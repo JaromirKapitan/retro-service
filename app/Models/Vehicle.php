@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Vehicle extends Model implements HasMedia
 {
@@ -40,5 +41,12 @@ class Vehicle extends Model implements HasMedia
     public function getSubTitleAttribute()
     {
         return '(' . $this->year_from . (!empty($this->year_to) ? ' - ' . $this->year_to : '') . ')';
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->height(160)
+            ->nonQueued();
     }
 }

@@ -12,6 +12,10 @@ Route::get('language/{locale}', function ($locale) {
     return redirect('/');
 })->name('language');
 
+Route::get('/login', function () {
+    return redirect()->route('admin.login');
+})->name('login');
+
 require_once __DIR__ . '/temp.php';
 require_once __DIR__ . '/admin.php';
 

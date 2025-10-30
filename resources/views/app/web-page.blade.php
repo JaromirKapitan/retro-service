@@ -11,7 +11,7 @@
             @foreach($model->list as $item)
                 <article class="card-vehicle">
                     @if($item->getMedia('images')->isNotEmpty())
-                        <div class="thumb" style="background-image:url('{{ $item->getMedia('images')->first()->getUrl() }}')"></div>
+                        <div class="thumb" style="background-image:url('{{ $item->getMedia('images')->first()->getUrl('thumb') ?? $item->getMedia('images')->first()->getUrl() }}')"></div>
                     @else
                         <div class="thumb" style="background-image:url('/images/no_image_car.jpg');opacity:0.4;"></div>
                     @endif
