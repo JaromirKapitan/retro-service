@@ -61,7 +61,7 @@ class VehicleList extends Component
             });
         }
 
-        return $query->get();
+        return $query->published()->get();
     }
 
     public function render()
