@@ -23,12 +23,14 @@ class VehicleList extends Component
             'brands' => Vehicle::query()
                 ->distinct('brand')
                 ->whereNotNull('brand')
+                ->published()
                 ->orderBy('brand')
                 ->pluck('brand')
                 ->toArray(),
             'models' => Vehicle::query()
                 ->distinct('model')
                 ->whereNotNull('model')
+                ->published()
                 ->orderBy('model')
                 ->pluck('model')
                 ->toArray(),
