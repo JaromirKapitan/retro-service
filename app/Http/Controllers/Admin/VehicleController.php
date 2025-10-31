@@ -36,7 +36,7 @@ class VehicleController extends Controller
             'parent_id' => $request->get('parent_id') ?? null,
         ]);
 
-        if(!empty(session()->get('_old_input'))) {
+        if (!empty(session()->get('_old_input'))) {
             $vehicle->seo = new SeoData(session()->get('_old_input'));
         }
 
@@ -48,7 +48,7 @@ class VehicleController extends Controller
 
     protected function getFormData(Vehicle $vehicle){
         return (object)[
-            'web_page_options' => \App\Models\WebPage::whereNull('parent_id')->get(),
+            'web_page_options' => WebPage::whereNull('parent_id')->get(),
             'type_options' => collect(VehicleType::cases())->map(function ($item) use ($vehicle){
                 return (object)[
                     'value' => $item->value,

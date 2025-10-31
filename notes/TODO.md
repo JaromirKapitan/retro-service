@@ -3,8 +3,8 @@
 # TODO
 
 ## Vozidla (WEB)
-- do vypisu a detailu vozidla doplnit roky vyroby
-- filtrovanie vozidiel na stranke modelu, typu, ... 
+- DONE: do vypisu a detailu vozidla doplnit roky vyroby
+- DONE: filtrovanie vozidiel na stranke modelu, typu, ... 
   - pouzil by som livewire model na realtime filtrovanie
 - strankovanie 
 

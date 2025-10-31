@@ -18,6 +18,12 @@ $table-border-width: 0px;
 $nav-link-color: $muted;
 $nav-link-hover-color: $sepia;
 
+$input-bg: $bg;
+$input-border-color: $card;
+$input-color: $muted;
+$input-focus-border-color:$card;
+$input-focus-box-shadow: 0 0 0 0.25rem $card;
+
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 

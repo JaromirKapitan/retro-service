@@ -74,6 +74,14 @@ class HomeController extends Controller
     {
         $class = get_class($seo->seoble);
         $view = 'app.'.Str::slug(class_basename($class));
-        return view()->exists($view) ? $view : 'app.web-page';
+
+        if(view()->exists($view))
+            return $view;
+
+        if($class === WebPage::class && $seo->seoble->for_vehicles) {
+            return 'app.web-page-vehicles';
+        }
+
+        return 'app.web-page';
     }
 }
