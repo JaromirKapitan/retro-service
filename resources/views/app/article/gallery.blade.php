@@ -17,7 +17,7 @@
             @if($model->getMedia('images')->isNotEmpty())
                 @foreach($model->getMedia('images') as $key => $image)
                     <div @class(['carousel-item', 'active' => $key == 0])>
-                        <img src="{{ $image->getUrl() }}" class="d-block w-100" alt="...">
+                        <img src="{{ $image->getUrl('small') }}" class="d-block w-100" alt="...">
                     </div>
                 @endforeach
             @else

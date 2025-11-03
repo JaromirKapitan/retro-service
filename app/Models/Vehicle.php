@@ -48,5 +48,9 @@ class Vehicle extends Model implements HasMedia
         $this->addMediaConversion('thumb')
             ->height(160)
             ->nonQueued();
+
+        $this->addMediaConversion('small')
+            ->height(360)
+            ->nonQueued();
     }
 }
