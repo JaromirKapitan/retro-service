@@ -10,7 +10,7 @@
                         <option value="0">-- {{ __('vehicle type') }} --</option>
 
                         @foreach($filterOptions['types'] as $type)
-                            <option value="{{ $type->value }}">{{ $type->getTitle() }}</option>
+                            <option value="{{ $type->value }}">{{ __($type->getTitle()) }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -64,7 +64,7 @@
                 <p>{{ $item->description }}</p>
                 <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
                     <a class="btn" href="{{ route('show', $item->seo->slug) }}">{{ __('Detail') }}</a>
-                    <span style="color:var(--muted)">{{ $item->type }}</span>
+                    <span style="color:var(--muted)">{{ __($item->type) }}</span>
                 </div>
             </article>
         @endforeach
