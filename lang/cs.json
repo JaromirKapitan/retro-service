@@ -7,5 +7,13 @@
 
     "Description": "Popis",
     "Modifications": "Úpravy",
-    "Documents & links": "Dokumenty a odkazy"
+    "Documents & links": "Dokumenty a odkazy",
+
+    "Type": "Typ",
+    "vehicle type": "typ vozidla",
+    "Brand": "Značka",
+    "vehicle brand": "značka vozidla",
+    "Model": "Model",
+    "vehicle model": "model vozidla",
+    "Year": "Rok"
 }

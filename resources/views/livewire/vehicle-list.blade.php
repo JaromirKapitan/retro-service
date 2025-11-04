@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-sm-3">
                 <div>
-                    <label for="type" class="form-label">Typ</label>
+                    <label for="type" class="form-label">{{ __('Type') }}</label>
 
                     <select id="type" name="type" class="form-control" wire:model.live="filter.type">
-                        <option value="0">-- vehicle type --</option>
+                        <option value="0">-- {{ __('vehicle type') }} --</option>
 
                         @foreach($filterOptions['types'] as $type)
                             <option value="{{ $type->value }}">{{ $type->getTitle() }}</option>
@@ -18,10 +18,10 @@
 
             <div class="col-sm-3">
                 <div>
-                    <label for="brand" class="form-label">Brand</label>
+                    <label for="brand" class="form-label">{{ __('Brand') }}</label>
 
                     <select id="brand" name="brand" class="form-control" wire:model.live="filter.brand">
-                        <option value="0">-- vehicle brand --</option>
+                        <option value="0">-- {{ __('vehicle brand') }} --</option>
 
                         @foreach($filterOptions['brands'] as $brand)
                             <option value="{{ $brand }}">{{ $brand }}</option>
@@ -32,10 +32,10 @@
 
             <div class="col-sm-3">
                 <div>
-                    <label for="model" class="form-label">Model</label>
+                    <label for="model" class="form-label">{{ __('Model') }}</label>
 
                     <select id="model" name="model" class="form-control" wire:model.live="filter.model">
-                        <option value="0">-- vehicle model --</option>
+                        <option value="0">-- {{ __('vehicle model') }} --</option>
 
                         @foreach($filterOptions['models'] as $vehicleModel)
                             <option value="{{ $vehicleModel }}">{{ $vehicleModel }}</option>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="col-md-3">
-                <label for="year" class="form-label">YEAR</label>
+                <label for="year" class="form-label">{{ __('Year') }}</label>
                 <input type="text" class="form-control" id="year" placeholder="1885" wire:model.live="filter.year">
             </div>
         </div>
