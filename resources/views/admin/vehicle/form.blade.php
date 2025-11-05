@@ -12,7 +12,7 @@
                 <div class="card-header">
                     {{ __('admin.vehicle') }}
                     <div class="float-end">
-                        {!! getFlagByLang($model->lang) !!}
+{{--                        {!! getFlagByLang($model->lang) !!}--}}
                     </div>
                 </div>
 

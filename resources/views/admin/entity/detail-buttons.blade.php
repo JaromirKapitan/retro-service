@@ -1,7 +1,7 @@
 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
     <li class="nav-item">
         <a @class(['nav-link', 'active'=>request()->routeIs('admin.'.$entity.'.show')]) href="{{ route('admin.'.$entity.'.show', $model) }}">
-            <i class="fa fa-info"></i>
+            <i class="fa fa-photo-film"></i>
         </a>
     </li>
     <li class="nav-item">
