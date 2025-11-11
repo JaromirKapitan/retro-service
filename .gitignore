@@ -34,3 +34,4 @@ node_modules/
 /playwright/.auth/
 /tests/PlayWrite/Storage/*
 /.github/workflows/playwright.yml
+/storage/media-library/temp/*

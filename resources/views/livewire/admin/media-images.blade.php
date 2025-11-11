@@ -25,7 +25,7 @@
         @foreach($model->getMedia($type) as $file)
             <div class="col-sm-6 col-md-3 col-lg-2">
                 <div class="card h-100">
-                    <img src="{{ $file->getUrl() }}" class="img-thumbnail" alt="..."/>
+                    <img src="{{ $file->getUrl('thumb') }}" class="img-thumbnail" alt="..."/>
                     <div class="card-body d-flex align-items-end">
                         <div class="btn-group btn-group-sm w-100" role="group" aria-label="Small button group">
 {{--                            <button type="button" class="btn btn-outline-decondary disabled">--}}
