@@ -1,5 +1,7 @@
 # Notes
 
+
+
 ## Image Sizes
 - thumb: 100x100 px
 - small: 300x300 px
