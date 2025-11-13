@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('articles', function (Blueprint $table){
-            $table->enum('lang', \App\Enums\Lang::values())->default(config('app.locale'));
+            $table->enum('lang', ['sk','cs','en'])->default(config('app.locale'));
 
             $table->foreignId('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('articles');

@@ -29,13 +29,13 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('articles', function (Blueprint $table){
-            $table->enum('lang', \App\Enums\Lang::values())->default(config('app.locale'))->change();
+            $table->enum('lang', ['sk','cs','en'])->default(config('app.locale'))->change();
         });
         Schema::table('seo_data', function (Blueprint $table){
-            $table->enum('lang', \App\Enums\Lang::values())->default(config('app.locale'))->change();
+            $table->enum('lang', ['sk','cs','en'])->default(config('app.locale'))->change();
         });
         Schema::table('web_pages', function (Blueprint $table){
-            $table->enum('lang', \App\Enums\Lang::values())->default(config('app.locale'))->change();
+            $table->enum('lang', ['sk','cs','en'])->default(config('app.locale'))->change();
         });
     }
 };

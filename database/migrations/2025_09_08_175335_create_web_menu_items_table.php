@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
-            $table->enum('lang', \App\Enums\Lang::values())->default(config('app.locale'));
+            $table->enum('lang', ['sk','cs','en'])->default(config('app.locale'));
 
             $table->foreignId('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('web_menu_items');

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('seo_data', function (Blueprint $table){
             $table->dropUnique(['slug']);
-            $table->enum('lang', \App\Enums\Lang::values())->default(config('app.locale'))->after('seoble_id');
+            $table->enum('lang', ['sk','cs','en'])->default(config('app.locale'))->after('seoble_id');
             $table->unique(['slug', 'lang']);
             $table->dropColumn(['title' ,'description', 'canonical_url', 'robots']);
         });
