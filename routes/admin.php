@@ -6,10 +6,10 @@ use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::middleware(\App\Http\Middleware\CanRegisterAdmin::class)->group(function () {
-        Route::get('/register', [\App\Http\Controllers\Admin\Auth\AdminRegistrationController::class, 'create'])->name('register');
-        Route::post('/register', [\App\Http\Controllers\Admin\Auth\AdminRegistrationController::class, 'store'])->name('register.store');
-    });
+//    Route::middleware(\App\Http\Middleware\CanRegisterAdmin::class)->group(function () {
+//        Route::get('/register', [\App\Http\Controllers\Admin\Auth\AdminRegistrationController::class, 'create'])->name('register');
+//        Route::post('/register', [\App\Http\Controllers\Admin\Auth\AdminRegistrationController::class, 'store'])->name('register.store');
+//    });
 
     Route::get('/', function () {
         return redirect()->route('admin.login');
