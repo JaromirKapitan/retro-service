@@ -1,6 +1,6 @@
 <div>
     <label for="{{ $inputAttributes['id'] }}" class="form-label">{{ $label }}</label>
-    <input type="text" @foreach($inputAttributes as $key=>$value) {{ $key }}='{{ $value }}' @endforeach
+    <input @foreach($inputAttributes as $key=>$value) {{ $key }}='{{ $value }}' @endforeach
     >
 
     @error($name)

@@ -11,11 +11,12 @@ class Input extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $name, public $label = '', public $value = null, public $inputAttributes = [])
+    public function __construct(public $name, public $label = '', public $value = null, public $inputAttributes = [], public $type = 'text')
     {
         if(empty($this->inputAttributes['id'])) $this->inputAttributes['id'] = $name;
         if(empty($this->inputAttributes['name'])) $this->inputAttributes['name'] = $name;
         if(empty($this->inputAttributes['value'])) $this->inputAttributes['value'] = $value;
+        if(empty($this->inputAttributes['type'])) $this->inputAttributes['type'] = $type;
 
         if(!isset($this->inputAttributes['class'])) $this->inputAttributes['class'] = 'form-control';
         if(!empty(session('errors')) && session('errors')->has($name)) $this->inputAttributes['class'] .= ' is-invalid';

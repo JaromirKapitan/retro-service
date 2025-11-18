@@ -61,4 +61,6 @@ return [
     'production_year_from' => 'Production from (year)',
     'production_year_to' => 'Production to (year)',
     'select_option' => '-- select option --',
+    'published_at' => 'Published at',
+    'published_until' => 'Published until',
 ];

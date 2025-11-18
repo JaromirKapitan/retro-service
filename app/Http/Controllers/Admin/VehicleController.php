@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\ContentStatus;
-use App\Enums\Lang;
 use App\Enums\VehicleType;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\VehicleRequest;
 use App\Models\SeoData;
 use App\Models\Vehicle;
 use App\Models\WebPage;
@@ -59,34 +58,15 @@ class VehicleController extends Controller
         ];
     }
 
-    public function store(Request $request)
+    public function store(VehicleRequest $request)
     {
-        $vehicle = Vehicle::create($this->validateRequest($request));
+        $vehicle = Vehicle::create($request->all());
         $vehicle->seo()->create($this->getSeoData());
         $vehicle->webPages()->sync($request->get('web_pages'));
 
         return redirect()
             ->route('admin.vehicles.index')
             ->with('success', trans('admin.saved'));
-    }
-
-    protected function validateRequest(Request $request)
-    {
-        return $request->validate(array_merge([
-            'parent_id' => 'nullable|integer',
-            'lang' => 'nullable|in:' . Lang::valuesString(),
-            'type' => 'required|in:' . VehicleType::valuesString(),
-            'brand' => 'required|string|max:255',
-            'model' => 'required|string|max:255',
-            'year_from' => 'required|numeric',
-            'year_to' => 'nullable|numeric',
-            'description' => 'nullable|string|max:300',
-            'content' => 'nullable|string',
-            'specs' => 'nullable|string',
-            'modifications' => 'nullable|string',
-            'links' => 'nullable|string',
-            'status' => 'required|in:' . ContentStatus::valuesString(),
-        ], $this->getSeoRules()));
     }
 
     public function edit(Vehicle $vehicle)
@@ -97,9 +77,9 @@ class VehicleController extends Controller
         ]);
     }
 
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(VehicleRequest $request, Vehicle $vehicle)
     {
-        $vehicle->update($this->validateRequest($request));
+        $vehicle->update($request->all());
         $vehicle->seo()->update($this->getSeoData());
         $vehicle->webPages()->sync($request->get('web_pages'));
 

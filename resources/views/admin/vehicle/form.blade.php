@@ -99,12 +99,19 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3 text-end">
-                                <x-form.content-status :value="$model->status"/>
+                            <div class="mb-3 row">
+                                <div class="col-md-3">
+                                    <x-form.input type="date" name="published_at" :value="$model->published_at" :label="__('admin.published_at')"/>
+                                </div>
+                                <div class="col-md-3">
+                                    <x-form.input type="date" name="published_until" :value="$model->published_until" :label="__('admin.published_until')"/>
+                                </div>
+                                <div class="col-md-6 d-flex justify-content-end align-items-end">
+                                    <x-form.content-status :value="$model->status"/>
+                                </div>
                             </div>
                         </div>
                     </div>
-
 
                 </div>
             </div>

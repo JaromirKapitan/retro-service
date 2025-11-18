@@ -63,7 +63,7 @@ class Index extends Component
             });
         }
 
-        return $query->published()->get();
+        return $query->get();
     }
 
     public function render()

@@ -64,4 +64,7 @@ return [
     'production_year_from' => 'Produkcia od (rok)',
     'production_year_to' => 'Produkcia do (rok)',
     'select_option' => '-- vyber možnosť --',
+
+    'published_at' => 'Publikované od',
+    'published_until' => 'Publikované do',
 ];

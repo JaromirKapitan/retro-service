@@ -54,6 +54,8 @@
             <th>#</th>
             <th>{{ __('admin.title') }}</th>
             <th>{{ __('admin.status') }}</th>
+            <th>{{ __('admin.published_at') }}</th>
+            <th>{{ __('admin.published_until') }}</th>
             <th></th>
         </tr>
         </thead>
@@ -67,6 +69,12 @@
                     <span class=" w-75 badge rounded-pill content-status-{{ $item->status }}">
                         {{ __('admin.'.$item->status) }}
                     </span>
+                </td>
+                <td>
+                    {{ $item->published_at }}
+                </td>
+                <td>
+                    {{ $item->published_until }}
                 </td>
                 <td class="text-end">
                     <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\Lang::isMultilang()" />
