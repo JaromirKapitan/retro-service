@@ -63,4 +63,5 @@ return [
     'select_option' => '-- select option --',
     'published_at' => 'Published at',
     'published_until' => 'Published until',
+    'list' => 'List',
 ];

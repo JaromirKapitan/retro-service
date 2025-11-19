@@ -1,11 +1,9 @@
 # DOLEZITE
 
 # TODO
+ERROR: kedze mame 2x navbar pri zobrazeni offcanvas z prveho menu sa zobrazi pod druhym navbarom 
 
 ## Vozidla (WEB)
-- DONE: do vypisu a detailu vozidla doplnit roky vyroby
-- DONE: filtrovanie vozidiel na stranke modelu, typu, ... 
-  - pouzil by som livewire model na realtime filtrovanie
 - strankovanie 
 
 ## INE

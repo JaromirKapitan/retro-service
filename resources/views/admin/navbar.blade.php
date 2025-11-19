@@ -10,7 +10,7 @@
         @else
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbarLeft" aria-labelledby="offcanvasNavbarLeftLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLeftLabel">Offcanvas</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLeftLabel">{{ config('app.name', 'Laravel') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -18,21 +18,25 @@
                     <li class="nav-item" title="{{ __('admin.dashboard') }}">
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">
                             <i class="fa fa-home"></i>
+                            <span class="d-md-none">{{ __('admin.dashboard') }}</span>
                         </a>
                     </li>
                     <li class="nav-item" title="{{ __('admin.web_pages') }}">
                         <a @class(['nav-link', 'active'=>request()->routeIs('admin.web-pages.*')]) href="{{ route('admin.web-pages.index') }}">
                             <i class="fa fa-globe"></i>
+                            <span class="d-md-none">{{ __('admin.web_pages') }}</span>
                         </a>
                     </li>
                     <li class="nav-item" title="{{ __('admin.articles') }}">
                         <a @class(['nav-link', 'active'=>request()->routeIs('admin.articles.*')]) href="{{ route('admin.articles.index') }}">
                             <i class="fa fa-newspaper"></i>
+                            <span class="d-md-none">{{ __('admin.articles') }}</span>
                         </a>
                     </li>
                     <li class="nav-item" title="{{ __('admin.vehicles') }}">
                         <a @class(['nav-link', 'active'=>request()->routeIs('admin.vehicles.*')]) href="{{ route('admin.vehicles.index') }}">
                             <i class="fa fa-car"></i>
+                            <span class="d-md-none">{{ __('admin.vehicles') }}</span>
                         </a>
                     </li>
 {{--                    <li class="nav-item" title="{{ __('admin.users') }}">--}}
@@ -85,21 +89,19 @@
                         <li class="nav-item" title="{{ __('admin.update_codes') }}">
                             <a @class(['nav-link', 'disabled'=>isLocalhost()]) href="{{ route('admin.pull') }}">
                                 <i class="fa fa-code-pull-request"></i>
+                                <span class="d-md-none">{{ __('admin.update_codes') }}</span>
                             </a>
                         </li>
                         <li class="nav-item" title="{{ __('admin.admins') }}">
                             <a @class(['nav-link', 'active'=>request()->routeIs('admin.admins.*')]) href="{{ route('admin.admins.index') }}">
                                 <i class="fa fa-user"></i>
+                                <span class="d-md-none">{{ __('admin.admins') }}</span>
                             </a>
                         </li>
                         <li class="nav-item" title="{{ __('admin.change_password') }}">
                             <a @class(['nav-link', 'active'=>request()->routeIs('admin.password.create')]) href="{{ route('admin.password.create') }}">
                                 <i class="fa fa-key"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                {{ Auth::user()->name }}
+                                <span class="d-md-none">{{ __('admin.change_password') }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -107,7 +109,9 @@
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{--                                {{ __('Logout') }}--}}
+                                <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                                 <i class="fa fa-power-off"></i>
+                                <span class="d-md-none">{{ Auth::user()->name }} - {{ __('admin.logout') }}</span>
                             </a>
 
                             <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">

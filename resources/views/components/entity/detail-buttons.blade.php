@@ -22,16 +22,19 @@
     <li class="nav-item">
         <a @class(['nav-link', 'active'=>request()->routeIs('admin.'.$entity.'.show')]) href="{{ route('admin.'.$entity.'.show', $model) }}" title="{{ __('admin.detail') }}">
             <i class="fa fa-photo-film"></i>
+            <span class="d-md-none">{{ __('admin.files') }}</span>
         </a>
     </li>
     <li class="nav-item">
         <a @class(['nav-link', 'active'=>request()->routeIs('admin.'.$entity.'.edit')]) href="{{ route('admin.'.$entity.'.edit', $model) }}" title="{{ __('admin.edit') }}">
             <i class="fa fa-pencil"></i>
+            <span class="d-md-none">{{ __('admin.edit') }}</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link submit-form text-hover-danger" href="#" data-ask="{{ __('admin.do_you_really_want_to_delete_this_record') }}" title="{{ __('admin.delete') }}">
             <i class="fa fa-trash-can"></i>
+            <span class="d-md-none">{{ __('admin.delete') }}</span>
         </a>
         <form action="{{ route('admin.'.$entity.'.destroy', $model) }}" method="POST" class="d-none">
             @csrf

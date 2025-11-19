@@ -67,4 +67,5 @@ return [
 
     'published_at' => 'Publikované od',
     'published_until' => 'Publikované do',
+    'list' => 'Zoznam',
 ];
