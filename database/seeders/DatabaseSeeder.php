@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
-use App\Models\User;
+use App\Models\Admin;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\WebPage;
 use Illuminate\Database\Seeder;
@@ -17,12 +17,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-//        User::factory()->create([
-//            'name' => 'Test User',
-//            'email' => 'test@example.com',
-//        ]);
+        Admin::create([
+            'name' => 'kragleh',
+            'email' => 'kragleh@gmail.com',
+            'password' => bcrypt('kragleh'),
+        ]);
 
-        WebPage::factory(25)->create();
-        Article::factory(25)->create();
+        // WebPage::factory(25)->create();
+        // Article::factory(25)->create();
     }
 }
