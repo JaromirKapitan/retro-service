@@ -34,7 +34,9 @@ return [
 
     'record_deleted' => 'Record was deleted',
     'draft' => 'Draft',
+    'scheduled' => 'Scheduled',
     'published' => 'Published',
+    'expired' => 'Expired',
     'archived' => 'Archived',
     'save' => 'Save',
     'saved' => 'Data saved',
@@ -64,4 +66,5 @@ return [
     'published_at' => 'Published at',
     'published_until' => 'Published until',
     'list' => 'List',
+    'date' => 'Date',
 ];

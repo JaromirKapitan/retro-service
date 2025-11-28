@@ -54,8 +54,7 @@
             <th>#</th>
             <th>{{ __('admin.title') }}</th>
             <th>{{ __('admin.status') }}</th>
-            <th>{{ __('admin.published_at') }}</th>
-            <th>{{ __('admin.published_until') }}</th>
+            <th class="text-center">{{ __('admin.date') }}</th>
             <th></th>
         </tr>
         </thead>
@@ -66,15 +65,14 @@
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->title }}</td>
                 <td>
-                    <span class=" w-75 badge rounded-pill content-status-{{ $item->status }}">
-                        {{ __('admin.'.$item->status) }}
-                    </span>
+                    <x-content-status-alt :status="$item->statusAlt"/>
                 </td>
-                <td>
-                    {{ $item->published_at }}
-                </td>
-                <td>
-                    {{ $item->published_until }}
+                <td class="align-middle text-center">
+                    @if($item->statusAlt == \App\Enums\ContentStatusAlt::Scheduled)
+                        {{ $item->published_at->format('d.m.Y') }}
+                    @elseif($item->statusAlt == \App\Enums\ContentStatusAlt::Expired)
+                        {{ $item->published_until->format('d.m.Y') }}
+                    @endif
                 </td>
                 <td class="text-end">
                     <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\Lang::isMultilang()" />

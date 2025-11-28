@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Article;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Vehicle;
 use App\Models\WebPage;
 use Illuminate\Database\Seeder;
 
@@ -22,7 +23,8 @@ class DatabaseSeeder extends Seeder
 //            'email' => 'test@example.com',
 //        ]);
 
-        WebPage::factory(25)->create();
-        Article::factory(25)->create();
+//        WebPage::factory(25)->create();
+//        Article::factory(25)->create();
+        Vehicle::factory(25)->create();
     }
 }

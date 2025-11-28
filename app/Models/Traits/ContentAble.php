@@ -3,6 +3,7 @@
 namespace App\Models\Traits;
 
 use App\Enums\ContentStatus;
+use App\Enums\ContentStatusAlt;
 use App\Enums\Lang;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -29,5 +30,41 @@ trait ContentAble
     public function getSubTitleAttribute()
     {
         return null;
+    }
+
+    // Returns ContentStatusAlt enum based on published_at, published_until and status
+    public function getStatusAltAttribute()
+    {
+        // published - currently published
+        if ($this->status == ContentStatus::Published->value) {
+            // expired - published_until v minulosti
+            if (!is_null($this->published_until) && $this->published_until <= now()) {
+                return ContentStatusAlt::Expired;
+            }
+
+            // scheduled - published_at v buducnosti
+            if (!is_null($this->published_at) && $this->published_at > now()) {
+                return ContentStatusAlt::Scheduled;
+            }
+
+            return ContentStatusAlt::Published;
+        }
+
+        // archived - archived
+        if ($this->status == ContentStatus::Archived->value) {
+            return ContentStatusAlt::Archived;
+        }
+
+        // draft - never published
+        return ContentStatusAlt::Draft;
+    }
+
+    public function getPublishedAtAttribute($value)
+    {
+        return !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+    }
+    public function getPublishedUntilAttribute($value)
+    {
+        return !is_null($value) ? \Carbon\Carbon::parse($value) : null;
     }
 }
