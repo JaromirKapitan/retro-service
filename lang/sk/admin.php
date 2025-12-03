@@ -36,6 +36,8 @@ return [
     'record_deleted' => 'Záznam bol vymazaný',
     'draft' => 'Koncept',
     'published' => 'Publikované',
+    'scheduled' => 'Naplánované',
+    'expired' => 'Expirované',
     'archived' => 'Archivované',
     'save' => 'Uložiť',
     'saved' => 'Uložené',
@@ -68,4 +70,5 @@ return [
     'published_at' => 'Publikované od',
     'published_until' => 'Publikované do',
     'list' => 'Zoznam',
+    'date' => 'Dátum',
 ];

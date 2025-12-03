@@ -13,9 +13,9 @@ enum VehicleType: string
     public function getTitle(): string
     {
         return match ($this) {
-            self::MOTO => t('motorcycle'),
-            self::CAR => t('car'),
-            self::BUS => t('bus'),
+            self::MOTO => trans('motorcycle'),
+            self::CAR => trans('car'),
+            self::BUS => trans('bus'),
         };
     }
 
