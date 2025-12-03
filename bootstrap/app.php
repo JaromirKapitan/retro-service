@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->appendToGroup('web', \App\Http\Middleware\LocalizationMiddleware::class);
 //        $middleware->appendToGroup('web', \App\Http\Middleware\CanRegisterAdmin::class);
+        $middleware->appendToGroup('web', \App\Http\Middleware\DebugBarMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
