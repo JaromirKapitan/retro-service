@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/vozidla', function () {
+    return Inertia::render('vozidla', []);
+})->name('vozidla');
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
