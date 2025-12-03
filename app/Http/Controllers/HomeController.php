@@ -7,6 +7,7 @@ use App\Models\SeoData;
 use App\Models\WebMenu;
 use App\Models\WebPage;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class HomeController extends Controller
 {
@@ -27,12 +28,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $homePage = WebPage::home()->lang(app()->getLocale())->published()->first();
+        return Inertia::render('home', []);
 
-        return view($homePage ? 'app.web-page' : 'app.home', [
-            'menu' => $this->getMenu(),
-            'model' => $homePage
-        ]);
+        // $homePage = WebPage::home()->lang(app()->getLocale())->published()->first();
+
+        // return view($homePage ? 'app.web-page' : 'app.home', [
+        //     'menu' => $this->getMenu(),
+        //     'model' => $homePage
+        // ]);
     }
 
     public function show($slug)

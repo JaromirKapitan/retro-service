@@ -1,5 +1,7 @@
 import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
     server: {
@@ -16,6 +18,8 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+        react(),
+        tailwindcss()
     ],
     css: {
         preprocessorOptions: {
@@ -27,6 +31,11 @@ export default defineConfig({
                     'global-builtin',
                 ],
             },
+        },
+    },
+    resolve: {
+        alias: {
+            '@': '/resources/js', // Important for path aliases
         },
     },
 });
