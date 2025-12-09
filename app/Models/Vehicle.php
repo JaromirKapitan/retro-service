@@ -69,9 +69,4 @@ class Vehicle extends Model implements HasMedia
     {
         return Str::of($this->links)->markdown();
     }
-
-    public function getContentHtmlAttribute()
-    {
-        return Str::of($this->content)->markdown();
-    }
 }
