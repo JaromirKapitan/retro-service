@@ -5,7 +5,9 @@ use Inertia\Inertia;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['sync.lang'])->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 
 Route::get('/vehicles', function () {
     return Inertia::render('vehicles', []);

@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('web', \App\Http\Middleware\HandleInertiaRequests::class);
 //        $middleware->appendToGroup('web', \App\Http\Middleware\CanRegisterAdmin::class);
         $middleware->appendToGroup('web', \App\Http\Middleware\DebugBarMiddleware::class);
+
+        $middleware->appendToGroup('sync.lang', \LaravelLangSyncInertia\Middleware\ShareLangTranslations::class);
+        $middleware->appendToGroup('sync.lang', \App\Http\Middleware\InertiaLangMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
