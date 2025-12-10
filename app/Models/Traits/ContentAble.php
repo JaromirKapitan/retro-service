@@ -4,8 +4,8 @@ namespace App\Models\Traits;
 
 use App\Enums\ContentStatus;
 use App\Enums\ContentStatusAlt;
-use App\Enums\Lang;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 trait ContentAble
 {
@@ -66,5 +66,10 @@ trait ContentAble
     public function getPublishedUntilAttribute($value)
     {
         return !is_null($value) ? \Carbon\Carbon::parse($value) : null;
+    }
+
+    public function getContentHtmlAttribute()
+    {
+        return Str::of($this->content)->markdown();
     }
 }

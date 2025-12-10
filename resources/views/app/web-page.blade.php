@@ -3,7 +3,7 @@
 @section('content')
     <h1>{{ $model->title }}</h1>
     @if($model->content)
-        <p>{!! $model->content !!}</p>
+        <p>{!! $model->contentHtml !!}</p>
     @endif
 
     <section id="vehiclesList" class="cards-grid">

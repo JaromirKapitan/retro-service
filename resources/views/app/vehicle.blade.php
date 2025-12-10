@@ -10,7 +10,7 @@
             <h2 id="title">{{ $model->title }}</h2>
             <small class="text-muted mb-3">{{ $model->subTitle }}</small>
 
-            {!! $model->specs !!}
+            {!! $model->specsHtml !!}
         </div>
     </section>
 
@@ -34,18 +34,18 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane show active section--card p-3" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-            {!! $model->content !!}
+            {!! $model->contentHtml !!}
         </div>
 
         @if(!isContentEmpty($model->modifications))
             <div class="tab-pane section--card p-3" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                {!! $model->modifications !!}
+                {!! $model->modificationsHtml !!}
             </div>
         @endif
 
         @if(!isContentEmpty($model->links))
             <div class="tab-pane section--card p-3" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                {!! $model->links !!}
+                {!! $model->linksHtml !!}
             </div>
         @endif
     </div>

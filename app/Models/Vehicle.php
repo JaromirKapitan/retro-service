@@ -9,6 +9,7 @@ use App\Models\Traits\Seoble;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -52,5 +53,20 @@ class Vehicle extends Model implements HasMedia
 
         $this->addMediaConversion('small')
             ->height(360);
+    }
+
+    public function getSpecsHtmlAttribute()
+    {
+        return Str::of($this->specs)->markdown();
+    }
+
+    public function getModificationsHtmlAttribute()
+    {
+        return Str::of($this->modifications)->markdown();
+    }
+
+    public function getLinksHtmlAttribute()
+    {
+        return Str::of($this->links)->markdown();
     }
 }

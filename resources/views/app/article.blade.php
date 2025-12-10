@@ -15,6 +15,6 @@
 
     <section class="section-block section--card">
         <h3>{{ __('Description') }}</h3>
-        <div>{!! $model->content !!}</div>
+        <div>{!! $model->contentHtml !!}</div>
     </section>
 @endsection
