@@ -2,13 +2,8 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { ThemeSwitch } from '../ui/theme-switch'
 import { Link } from '@inertiajs/react'
-// import { useTranslations } from 'next-intl'
-// import LanguageSwitch from '../ui/language-switch'
 
 const Header = () => {
-  // TODO: Implement translations for header
-  // const t = useTranslations('Header')
-
   return (
     <>
       <header className='flex items-center justify-between p-2'>
@@ -18,7 +13,7 @@ const Header = () => {
             <Link href='/'>Domov</Link>
           </Button>
           <Button variant='ghost' asChild>
-            <Link href='/vozidla'>Vozidla</Link>
+            <Link href='/vehicles'>Vozidla</Link>
           </Button>
           {/* <LanguageSwitch /> */}
           <ThemeSwitch />
