@@ -75,4 +75,9 @@ class Vehicle extends Model implements HasMedia
     {
         return $query->where('type', $type->value);
     }
+
+    public function getTypeEnumAttribute(): VehicleTypeEnum
+    {
+        return VehicleTypeEnum::from($this->type);
+    }
 }
