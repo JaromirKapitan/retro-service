@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <title>Laravel, Inertia, and React</title>
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.jsx'])
+        @vite(['resources/css/app.css', 'resources/js/app.tsx'])
         @inertiaHead
     </head>
     <body>

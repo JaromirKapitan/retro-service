@@ -16,8 +16,7 @@ export default defineConfig({
                 'resources/sass/admin.scss',
                 'resources/js/admin.js',
 
-                // 'resources/js/app.tsx',
-                'resources/js/app.jsx',
+                'resources/js/app.tsx',
             ],
             refresh: true,
         }),

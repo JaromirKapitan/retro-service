@@ -7,21 +7,13 @@ Auth::routes();
 
 Route::middleware(['sync.lang'])->group(function () {
     Route::get('/', function () {
-        return Inertia::render('Homepage', [
-            'user' => \App\Http\Resources\UserResource::make(\App\Models\Admin::first())
-        ]);
+        return Inertia::render('HomePage', []);
     });
 
-    Route::get('/about', function () {
-        return Inertia::render('About', [
-            'user' => \App\Http\Resources\UserResource::make(\App\Models\Admin::first())
-        ]);
+    Route::get('/vehicles', function () {
+        return Inertia::render('VehiclesPage', []);
     });
 });
-
-Route::get('/vehicles', function () {
-    return Inertia::render('vehicles', []);
-})->name('vehicles');
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);

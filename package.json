@@ -29,6 +29,7 @@
     "slug": "^11.0.0",
     "sortablejs": "^1.15.6",
     "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3",
     "vite": "^7.0.4",
     "vite-plugin-fs": "^0.4.4"
   },
@@ -44,6 +45,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.555.0",
+    "next-themes": "^0.4.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.4.0"
