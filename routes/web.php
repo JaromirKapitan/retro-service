@@ -6,7 +6,17 @@ use Inertia\Inertia;
 Auth::routes();
 
 Route::middleware(['sync.lang'])->group(function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', function () {
+        return Inertia::render('Homepage', [
+            'user' => \App\Http\Resources\UserResource::make(\App\Models\Admin::first())
+        ]);
+    });
+
+    Route::get('/about', function () {
+        return Inertia::render('About', [
+            'user' => \App\Http\Resources\UserResource::make(\App\Models\Admin::first())
+        ]);
+    });
 });
 
 Route::get('/vehicles', function () {

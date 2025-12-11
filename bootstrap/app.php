@@ -11,13 +11,17 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->appendToGroup('web', \App\Http\Middleware\LocalizationMiddleware::class);
-        $middleware->appendToGroup('web', \App\Http\Middleware\HandleInertiaRequests::class);
-//        $middleware->appendToGroup('web', \App\Http\Middleware\CanRegisterAdmin::class);
-        $middleware->appendToGroup('web', \App\Http\Middleware\DebugBarMiddleware::class);
+        $middleware->web(append: [
+            \App\Http\Middleware\LocalizationMiddleware::class,
+            \App\Http\Middleware\HandleInertiaRequests::class,
+    //      \App\Http\Middleware\CanRegisterAdmin::class,
+            \App\Http\Middleware\DebugBarMiddleware::class,
+        ]);
 
-        $middleware->appendToGroup('sync.lang', \LaravelLangSyncInertia\Middleware\ShareLangTranslations::class);
-        $middleware->appendToGroup('sync.lang', \App\Http\Middleware\InertiaLangMiddleware::class);
+        $middleware->appendToGroup('sync.lang', [
+            \LaravelLangSyncInertia\Middleware\ShareLangTranslations::class,
+            \App\Http\Middleware\InertiaLangMiddleware::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
