@@ -22,11 +22,11 @@ const CookiePopup = () => {
   return (
     <Card className='fixed z-50 bottom-4 right-4'>
       <CardContent>
-        Tato stranka pouziva cookies
+          {__('web.cookies_message')}
       </CardContent>
       <CardFooter>
         <Button className='w-full' onClick={ handleAgree }>
-          Suhlasim
+            {__('web.understand')}
         </Button>
       </CardFooter>
     </Card>

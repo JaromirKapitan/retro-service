@@ -1,6 +1,7 @@
 import {createInertiaApp} from '@inertiajs/react'
 import {createRoot} from 'react-dom/client'
 import {StrictMode} from "react";
+import "@/utils/translate"; // zaregistruje globalThis.__ při startu aplikace
 
 createInertiaApp({
     resolve: name => {
