@@ -23,8 +23,6 @@ interface Props {
 const VehicleFilterSidebar = ({filter}: Props) => {
     return (
         <section className='flex flex-col gap-4 w-full h-full p-4 bg-primary-foreground rounded-2xl'>
-            <pre>{JSON.stringify(filter, null, 2)}</pre>
-
             <h1 className='text-center text-2xl'>Filtre</h1>
             <Label>Typ</Label>
             <Select>
