@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\ContentStatus;
-use App\Enums\Lang;
+use App\Enums\ContentStatusEnum;
+use App\Enums\LangEnum;
 use App\Http\Controllers\Controller;
 use App\Models\SeoData;
 use App\Models\WebPage;
@@ -31,7 +31,7 @@ class WebPageController extends Controller
     {
 
         $webPage = new WebPage(session()->get('_old_input') ?? [
-            'lang' => $request->get('lang') ?? Lang::getPrimary(),
+            'lang' => $request->get('lang') ?? LangEnum::getPrimary(),
             'parent_id' => $request->get('parent_id') ?? null,
         ]);
 
@@ -58,11 +58,11 @@ class WebPageController extends Controller
     {
         return $request->validate(array_merge([
             'parent_id' => 'nullable|integer',
-            'lang' => 'nullable|in:' . Lang::valuesString(),
+            'lang' => 'nullable|in:' . LangEnum::valuesString(),
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:300',
             'content' => 'nullable|string',
-            'status' => 'required|in:' . ContentStatus::valuesString(),
+            'status' => 'required|in:' . ContentStatusEnum::valuesString(),
             'home' => 'nullable|bool',
             'for_vehicles' => 'nullable|bool',
         ], $this->getSeoRules()));

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\ContentStatus;
+use App\Enums\ContentStatusEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class WebPageFactory extends Factory
     public function definition(): array
     {
         // 'title', 'text_short', 'text', 'status'
-        $statuses = ContentStatus::values();
+        $statuses = ContentStatusEnum::values();
 
         return [
             'title' => fake()->sentence(3),

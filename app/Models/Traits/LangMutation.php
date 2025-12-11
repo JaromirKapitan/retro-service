@@ -2,7 +2,7 @@
 
 namespace App\Models\Traits;
 
-use App\Enums\Lang;
+use App\Enums\LangEnum;
 use Illuminate\Database\Eloquent\Builder;
 
 trait LangMutation
@@ -14,7 +14,7 @@ trait LangMutation
 
     public function getMutationsAttribute()
     {
-        foreach(Lang::values() as $key => $lang){
+        foreach(LangEnum::values() as $key => $lang){
             if($key == 0)
                 $mutations[$lang] = $this;
             else

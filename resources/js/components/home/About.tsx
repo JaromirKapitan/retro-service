@@ -1,12 +1,18 @@
 import React from 'react'
 import StyledContainer from '../ui/container'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm';
 
-const About = () => {
+interface AboutProps {
+    page?: { [key: string]: any } | null;
+}
+
+const About: React.FC<AboutProps> = ({page}: AboutProps) => {
   return (
     <StyledContainer className='py-8 grid grid-cols-1 md:grid-cols-2 items-center gap-8'>
-      <h1 className='text-4xl font-semibold text-center'>O Nas</h1>
+      <h1 className='text-4xl font-semibold text-center'>{page?.title}</h1>
       <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias fugiat iure reiciendis! Porro minus perferendis voluptatibus voluptas, deserunt ratione rerum dolor quis distinctio, perspiciatis nobis numquam facilis animi fuga saepe?</p>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{page?.content}</ReactMarkdown>
       </div>
     </StyledContainer>
   )

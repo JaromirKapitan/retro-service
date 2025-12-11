@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\VehicleType;
+use App\Enums\VehicleTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\VehicleRequest;
 use App\Models\SeoData;
@@ -48,7 +48,7 @@ class VehicleController extends Controller
     protected function getFormData(Vehicle $vehicle){
         return (object)[
             'web_page_options' => WebPage::whereNull('parent_id')->get(),
-            'type_options' => collect(VehicleType::cases())->map(function ($item) use ($vehicle){
+            'type_options' => collect(VehicleTypeEnum::cases())->map(function ($item) use ($vehicle){
                 return (object)[
                     'value' => $item->value,
                     'title' => $item->getTitle(),

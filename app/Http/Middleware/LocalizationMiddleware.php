@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Enums\Lang;
+use App\Enums\LangEnum;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +16,7 @@ class LocalizationMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        app()->setLocale(session()->get('locale') ?? Lang::getPrimary());
+        app()->setLocale(session()->get('locale') ?? LangEnum::getPrimary());
 
         return $next($request);
     }

@@ -68,14 +68,14 @@
                     <x-content-status-alt :status="$item->statusAlt"/>
                 </td>
                 <td class="align-middle text-center">
-                    @if($item->statusAlt == \App\Enums\ContentStatusAlt::Scheduled)
+                    @if($item->statusAlt == \App\Enums\ContentStatusAltEnum::Scheduled)
                         {{ $item->published_at->format('d.m.Y') }}
-                    @elseif($item->statusAlt == \App\Enums\ContentStatusAlt::Expired)
+                    @elseif($item->statusAlt == \App\Enums\ContentStatusAltEnum::Expired)
                         {{ $item->published_until->format('d.m.Y') }}
                     @endif
                 </td>
                 <td class="text-end">
-                    <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\Lang::isMultilang()" />
+                    <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()"/>
                 </td>
             </tr>
         @endforeach

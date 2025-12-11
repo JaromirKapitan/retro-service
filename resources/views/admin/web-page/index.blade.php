@@ -32,7 +32,7 @@
                         <i class="fa fa-car text-secondary"></i>
                     @endif
                     <span class="pe-5"></span>
-                    <x-entity.table-buttons entity="web-pages" :item="$item" :multilang="\App\Enums\Lang::isMultilang()"/>
+                    <x-entity.table-buttons entity="web-pages" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()"/>
                 </td>
             </tr>
         @endforeach

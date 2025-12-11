@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Enums\ContentStatus;
-use App\Enums\Lang;
-use App\Enums\VehicleType;
+use App\Enums\ContentStatusEnum;
+use App\Enums\LangEnum;
+use App\Enums\VehicleTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VehicleRequest extends FormRequest
@@ -28,7 +28,7 @@ class VehicleRequest extends FormRequest
     {
         $rules = array_merge([
             'parent_id' => 'nullable|integer',
-            'type' => 'required|in:' . VehicleType::valuesString(),
+            'type' => 'required|in:' . VehicleTypeEnum::valuesString(),
             'brand' => 'required|string|max:255',
             'model' => 'required|string|max:255',
             'year_from' => 'required|numeric',
@@ -38,13 +38,13 @@ class VehicleRequest extends FormRequest
             'specs' => 'nullable|string',
             'modifications' => 'nullable|string',
             'links' => 'nullable|string',
-            'status' => 'required|in:' . ContentStatus::valuesString(),
+            'status' => 'required|in:' . ContentStatusEnum::valuesString(),
             'published_at' => 'nullable|date',
             'published_until' => 'nullable|date',
         ], $this->getSeoRules());
 
-        if(Lang::isMultilang()) {
-            $rules['lang'] = 'nullable|in:' . Lang::valuesString();
+        if(LangEnum::isMultilang()) {
+            $rules['lang'] = 'nullable|in:' . LangEnum::valuesString();
         }
 
         return $rules;

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\ContentStatus;
+use App\Enums\ContentStatusEnum;
 use App\Models\Traits\ContentAble;
 use App\Models\Traits\LangMutation;
 use App\Models\Traits\Seoble;
@@ -20,7 +20,7 @@ class WebPage extends Model implements HasMedia
     protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id', 'home', 'for_vehicles'];
 
     protected $attributes = [
-        'status' => ContentStatus::Draft->value
+        'status' => ContentStatusEnum::Draft->value
     ];
 
     public function parent()

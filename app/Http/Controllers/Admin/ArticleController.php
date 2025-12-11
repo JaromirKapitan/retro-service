@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\ContentStatus;
-use App\Enums\Lang;
+use App\Enums\ContentStatusEnum;
+use App\Enums\LangEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\SeoData;
@@ -72,11 +72,11 @@ class ArticleController extends Controller
     {
         return $request->validate(array_merge([
             'parent_id' => 'nullable|integer',
-            'lang' => 'nullable|in:' . Lang::valuesString(),
+            'lang' => 'nullable|in:' . LangEnum::valuesString(),
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:300',
             'content' => 'nullable|string',
-            'status' => 'required|in:' . ContentStatus::valuesString(),
+            'status' => 'required|in:' . ContentStatusEnum::valuesString(),
         ], $this->getSeoRules()));
     }
 

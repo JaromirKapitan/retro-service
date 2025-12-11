@@ -14,7 +14,7 @@ if (!function_exists('getFlagByLang')) {
     {
         $prefix = 'fi fi-';
         $class = match ($lang) {
-            \App\Enums\Lang::CS->value => $prefix . 'cz',
+            \App\Enums\LangEnum::CS->value => $prefix . 'cz',
             default => $prefix . $lang,
         };
 

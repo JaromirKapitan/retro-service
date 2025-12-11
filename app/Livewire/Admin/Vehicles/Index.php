@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Admin\Vehicles;
 
-use App\Enums\VehicleType;
+use App\Enums\VehicleTypeEnum;
 use App\Models\Vehicle;
 use Livewire\Component;
 
@@ -19,7 +19,7 @@ class Index extends Component
     public function boot()
     {
         $this->filterOptions = [
-            'types' => VehicleType::cases(),
+            'types' => VehicleTypeEnum::cases(),
             'brands' => Vehicle::query()
                 ->distinct('brand')
                 ->whereNotNull('brand')

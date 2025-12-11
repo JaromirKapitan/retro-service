@@ -2,8 +2,8 @@
 
 namespace App\Models\Traits;
 
-use App\Enums\ContentStatus;
-use App\Enums\ContentStatusAlt;
+use App\Enums\ContentStatusEnum;
+use App\Enums\ContentStatusAltEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
@@ -18,13 +18,13 @@ trait ContentAble
         })->where(function($q){
             $q->whereNull('published_until')
               ->orWhere('published_until', '>', now());
-        })->where('status', ContentStatus::Published->value);
+        })->where('status', ContentStatusEnum::Published->value);
     }
 
     public function getIsPublishedAttribute()
     {
         $status = optional($this->parent)->status ?? $this->status;
-        return $status == ContentStatus::Published->value;
+        return $status == ContentStatusEnum::Published->value;
     }
 
     public function getSubTitleAttribute()
@@ -36,27 +36,27 @@ trait ContentAble
     public function getStatusAltAttribute()
     {
         // published - currently published
-        if ($this->status == ContentStatus::Published->value) {
+        if ($this->status == ContentStatusEnum::Published->value) {
             // expired - published_until v minulosti
             if (!is_null($this->published_until) && $this->published_until <= now()) {
-                return ContentStatusAlt::Expired;
+                return ContentStatusAltEnum::Expired;
             }
 
             // scheduled - published_at v buducnosti
             if (!is_null($this->published_at) && $this->published_at > now()) {
-                return ContentStatusAlt::Scheduled;
+                return ContentStatusAltEnum::Scheduled;
             }
 
-            return ContentStatusAlt::Published;
+            return ContentStatusAltEnum::Published;
         }
 
         // archived - archived
-        if ($this->status == ContentStatus::Archived->value) {
-            return ContentStatusAlt::Archived;
+        if ($this->status == ContentStatusEnum::Archived->value) {
+            return ContentStatusAltEnum::Archived;
         }
 
         // draft - never published
-        return ContentStatusAlt::Draft;
+        return ContentStatusAltEnum::Draft;
     }
 
     public function getPublishedAtAttribute($value)

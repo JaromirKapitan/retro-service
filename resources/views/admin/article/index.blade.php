@@ -22,7 +22,7 @@
                     </span>
                 </td>
                 <td class="text-end">
-                    <x-entity.table-buttons entity="articles" :item="$item" :multilang="\App\Enums\Lang::isMultilang()" />
+                    <x-entity.table-buttons entity="articles" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()"/>
                 </td>
             </tr>
         @endforeach

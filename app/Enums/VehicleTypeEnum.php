@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use function Symfony\Component\Translation\t;
 
-enum VehicleType: string
+enum VehicleTypeEnum: string
 {
     case MOTO = 'motorcycle';
     case CAR = 'car';

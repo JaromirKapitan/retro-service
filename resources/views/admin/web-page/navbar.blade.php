@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-md sticky-top bg-light-subtle" data-bs-theme="dark">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarSubLeft" aria-controls="offcanvasNavbarSubLeft" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarSubLeft" aria-controls="offcanvasNavbarSubLeft"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -33,7 +34,8 @@
         </div>
 
         @if(!empty($model) && $model->id)
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarSubRight" aria-controls="offcanvasNavbarSubRight" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarSubRight"
+                    aria-controls="offcanvasNavbarSubRight" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarSubRight" aria-labelledby="offcanvasNavbarSubRightLabel">
@@ -42,7 +44,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <x-entity.detail-buttons entity="web-pages" :model="$model" :multilang="\App\Enums\Lang::isMultilang()" />
+                    <x-entity.detail-buttons entity="web-pages" :model="$model" :multilang="\App\Enums\LangEnum::isMultilang()"/>
                 </div>
             </div>
         @endif

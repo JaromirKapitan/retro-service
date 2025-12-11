@@ -11,7 +11,7 @@ class ContentStatusAlt extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public \App\Enums\ContentStatusAlt $status)
+    public function __construct(public \App\Enums\ContentStatusAltEnum $status)
     {
     }
 

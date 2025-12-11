@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum Lang: string
+enum LangEnum: string
 {
     case SK = 'sk';
     case CS = 'cs';

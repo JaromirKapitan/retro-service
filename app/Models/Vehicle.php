@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\ContentStatus;
+use App\Enums\ContentStatusEnum;
+use App\Enums\VehicleTypeEnum;
 use App\Models\Traits\ContentAble;
 use App\Models\Traits\LangMutation;
 use App\Models\Traits\Seoble;
@@ -23,7 +24,7 @@ class Vehicle extends Model implements HasMedia
     protected $dates = ['published_at', 'published_until'];
 
     protected $attributes = [
-        'status' => ContentStatus::Draft->value
+        'status' => ContentStatusEnum::Draft->value
     ];
 
     public function webPages()
@@ -68,5 +69,10 @@ class Vehicle extends Model implements HasMedia
     public function getLinksHtmlAttribute()
     {
         return Str::of($this->links)->markdown();
+    }
+
+    public function scopeOfType($query, VehicleTypeEnum $type)
+    {
+        return $query->where('type', $type->value);
     }
 }

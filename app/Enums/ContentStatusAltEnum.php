@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use function Symfony\Component\Translation\t;
 
-enum ContentStatusAlt: string
+enum ContentStatusAltEnum: string
 {
     case Draft = 'draft';
     case Scheduled = 'scheduled';
