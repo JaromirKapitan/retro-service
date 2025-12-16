@@ -12,10 +12,10 @@ enum TaskStatusEnum: string implements StatusEnumInterface
     public function getTitle(): string
     {
         return match($this) {
-            self::PENDING => 'Pending',
-            self::IN_PROGRESS => 'In Progress',
-            self::COMPLETED => 'Completed',
-            self::CANCELLED => 'Cancelled',
+            self::PENDING => trans('admin.pending'),
+            self::IN_PROGRESS => trans('admin.in_progress'),
+            self::COMPLETED => trans('admin.completed'),
+            self::CANCELLED => trans('admin.cancelled'),
         };
     }
 

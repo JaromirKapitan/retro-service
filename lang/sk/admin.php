@@ -78,4 +78,12 @@ return [
     'task' => 'Úloha',
     'assign_to' => 'Priradiť k',
     'due_date' => 'Dátum splnenia',
+
+    'pending' => 'Čaká sa',
+    'in_progress' => 'Prebieha',
+    'completed' => 'Dokončené',
+    'cancelled' => 'Zrušené',
+
+    'unassigned' => 'Nepriradené',
+    'assign_to_me' => 'Priradiť mne',
 ];

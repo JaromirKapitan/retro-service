@@ -28,9 +28,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
     Route::middleware('auth:admin')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/pull', [\App\Http\Controllers\Admin\SystemController::class, 'pull'])->name('pull');
         // media uploader
@@ -53,6 +51,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // vehicles
         Route::resource('vehicles', \App\Http\Controllers\Admin\VehicleController::class);
+
+        // tasks
         Route::resource('tasks', \App\Http\Controllers\Admin\TaskController::class);
+        Route::post('/tasks/{task}/assign', [\App\Http\Controllers\Admin\TaskController::class, 'assign'])->name('tasks.assign');
+
     });
 });

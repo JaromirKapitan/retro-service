@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use App\Services\AdminService;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -28,9 +29,9 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $task = new Task(session()->get('_old_input') ?? []);
+        $task = new Task(session()->get('_old_input') ?? $request->all());
 
         return view('admin.task.form', [
             'model' => $task,
@@ -95,5 +96,14 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect()->route('admin.tasks.index')->with('success', 'Task deleted successfully.');
+    }
+
+    // Assign task to admin
+    public function assign(Task $task)
+    {
+        $task->admin_id = \Auth::guard('admin')->id();
+        $task->save();
+
+        return redirect()->route('admin.dashboard')->with('success', 'Task assigned successfully.');
     }
 }
