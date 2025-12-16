@@ -55,6 +55,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // tasks
         Route::resource('tasks', \App\Http\Controllers\Admin\TaskController::class);
         Route::post('/tasks/{task}/assign', [\App\Http\Controllers\Admin\TaskController::class, 'assign'])->name('tasks.assign');
-
+        Route::post('/tasks/reorder', [\App\Http\Controllers\Admin\TaskController::class, 'reorder'])->name('tasks.reorder');
     });
 });

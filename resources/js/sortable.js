@@ -1,26 +1,19 @@
-import Sortable from 'sortablejs'
+import SortableJS from 'sortablejs'
 
-export default function (Alpine) {
-    Alpine.directive('sortable', (el) => {
-        el.sortable = Sortable.create(el, {
-            dataIdAttr: 'x-sortable-item',
-            handle: '.handle',
-            group: 'shared',
-            // onSort() {
-            //     let detail = $(el)
-            //         .find('.sortable-item')
-            //         .map(function() {return this.value})
-            //         .toArray()
-            //         .filter(function (elm) {
-            //             return elm !== '';
-            //         })
-            //
-            //     el.dispatchEvent(
-            //         new CustomEvent('sorted', {
-            //             detail: detail
-            //         })
-            //     )
-            // }
+export default class Sortable {
+    constructor(){
+        $('.sortable').each(function (index, element) {
+            SortableJS.create(element, {
+                handle: '.handle',
+                group: 'shared',
+                onEnd: function (evt) {
+                    const cbName = $(evt.to).data('callback');
+                    if(cbName !== undefined){
+                        window[cbName](evt);
+                    }
+                }
+            });
         })
-    })
+
+    }
 }

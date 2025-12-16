@@ -5,7 +5,7 @@
     <div class="row">
 
         @foreach ($statuses as $status)
-            <div class="col-md-3">
+            <div class="col">
                 <div class="card mb-3">
                     <div class="card-header text-white bg-{{ $status->getCssClass() }} ">
                         <div class="d-flex justify-content-between">
@@ -13,45 +13,46 @@
                                 <i class="{{ $status->getIcon() }}"></i> {{ $status->getTitle() }}
                             </span>
                             <span>
-                                {{-- add button --}}
-                                <a href="{{ route('admin.tasks.create', ['status' => $status->value]) }}" class="text-white text-hover-warning" title="Pridať úlohu">
+                                <a href="{{ route('admin.tasks.create', ['status' => $status->value]) }}" class="text-white text-hover-dark" title="Pridať úlohu">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </span>
                         </div>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body sortable" data-callback="reorderTask" data-status="{{ $status->value }}">
                         @foreach($tasksByStatus->get($status->value) as $task)
-                            <div class="card mb-2">
+                            <div class="card mb-2" data-id="{{ $task->id }}">
                                 <div class="card-header">
-                                    {{ $task->title }}
-                                </div>
-
-                                <div class="card-body">
-                                    <p>{{ $task->description }}</p>
-                                </div>
-
-                                <div class="card-footer text-muted">
-                                    {{-- date updated_at on left and admin name on right --}}
                                     <div class="d-flex justify-content-between">
-                                        <span>{{ $task->updated_at->format('d.m.Y H:i') }}</span>
                                         <span>
-                                            <a href="{{ route('admin.tasks.edit', $task) }}" class="text-secondary text-hover-warning" title="Upraviť">
-                                                <i class="fa fa-pencil"></i>
+                                            <a href="{{ route('admin.tasks.show', $task) }}" class="text-secondary text-hover-warning" title="{{ __('admin.detail') }}">
+                                                {{ $task->title }}
                                             </a>
                                         </span>
                                         <span>
-                                            @if (is_null($task->admin))
-                                                <form action="{{ route('admin.tasks.assign', $task) }}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-sm btn-primary">{{ __('admin.assign_to_me') }}</button>
-                                                </form>
-                                            @else
-                                                {{ optional($task->admin)->name }}
-                                            @endif
+                                            <i class="fa fa-arrows handle cursor-pointer"></i>
                                         </span>
                                     </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <span>{{ $task->updated_at->format('d.m.Y H:i') }}</span>
+                                        <span>{{ optional($task->admin)->name }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer p-0">
+                                    {{-- full size button to assign to me --}}
+                                    @if (is_null($task->admin))
+                                        <form action="{{ route('admin.tasks.assign', $task) }}" method="POST" class="d-inline w-100">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-primary w-100 rounded-top-0" title="{{ __('admin.assign_to_me') }}">
+                                                <i class="fa fa-user-plus"></i> {{ __('admin.assign_to_me') }}
+                                            </button>
+                                        </form>
+                                    @endif
                                 </div>
                             </div>
                         @endforeach
@@ -62,3 +63,17 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    window.reorderTask = function(evt){
+        $.post( "{{ route('admin.tasks.reorder') }}", {
+            _token: "{{ csrf_token() }}",
+            id: evt.item.dataset.id,
+            status: evt.to.dataset.status,
+        }, function( response ) {
+            window.notify.notify(response.message, response.success ? 'success' : 'error');
+        });
+    }
+</script>
+@endpush

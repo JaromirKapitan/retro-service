@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\TaskStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
@@ -39,7 +40,8 @@ class TaskController extends Controller
         ]);
     }
 
-    protected function getFormData(Task $task){
+    protected function getFormData(Task $task)
+    {
         return (object)[
             // user_options => one of Admins
             //  - id, name => use AdminService to get options
@@ -54,7 +56,9 @@ class TaskController extends Controller
     {
         $task = Task::create($request->validated());
 
-        return redirect()->route('admin.tasks.index')->with('success', 'Task created successfully.');
+        return redirect()
+            ->route('admin.tasks.index')
+            ->with('success', trans('admin.saved'));
     }
 
     /**
@@ -85,7 +89,9 @@ class TaskController extends Controller
     {
         $task->update($request->validated());
 
-        return redirect()->route('admin.tasks.index')->with('success', 'Task updated successfully.');
+        return redirect()
+            ->route('admin.tasks.index')
+            ->with('success', trans('admin.saved'));
     }
 
     /**
@@ -95,7 +101,8 @@ class TaskController extends Controller
     {
         $task->delete();
 
-        return redirect()->route('admin.tasks.index')->with('success', 'Task deleted successfully.');
+        return redirect()->route('admin.tasks.index')
+            ->with('success', trans('admin.record_deleted'));
     }
 
     // Assign task to admin
@@ -104,6 +111,22 @@ class TaskController extends Controller
         $task->admin_id = \Auth::guard('admin')->id();
         $task->save();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Task assigned successfully.');
+        return redirect()->route('admin.dashboard')->with('success', trans('admin.task_assigned_success'));
+    }
+
+    // reorder tasks
+    public function reorder(Request $request)
+    {
+        // check if request has 'id' and 'status'
+        $request->validate([
+            'id' => 'required|integer|exists:tasks,id',
+            'status' => 'required|in:' . implode(',', TaskStatusEnum::values()),
+        ]);
+
+
+        $task = Task::find($request->input('id'));
+        $task->status = $request->input('status');
+        $task->save();
+        return response()->json(['success' => true, 'message' => trans('admin.task_reordered_success')]);
     }
 }

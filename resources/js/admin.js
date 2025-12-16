@@ -20,10 +20,32 @@ window.slug = slug;
 import SeoForm from './seo-form.js';
 import ckeditorInit from './ckeditor.js';
 import Notification from './notify.js';
+import Sortable from './sortable'
 
-import sortable from './sortable'
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
-Alpine.plugin(sortable)
+// import SortableJS from "sortablejs";
+// Alpine.plugin(Alpine.directive('sortable', (el) => {
+//     el.sortable = SortableJS.create(el, {
+//         dataIdAttr: 'x-sortable-item',
+//         handle: '.handle',
+//         group: 'shared',
+//         // onSort() {
+//         //     let detail = $(el)
+//         //         .find('.sortable-item')
+//         //         .map(function() {return this.value})
+//         //         .toArray()
+//         //         .filter(function (elm) {
+//         //             return elm !== '';
+//         //         })
+//         //
+//         //     el.dispatchEvent(
+//         //         new CustomEvent('sorted', {
+//         //             detail: detail
+//         //         })
+//         //     )
+//         // }
+//     })
+// }))
 
 window.Alpine = Alpine;
 window.Livewire = Livewire;
@@ -53,4 +75,5 @@ $(function (){
     })
 
     window.notify = new Notification();
+    new Sortable();
 })

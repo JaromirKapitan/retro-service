@@ -86,4 +86,6 @@ return [
 
     'unassigned' => 'Nepriradené',
     'assign_to_me' => 'Priradiť mne',
+    'task_assigned_success' => 'Úloha bola úspešne priradená',
+    'task_reordered_success' => 'Úlohy boli úspešne preusporiadané',
 ];
