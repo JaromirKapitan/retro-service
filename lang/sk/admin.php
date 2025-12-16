@@ -71,4 +71,11 @@ return [
     'published_until' => 'Publikované do',
     'list' => 'Zoznam',
     'date' => 'Dátum',
+
+    'user' => 'Používateľ',
+    'admin' => 'Administrátor',
+    'tasks' => 'Úlohy',
+    'task' => 'Úloha',
+    'assign_to' => 'Priradiť k',
+    'due_date' => 'Dátum splnenia',
 ];

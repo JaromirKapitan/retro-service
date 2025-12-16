@@ -67,4 +67,11 @@ return [
     'published_until' => 'Published until',
     'list' => 'List',
     'date' => 'Date',
+
+    'user' => 'User',
+    'admin' => 'Admin',
+    'tasks' => 'Tasks',
+    'task' => 'Task',
+    'assign_to' => 'Assign to',
+    'due_date' => 'Due date',
 ];

@@ -39,6 +39,12 @@
                             <span class="d-md-none">{{ __('admin.vehicles') }}</span>
                         </a>
                     </li>
+                    <li class="nav-item" title="{{ __('admin.tasks') }}">
+                        <a @class(['nav-link', 'active'=>request()->routeIs('admin.tasks.*')]) href="{{ route('admin.tasks.index') }}">
+                            <i class="fa fa-list-check"></i>
+                            <span class="d-md-none">{{ __('admin.tasks') }}</span>
+                        </a>
+                    </li>
 {{--                    <li class="nav-item" title="{{ __('admin.users') }}">--}}
 {{--                        <a @class(['nav-link', 'active'=>request()->routeIs('admin.users.*')]) href="{{ route('admin.users.index') }}">--}}
 {{--                            <i class="fa fa-user"></i>--}}

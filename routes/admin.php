@@ -53,5 +53,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // vehicles
         Route::resource('vehicles', \App\Http\Controllers\Admin\VehicleController::class);
+        Route::resource('tasks', \App\Http\Controllers\Admin\TaskController::class);
     });
 });
