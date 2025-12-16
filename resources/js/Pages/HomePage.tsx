@@ -7,7 +7,7 @@ import React from "react";
 export default function HomePage(props: any) {
     return (
         <BaseLayout>
-            <Hero size='lg'>
+            <Hero size='lg' img={props.hero_img}>
                 <h1 className='text-6xl font-semibold text-center'>{__('web.welcome')}</h1>
             </Hero>
             <Stats stats={props.stats} />

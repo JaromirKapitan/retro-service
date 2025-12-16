@@ -12,9 +12,12 @@ class HomeController extends Controller
 
     public function index()
     {
+        $page = $this->homePageService->getPage();
+
         return inertia('HomePage', [
             'stats' => $this->homePageService->getStats(),
-            'page' => $this->homePageService->getPage(),
+            'page' => $page,
+            'hero_img' => $page->getMedia('images')->first()->getUrl(),
         ]);
     }
 }
