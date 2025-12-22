@@ -14,3 +14,6 @@ Route::get('/login', function () {
 })->name('login');
 
 require_once __DIR__ . '/admin.php';
+
+// musi byt posledny !!!
+Route::get('/{slug}', [App\Http\Controllers\HomeController::class, 'show'])->name('show');

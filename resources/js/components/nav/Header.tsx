@@ -13,7 +13,8 @@ const Header = () => {
             <Link href='/'>Domov</Link>
           </Button>
           <Button variant='ghost' asChild>
-            <Link href='/vehicles'>Vozidla</Link>
+            {/*<Link href='/vehicles'>Vozidla</Link>*/}
+            <a href='/vozidla'>Vozidla</a>
           </Button>
           {/* <LanguageSwitch /> */}
           <ThemeSwitch />
