@@ -65,7 +65,7 @@ class VehicleController extends Controller
         $vehicle->webPages()->sync($request->get('web_pages'));
 
         return redirect()
-            ->route('admin.vehicles.index')
+            ->route('admin.vehicles.edit', $vehicle)
             ->with('success', trans('admin.saved'));
     }
 
@@ -84,7 +84,7 @@ class VehicleController extends Controller
         $vehicle->webPages()->sync($request->get('web_pages'));
 
         return redirect()
-            ->route('admin.vehicles.index')
+            ->route('admin.vehicles.edit', $vehicle)
             ->with('success', trans('admin.saved'));
     }
 
