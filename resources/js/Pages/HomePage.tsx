@@ -11,7 +11,7 @@ export default function HomePage(props: any) {
                 <h1 className='text-6xl font-semibold text-center'>{__('web.welcome')}</h1>
             </Hero>
             <Stats stats={props.stats} />
-            <About page={props.page.data}/>
+            {/* <About page={props.page.data}/> */}
         </BaseLayout>
     );
 }
