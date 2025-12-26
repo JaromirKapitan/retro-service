@@ -3,6 +3,7 @@ import {Input} from '@/components/ui/input'
 import {Label} from '@/components/ui/label'
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select'
 import ErrorBoundary from '../misc/ErrorBoundary'
+import { Card } from '../ui/card'
 
 interface TypeOption {
     value: string
@@ -24,7 +25,7 @@ interface Props {
 const VehicleFilterSidebar = ({filter}: Props) => {
     return (
         <ErrorBoundary fallback={<div>Chyba</div>}>
-            <section className='flex flex-col gap-4 w-full h-full p-4 bg-primary-foreground rounded-2xl'>
+            <Card className='lg:sticky top-4 h-fit flex flex-col gap-4 w-full p-4 bg-primary-foreground rounded-2xl'>
                 <h1 className='text-center text-2xl'>Filtre</h1>
                 <Label>Typ</Label>
                 <Select>
@@ -73,7 +74,7 @@ const VehicleFilterSidebar = ({filter}: Props) => {
                 </Select>
                 <Label>Rok</Label>
                 <Input type='text'/>
-            </section>
+            </Card>
         </ErrorBoundary>
     )
 }
