@@ -21,7 +21,7 @@ const Hero = ({
 
   return (
     <section className='w-full' style={{ background: 'linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.5) 100%), url("' + img + '")' , backgroundSize: 'cover', backgroundPosition: 'center' }}>
-      <div className={ cn('container w-full mx-auto', sizeClass) }>
+      <div className={ cn('container w-full text-white mx-auto', sizeClass) }>
         { children }
       </div>
     </section>
