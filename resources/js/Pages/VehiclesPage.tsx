@@ -3,8 +3,9 @@ import Hero from "@/components/misc/Hero";
 import Container from "@/components/ui/container";
 import VehicleFilter from "@/components/vehicles/VehicleFilter";
 import VehicleCard from "@/components/vehicles/VehicleCard";
+import VehiclePage from "./VehiclePage";
 
-export default function VehiclePage(props: any) {
+export default function VehiclesPage(props: any) {
     return (
         <BaseLayout>
             <Hero>
