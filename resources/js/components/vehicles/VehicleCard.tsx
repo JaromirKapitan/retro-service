@@ -25,6 +25,7 @@ interface VehicleCardProps {
 const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle }) => {
   return (
     <Card className="p-4 flex flex-col gap-2 mb-auto">
+      <img src={vehicle.thumbnail} alt={vehicle.title} className='w-full h-full object-cover rounded-xl' />
       <div className="flex gap-2 w-full justify-between items-center">
         <h1 className="text-2xl">{vehicle.title}</h1>
         <div className='flex gap-2'>
