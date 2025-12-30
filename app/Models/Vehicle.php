@@ -44,7 +44,7 @@ class Vehicle extends Model implements HasMedia
 
     public function getSubTitleAttribute()
     {
-        return '(' . $this->year_from . (!empty($this->year_to) ? ' - ' . $this->year_to : '') . ')';
+        return $this->year_from . (!empty($this->year_to) ? ' - ' . $this->year_to : '');
     }
 
     public function registerMediaConversions(Media $media = null): void

@@ -13,8 +13,8 @@ export default function VehiclePage(props: any) {
             <Container className='grid grid-cols-1 lg:grid-cols-[384px_1fr] gap-4 p-4'>
                 <VehicleFilterSidebar filter={props.filter} />
                 <section className='grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4'>
-                    {Array.from({ length: 10 }).map((_, i) => (
-                        <VehicleCard key={i} />
+                    {props.vehicles.map((vehicle: any) => (
+                        <VehicleCard key={vehicle.id} vehicle={vehicle} />
                     ))}
                 </section>
             </Container>

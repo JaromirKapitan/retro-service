@@ -42,4 +42,28 @@ class VehiclePageService
                 })->toArray(),
         ];
     }
+
+    // return list of published vehicles with applied filters (type, brand, model) from Vehicle model and thumbnail image if exists if not use default image public/images/no_image_car.jpg
+    public function getVehicles(): array
+    {
+        $vehicles = Vehicle::published()
+            ->with('media')
+            ->get()
+            ->map(function ($vehicle) {
+                return [
+                    'id' => $vehicle->id,
+                    'title' => $vehicle->title,
+                    'sub_title' => $vehicle->sub_title,
+                    'description' => $vehicle->description,
+                    'type' => $vehicle->typeEnum,
+                    'brand' => $vehicle->brand,
+                    'model' => $vehicle->model,
+                    'year_from' => $vehicle->year_from,
+                    'year_to' => $vehicle->year_to,
+                    'thumbnail' => $vehicle->getFirstMediaUrl('default', 'thumb') ?: asset('images/no_image_car.jpg'),
+                ];
+            })->toArray();
+
+        return $vehicles;
+    }
 }

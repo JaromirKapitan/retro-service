@@ -14,10 +14,9 @@ class VehicleController extends Controller
     // index
     public function index()
     {
-
-
         return inertia('VehiclesPage', [
             'filter' => $this->vehiclePageService->getFilter(),
+            'vehicles' => $this->vehiclePageService->getVehicles(),
         ]);
     }
 }

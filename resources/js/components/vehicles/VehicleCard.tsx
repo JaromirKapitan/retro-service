@@ -4,17 +4,35 @@ import { Card } from '../ui/card'
 import { Link } from '@inertiajs/react'
 import { Badge } from '../ui/badge'
 
-const VehicleCard = () => {
+
+interface Vehicle {
+    id: number
+    title: string
+    sub_title: string
+    description: string
+    brand: string
+    model: string
+    year_from: number
+    year_to?: number | null
+    thumbnail: string
+    [key: string]: any
+}
+
+interface VehicleCardProps {
+    vehicle: Vehicle
+}
+
+const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle }) => {
   return (
     <Card className="p-4 flex flex-col gap-2 mb-auto">
       <div className="flex gap-2 w-full justify-between items-center">
-        <h1 className="text-2xl">Toto je auto</h1>
+        <h1 className="text-2xl">{vehicle.title}</h1>
         <div className='flex gap-2'>
-          <Badge>1992</Badge>
-          <Badge>Auto</Badge>
+          <Badge>{vehicle.sub_title}</Badge>
+          {/*<Badge>{vehicle.sub_title}</Badge>*/}
         </div>
       </div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora magnam nemo aliquid necessitatibus numquam consequuntur ea. Incidunt et in animi perspiciatis, porro ex libero corrupti recusandae nobis, fugit rerum inventore!</p>
+      <p>{vehicle.description}</p>
       <Button asChild>
         <Link href={'#'}>
           Viac
