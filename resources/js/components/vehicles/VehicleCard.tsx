@@ -25,17 +25,20 @@ interface VehicleCardProps {
 const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle }) => {
   return (
     <Card className="p-4 flex flex-col gap-2 mb-auto">
-      <img src={vehicle.thumbnail} alt={vehicle.title} className='w-full h-full object-cover rounded-xl' />
+      <Link href={`/vehicles/${vehicle.model}`}>
+        <img src={vehicle.thumbnail} alt={vehicle.title} className='w-full h-full object-cover rounded-xl' />
+      </Link>
       <div className="flex gap-2 w-full justify-between items-center">
-        <h1 className="text-2xl">{vehicle.title}</h1>
+        <Link href={`/vehicles/${vehicle.model}`}>
+          <h1 className="text-2xl">{vehicle.title}</h1>
+        </Link>
         <div className='flex gap-2'>
           <Badge>{vehicle.sub_title}</Badge>
-          {/*<Badge>{vehicle.sub_title}</Badge>*/}
         </div>
       </div>
       <p>{vehicle.description}</p>
       <Button asChild>
-        <Link href={'#'}>
+        <Link href={`/vehicles/${vehicle.model}`}>
           Viac
         </Link>
       </Button>
