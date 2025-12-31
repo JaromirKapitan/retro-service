@@ -31,25 +31,28 @@ const VehiclePage = () => {
   return (
     <BaseLayout>
       <Hero img='https://stage.retro-service.eu/images/no_image_car.jpg'>
-        <div className='flex flex-col gap-4 items-center justify-center'>
+        <div className='flex flex-col gap-4 items-center justify-center relative'>
           <h1 className='text-4xl font-semibold text-center'>Vehicle</h1>
-          <div className='flex gap-4'>
+          <div className='flex gap-4 absolute right-4 -bottom-28'>
             <Badge>Auto</Badge>
             <Badge>1992 - 1993</Badge>
           </div>
         </div>
       </Hero>
       <Container className='p-4'>
-        <VehicleFeatures />
         <Tabs value={activeTab} onValueChange={onTabChange} defaultValue="description">
           <TabsList className="mx-auto mt-4">
             <TabsTrigger value="description">Description</TabsTrigger>
+            <TabsTrigger value="features">Features</TabsTrigger>
             <TabsTrigger value="docs&links">Documents & Links</TabsTrigger>
             <TabsTrigger value="photogallery">Photogallery</TabsTrigger>
           </TabsList>
           <TabsContent value="description" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
             <h1>Hello world!</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias veniam a veritatis voluptate esse ut debitis reprehenderit fuga culpa, soluta cum obcaecati facilis, rerum fugiat! Saepe doloribus dolores ratione voluptate.</p>
+          </TabsContent>
+          <TabsContent value="features" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
+            <VehicleFeatures />
           </TabsContent>
           <TabsContent value="docs&links" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
             <h2>Dokumenty</h2>

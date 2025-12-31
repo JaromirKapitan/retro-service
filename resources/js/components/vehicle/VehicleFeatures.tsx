@@ -4,7 +4,7 @@ import { Badge } from '../ui/badge'
 
 const VehicleFeatures = () => {
   return (
-    <section className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4'>
+    <section className='grid grid-cols-1 md:grid-cols-2 gap-4'>
       <Card className='p-4 w-full flex flex-row gap-4 justify-between'>
         <Label>Maximálna rýchlosť</Label>
         <Badge>100km/h</Badge>
