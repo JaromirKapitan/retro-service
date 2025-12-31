@@ -26,7 +26,7 @@ const VehicleFilter = ({filter}: Props) => {
     return (
         <ErrorBoundary fallback={<div>Chyba</div>}>
             <Card className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 gap-x-8 w-full p-4 bg-primary-foreground rounded-2xl'>
-                <div className='flex gap-4'>
+                <div className='grid grid-cols-[80px_1fr] xl:flex xl:gap-4'>
                     <Label>Typ</Label>
                     <Select>
                         <SelectTrigger className='w-full' disabled={ filter?.types && filter.types.length > 0 ? false : true }>
@@ -43,7 +43,7 @@ const VehicleFilter = ({filter}: Props) => {
                         </SelectContent>
                     </Select>
                 </div>
-                <div className='flex gap-4'>
+                <div className='grid grid-cols-[80px_1fr] xl:flex xl:gap-4'>
                     <Label>Znacka</Label>
                     <Select>
                         <SelectTrigger className='w-full' disabled={ filter?.brands && filter.brands.length > 0 ? false : true }>
@@ -60,7 +60,7 @@ const VehicleFilter = ({filter}: Props) => {
                         </SelectContent>
                     </Select>
                 </div>
-                <div className='flex gap-4'>
+                <div className='grid grid-cols-[80px_1fr] xl:flex xl:gap-4'>
                     <Label>Model</Label>
                     <Select>
                         <SelectTrigger className='w-full' disabled={ filter?.models && filter.models.length > 0 ? false : true }>
@@ -77,7 +77,7 @@ const VehicleFilter = ({filter}: Props) => {
                         </SelectContent>
                     </Select>
                 </div>
-                <div className='flex gap-4'>
+                <div className='grid grid-cols-[80px_1fr] xl:flex xl:gap-4'>
                     <Label>Rok</Label>
                     <Input placeholder='1968' type='text'/>
                 </div>
