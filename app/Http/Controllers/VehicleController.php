@@ -19,4 +19,11 @@ class VehicleController extends Controller
             'vehicles' => $this->vehiclePageService->getVehicles(),
         ]);
     }
+
+    public function show(string $seo)
+    {
+        return inertia('VehiclePage', [
+            'vehicle' => $this->vehiclePageService->getVehicleBySeo($seo),
+        ]);
+    }
 }
