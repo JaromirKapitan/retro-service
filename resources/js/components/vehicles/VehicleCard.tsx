@@ -1,28 +1,10 @@
-import React from 'react'
 import { Button } from '../ui/button'
 import { Card } from '../ui/card'
 import { Link } from '@inertiajs/react'
 import { Badge } from '../ui/badge'
+import { Vehicle } from '@/lib/types/VehicleInfo'
 
-
-interface Vehicle {
-    id: number
-    title: string
-    sub_title: string
-    description: string
-    brand: string
-    model: string
-    year_from: number
-    year_to?: number | null
-    thumbnail: string
-    [key: string]: any
-}
-
-interface VehicleCardProps {
-    vehicle: Vehicle
-}
-
-const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle }) => {
+const VehicleCard = ({ vehicle }: { vehicle: Vehicle }) => {
   return (
     <Card className="p-4 flex flex-col gap-2 mb-auto">
       <Link href={`/vehicles/${vehicle.model}`}>
