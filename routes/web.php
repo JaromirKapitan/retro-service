@@ -7,6 +7,7 @@ Auth::routes();
 Route::middleware(['sync.lang'])->group(function () {
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/vehicles', [\App\Http\Controllers\VehicleController::class, 'index']);
+    Route::get('/vehicle/{seo}', [\App\Http\Controllers\VehicleController::class, 'show'])->name('vehicle.show');
 });
 
 Route::get('/login', function () {

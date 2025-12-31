@@ -50,6 +50,12 @@ class VehiclePageService
             ->with('media')
             ->get()
             ->map(function ($vehicle) {
+
+                if($vehicle->getMedia('images')->isNotEmpty())
+                    $thumbnail = $vehicle->getMedia('images')->first()->getUrl('thumb') ?? $vehicle->getMedia('images')->first()->getUrl();
+                else
+                    $thumbnail = asset('images/no_image_car.jpg');
+
                 return [
                     'id' => $vehicle->id,
                     'title' => $vehicle->title,
@@ -60,10 +66,45 @@ class VehiclePageService
                     'model' => $vehicle->model,
                     'year_from' => $vehicle->year_from,
                     'year_to' => $vehicle->year_to,
-                    'thumbnail' => $vehicle->getFirstMediaUrl('default', 'thumb') ?: asset('images/no_image_car.jpg'),
+                    'thumbnail' => $thumbnail,
+                    'url' => route('vehicle.show', ['seo' => $vehicle->seo->slug]),
                 ];
             })->toArray();
 
         return $vehicles;
+    }
+
+    // get vehicle by seo slug
+    public function getVehicleBySeo(string $seo): ?array
+    {
+        $vehicle = Vehicle::whereHas('seo', function ($query) use ($seo) {
+            $query->where('slug', $seo);
+        })->with('media')->first();
+
+        if (!$vehicle) {
+            return null;
+        }
+
+        return [
+            'id' => $vehicle->id,
+            'title' => $vehicle->title,
+            'sub_title' => $vehicle->sub_title,
+            'description' => $vehicle->description,
+            'content' => $vehicle->content,
+            'type' => $vehicle->typeEnum,
+            'brand' => $vehicle->brand,
+            'model' => $vehicle->model,
+            'year_from' => $vehicle->year_from,
+            'year_to' => $vehicle->year_to,
+            'specs_html' => $vehicle->specs_html,
+            'modifications_html' => $vehicle->modifications_html,
+            'links_html' => $vehicle->links_html,
+            'images' => $vehicle->getMedia('default')->map(function ($media) {
+                return [
+                    'url' => $media->getUrl(),
+                    'thumb_url' => $media->getUrl('thumb'),
+                ];
+            })->toArray(),
+        ];
     }
 }
