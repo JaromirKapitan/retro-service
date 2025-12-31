@@ -50,6 +50,12 @@ class VehiclePageService
             ->with('media')
             ->get()
             ->map(function ($vehicle) {
+
+                if($vehicle->getMedia('images')->isNotEmpty())
+                    $thumbnail = $vehicle->getMedia('images')->first()->getUrl('thumb') ?? $vehicle->getMedia('images')->first()->getUrl();
+                else
+                    $thumbnail = asset('images/no_image_car.jpg');
+
                 return [
                     'id' => $vehicle->id,
                     'title' => $vehicle->title,
@@ -60,7 +66,7 @@ class VehiclePageService
                     'model' => $vehicle->model,
                     'year_from' => $vehicle->year_from,
                     'year_to' => $vehicle->year_to,
-                    'thumbnail' => $vehicle->getFirstMediaUrl('default', 'thumb') ?: asset('images/no_image_car.jpg'),
+                    'thumbnail' => $thumbnail,
                     'url' => route('vehicle.show', ['seo' => $vehicle->seo->slug]),
                 ];
             })->toArray();
