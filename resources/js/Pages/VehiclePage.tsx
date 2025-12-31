@@ -41,11 +41,11 @@ const VehiclePage = () => {
       </Hero>
       <Container className='p-4'>
         <Tabs value={activeTab} onValueChange={onTabChange} defaultValue="description">
-          <TabsList className="mx-auto mt-4">
-            <TabsTrigger value="description">Description</TabsTrigger>
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="docs&links">Documents & Links</TabsTrigger>
-            <TabsTrigger value="photogallery">Photogallery</TabsTrigger>
+          <TabsList className="mx-auto mt-4 flex-col h-auto w-full md:w-auto md:flex-row">
+            <TabsTrigger className='w-full' value="description">Description</TabsTrigger>
+            <TabsTrigger className='w-full' value="features">Features</TabsTrigger>
+            <TabsTrigger className='w-full' value="docs&links">Documents & Links</TabsTrigger>
+            <TabsTrigger className='w-full' value="photogallery">Photogallery</TabsTrigger>
           </TabsList>
           <TabsContent value="description" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
             <h1>Hello world!</h1>
