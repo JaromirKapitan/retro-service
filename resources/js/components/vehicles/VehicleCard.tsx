@@ -2,9 +2,9 @@ import { Button } from '../ui/button'
 import { Card } from '../ui/card'
 import { Link } from '@inertiajs/react'
 import { Badge } from '../ui/badge'
-import { Vehicle } from '@/lib/types/VehicleInfo'
+import { VehicleCardInfo } from '@/lib/types/VehicleCardInfo'
 
-const VehicleCard = ({ vehicle }: { vehicle: Vehicle }) => {
+const VehicleCard = ({ vehicle }: { vehicle: VehicleCardInfo }) => {
   return (
     <Card className="p-4 flex flex-col gap-2 mb-auto">
       <Link href={vehicle.url}>

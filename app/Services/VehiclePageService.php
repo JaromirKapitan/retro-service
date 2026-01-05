@@ -3,12 +3,18 @@
 namespace App\Services;
 
 use App\Enums\VehicleTypeEnum;
+use App\Enums\WebPageEnum;
 use App\Http\Resources\WebPageResource;
 use App\Models\Vehicle;
 use App\Models\WebPage;
 
 class VehiclePageService
 {
+    public function getWebPage()
+    {
+        return WebPageResource::make(WebPage::for(WebPageEnum::VEHICLES)->first());
+    }
+
     public function getFilter(): array
     {
         return [
@@ -85,12 +91,19 @@ class VehiclePageService
             return null;
         }
 
+        $images = $vehicle->getMedia('images')->map(function ($media) {
+            return [
+                'url' => $media->getUrl(),
+                'thumb_url' => $media->getUrl('thumb'),
+            ];
+        })->toArray();
+
         return [
             'id' => $vehicle->id,
             'title' => $vehicle->title,
             'sub_title' => $vehicle->sub_title,
             'description' => $vehicle->description,
-            'content' => $vehicle->content,
+            'content_html' => $vehicle->content_html,
             'type' => $vehicle->typeEnum,
             'brand' => $vehicle->brand,
             'model' => $vehicle->model,
@@ -99,12 +112,8 @@ class VehiclePageService
             'specs_html' => $vehicle->specs_html,
             'modifications_html' => $vehicle->modifications_html,
             'links_html' => $vehicle->links_html,
-            'images' => $vehicle->getMedia('default')->map(function ($media) {
-                return [
-                    'url' => $media->getUrl(),
-                    'thumb_url' => $media->getUrl('thumb'),
-                ];
-            })->toArray(),
+            'hero_img' => $images[0]['url'] ?? asset('images/no_image_car_detail.png'),
+            'images' => $images,
         ];
     }
 }

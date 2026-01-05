@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ContentStatusEnum;
+use App\Enums\WebPageEnum;
 use App\Models\Traits\ContentAble;
 use App\Models\Traits\LangMutation;
 use App\Models\Traits\Seoble;
@@ -60,9 +61,9 @@ class WebPage extends Model implements HasMedia
         }
     }
 
-    public function scopeHome(Builder $query)
+    public function scopeFor(Builder $query, WebPageEnum $for)
     {
-        $query->where('home', 1);
+        $query->where('for', $for->value);
     }
 
     public function setForVehiclesAttribute($value)

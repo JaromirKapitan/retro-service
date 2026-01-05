@@ -11,4 +11,9 @@ return [
     'motobikes' => 'Motocyklů',
     'buses' => 'Autobusů',
     'vehicles_2' => 'Vozidla',
+    'description' => 'Popis',
+    'params' => 'Parametry',
+    'documents_and_links' => 'Dokumenty a odkazy',
+    'gallery' => 'Galerie',
+    'modifications' => 'Modifikace',
 ];

@@ -3,11 +3,11 @@ import Hero from "@/components/misc/Hero"
 import Container from "@/components/ui/container"
 import VehicleFilter, { VehicleFilterState } from "@/components/vehicles/VehicleFilter"
 import VehicleCard from "@/components/vehicles/VehicleCard"
-import { VehicleInfo } from "@/lib/types/VehicleInfo"
+import { VehicleCardInfo } from "@/lib/types/VehicleCardInfo"
 import { useEffect, useMemo, useState } from "react"
 import { FilterOptions } from "@/lib/types/FilterOptions"
 
-const VehiclesPage = ({ filter, vehicles }: { filter?: FilterOptions | null, vehicles: VehicleInfo[] }) => {
+const VehiclesPage = ({filter, vehicles, page, hero_img }: {filter?: FilterOptions | null, vehicles: VehicleCardInfo[],  page?: any, hero_img?: string }) => {
   const [currentFilters, setCurrentFilters] = useState<VehicleFilterState>({
     type: 'all',
     brand: 'all',
@@ -26,19 +26,19 @@ const VehiclesPage = ({ filter, vehicles }: { filter?: FilterOptions | null, veh
   }, [currentFilters.year])
 
   const dynamicOptions = useMemo(() => {
-    const availableForModels = vehicles.filter(v => 
+    const availableForModels = vehicles.filter(v =>
       (currentFilters.type === 'all' || v.type === currentFilters.type) &&
       (currentFilters.brand === 'all' || v.brand === currentFilters.brand)
     )
 
-    const availableForBrands = vehicles.filter(v => 
+    const availableForBrands = vehicles.filter(v =>
       (currentFilters.type === 'all' || v.type === currentFilters.type)
     )
 
     return {
       brands: Array.from(new Set(availableForBrands.map(v => v.brand))),
       models: Array.from(new Set(availableForModels.map(v => v.model))),
-      types: filter?.types || [] 
+      types: filter?.types || []
     }
   }, [currentFilters.type, currentFilters.brand, vehicles, filter])
 
@@ -47,7 +47,7 @@ const VehiclesPage = ({ filter, vehicles }: { filter?: FilterOptions | null, veh
       const matchesType = currentFilters.type === 'all' || vehicle.type === currentFilters.type
       const matchesBrand = currentFilters.brand === 'all' || vehicle.brand === currentFilters.brand
       const matchesModel = currentFilters.model === 'all' || vehicle.model === currentFilters.model
-      
+
       let matchesYear = true
       if (debouncedYear) {
         const endYear = vehicle.year_to || vehicle.year_from
@@ -82,8 +82,8 @@ const VehiclesPage = ({ filter, vehicles }: { filter?: FilterOptions | null, veh
 
   return (
     <BaseLayout>
-      <Hero>
-        <h1 className='text-4xl font-semibold text-center'>{__('web.vehicles_2')}</h1>
+      <Hero size='lg' img={hero_img}>
+        <h1 className='text-4xl font-semibold text-center'>{page.data.title}</h1>
       </Hero>
       <Container className='flex flex-col gap-4 p-4'>
         <VehicleFilter

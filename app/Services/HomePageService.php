@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\VehicleTypeEnum;
+use App\Enums\WebPageEnum;
 use App\Http\Resources\WebPageResource;
 use App\Models\Vehicle;
 use App\Models\WebPage;
@@ -21,6 +22,6 @@ class HomePageService
 
     public function getPage()
     {
-        return WebPageResource::make(WebPage::home()->first());
+        return WebPageResource::make(WebPage::for(WebPageEnum::HOME)->first());
     }
 }

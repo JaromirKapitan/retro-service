@@ -56,19 +56,24 @@ class Vehicle extends Model implements HasMedia
             ->height(360);
     }
 
+    public function getContentHtmlAttribute()
+    {
+        return Str::of($this->content)->markdown()->value;
+    }
+
     public function getSpecsHtmlAttribute()
     {
-        return Str::of($this->specs)->markdown();
+        return Str::of($this->specs)->markdown()->value;
     }
 
     public function getModificationsHtmlAttribute()
     {
-        return Str::of($this->modifications)->markdown();
+        return Str::of($this->modifications)->markdown()->value;
     }
 
     public function getLinksHtmlAttribute()
     {
-        return Str::of($this->links)->markdown();
+        return Str::of($this->links)->markdown()->value;
     }
 
     public function scopeOfType($query, VehicleTypeEnum $type)
