@@ -14,7 +14,7 @@ class WebPageResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return $this->only([
+        $data = $this->only([
             'id',
             'title',
             'slug',
@@ -24,5 +24,10 @@ class WebPageResource extends JsonResource
             'meta_keywords',
             'lang',
         ]);
+
+        $media = $this->getMedia('images');
+        $data['hero_img'] = !empty($media) && $media->isNotEmpty() ? $media->first()->getUrl() : asset('images/no_image_car_detail.png');
+
+        return $data;
     }
 }

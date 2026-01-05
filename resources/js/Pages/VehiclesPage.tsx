@@ -7,7 +7,7 @@ import { VehicleCardInfo } from "@/lib/types/VehicleCardInfo"
 import { useEffect, useMemo, useState } from "react"
 import { FilterOptions } from "@/lib/types/FilterOptions"
 
-const VehiclesPage = ({filter, vehicles, page, hero_img }: {filter?: FilterOptions | null, vehicles: VehicleCardInfo[],  page?: any, hero_img?: string }) => {
+const VehiclesPage = ({filter, vehicles, page }: {filter?: FilterOptions | null, vehicles: VehicleCardInfo[],  page: any }) => {
   const [currentFilters, setCurrentFilters] = useState<VehicleFilterState>({
     type: 'all',
     brand: 'all',
@@ -82,7 +82,7 @@ const VehiclesPage = ({filter, vehicles, page, hero_img }: {filter?: FilterOptio
 
   return (
     <BaseLayout>
-      <Hero size='lg' img={hero_img}>
+      <Hero size='lg' img={page.data.hero_img}>
         <h1 className='text-4xl font-semibold text-center'>{page.data.title}</h1>
       </Hero>
       <Container className='flex flex-col gap-4 p-4'>

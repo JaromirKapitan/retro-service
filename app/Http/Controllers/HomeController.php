@@ -22,7 +22,6 @@ class HomeController extends Controller
         return inertia('HomePage', [
             'stats' => $this->homePageService->getStats(),
             'page' => $page,
-            'hero_img' => $page->getMedia('images')->first()->getUrl(),
         ]);
     }
 

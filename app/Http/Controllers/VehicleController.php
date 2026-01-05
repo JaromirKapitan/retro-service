@@ -18,11 +18,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $page = $this->vehiclePageService->getWebPage();
-
         return inertia('VehiclesPage', [
-            'page' => $page,
-            'hero_img' => $page->getMedia('images')->first()->getUrl(),
+            'page' => $this->vehiclePageService->getWebPage(),
             'filter' => $this->vehiclePageService->getFilter(),
             'vehicles' => $this->vehiclePageService->getVehicles(),
         ]);
