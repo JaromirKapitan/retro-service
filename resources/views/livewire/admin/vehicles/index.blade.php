@@ -46,6 +46,21 @@
             <label for="year" class="form-label">{{ __('Year') }}</label>
             <input type="text" class="form-control" id="year" placeholder="1885" wire:model.live="filter.year">
         </div>
+
+{{-- status --}}
+        <div class="col-sm-3 mt-3">
+            <div>
+                <label for="status" class="form-label">{{ __('Status') }}</label>
+
+                <select id="status" name="status" class="form-control" wire:model.live="filter.status">
+                    <option value="0">-- {{ __('admin.status') }} --</option>
+
+                    @foreach($filterOptions['statuses'] as $status)
+                        <option value="{{ $status->value }}">{{ __($status->getTitle()) }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
     </section>
 
     <table class="table table-hover border-1">
@@ -75,6 +90,8 @@
                     @endif
                 </td>
                 <td class="text-end">
+                    <a href="{{ route('admin.vehicles.show', $item) }}" class="text-secondary text-hover-success" title="{{ __('admin.detail') }}"><i class="fa fa-eye"></i></a>
+
                     <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()"/>
                 </td>
             </tr>

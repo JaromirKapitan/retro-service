@@ -29,4 +29,13 @@ enum ContentStatusEnum: string
 
         return "warning";
     }
+
+    public function getTitle()
+    {
+        return match ($this) {
+            self::Draft => trans('admin.draft'),
+            self::Published => trans('admin.published'),
+            self::Archived => trans('admin.archived'),
+        };
+    }
 }

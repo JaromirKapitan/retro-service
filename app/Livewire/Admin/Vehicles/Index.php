@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Vehicles;
 
+use App\Enums\ContentStatusEnum;
 use App\Enums\VehicleTypeEnum;
 use App\Models\Vehicle;
 use Livewire\Component;
@@ -14,6 +15,7 @@ class Index extends Component
         'brand' => null,
         'model' => null,
         'year' => null,
+        'status' => null,
     ];
 
     public function boot()
@@ -23,17 +25,16 @@ class Index extends Component
             'brands' => Vehicle::query()
                 ->distinct('brand')
                 ->whereNotNull('brand')
-                ->published()
                 ->orderBy('brand')
                 ->pluck('brand')
                 ->toArray(),
             'models' => Vehicle::query()
                 ->distinct('model')
                 ->whereNotNull('model')
-                ->published()
                 ->orderBy('model')
                 ->pluck('model')
                 ->toArray(),
+            'statuses' => ContentStatusEnum::cases(),
         ];
     }
 
@@ -61,6 +62,10 @@ class Index extends Component
                             ->orWhere('year_to', '>=', $year);
                     });
             });
+        }
+
+        if (!empty($this->filter['status'])) {
+            $query->where('status', $this->filter['status']);
         }
 
         return $query->get();
