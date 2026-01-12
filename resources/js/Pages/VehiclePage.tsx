@@ -6,6 +6,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 import {useEffect, useState} from 'react'
 import {VehicleInfo} from "@/lib/types/VehicleInfo";
 import {Card} from "@/components/ui/card";
+import VehicleGallery from '@/components/vehicle/VehicleGallery'
 
 const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
     const [activeTab, setActiveTab] = useState('description')
@@ -13,7 +14,7 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
     const hasSpecs = typeof vehicle.specs_html === 'string' && vehicle.specs_html.replace(/<[^>]*>/g, '').trim().length > 0
     const hasMods = typeof vehicle.modifications_html === 'string' && vehicle.modifications_html.replace(/<[^>]*>/g, '').trim().length > 0
     const hasLinks = typeof vehicle.links_html === 'string' && vehicle.links_html.replace(/<[^>]*>/g, '').trim().length > 0
-    const hasGallery = Array.isArray(vehicle.images) && vehicle.images.length >= 2
+    let hasGallery = Array.isArray(vehicle.images) && vehicle.images.length >= 2
 
     useEffect(() => {
         const handleHashChange = () => {
@@ -87,21 +88,15 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                     )}
                     {hasGallery && (
                         <TabsContent value="photogallery" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
-                            <section className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4'>
-                                {
-                                    vehicle.images.length > 0 ? (
-                                        vehicle.images.map((image) => (
-                                            <Card className="p-4 flex flex-col gap-2 mb-auto">
-                                                <img src={image.thumb_url} alt={vehicle.title} className='w-full h-full object-cover rounded-xl'/>
-                                            </Card>
-                                        ))
-                                    ) : (
-                                        <div className="col-span-full text-center py-10">
-                                            {__('web.no_photos_available')}
-                                        </div>
-                                    )
-                                }
-                            </section>
+                            {
+                                vehicle.images.length > 0 ? (
+                                    <VehicleGallery id="gallery" images={vehicle.images} />
+                                ) : (
+                                    <div className="col-span-full text-center py-10">
+                                        {__('web.no_photos_available')}
+                                    </div>
+                                )
+                            }
                         </TabsContent>
                     )}
                 </Tabs>
