@@ -5,7 +5,6 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs'
 import BaseLayout from '@/layouts/BaseLayout'
 import {useEffect, useState} from 'react'
 import {VehicleInfo} from "@/lib/types/VehicleInfo";
-import {Card} from "@/components/ui/card";
 import VehicleGallery from '@/components/vehicle/VehicleGallery'
 
 const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
