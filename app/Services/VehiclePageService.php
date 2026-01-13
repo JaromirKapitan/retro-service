@@ -21,6 +21,7 @@ class VehiclePageService
             // types of published vehicles from model Vehicle
             'types' => Vehicle::published()
                 ->select('type')
+                ->withoutGlobalScopes(['order'])
                 ->distinct()
                 ->get()
                 ->map(function ($vehicle) {
@@ -32,6 +33,7 @@ class VehiclePageService
 
             'brands' => Vehicle::published()
                 ->select('brand')
+                ->withoutGlobalScopes(['order'])
                 ->distinct()
                 ->get()
                 ->map(function ($vehicle) {
@@ -41,6 +43,7 @@ class VehiclePageService
 
             'models' => Vehicle::published()
                 ->select('model')
+                ->withoutGlobalScopes(['order'])
                 ->distinct()
                 ->get()
                 ->map(function ($vehicle) {
