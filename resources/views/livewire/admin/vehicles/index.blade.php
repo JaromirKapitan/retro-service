@@ -70,8 +70,8 @@
             <th>{{ __('admin.title') }}</th>
             <th>{{ __('admin.status') }}</th>
             <th class="text-center">{{ __('admin.date') }}</th>
-            <th></th>
-            <th></th>
+            <th class="fit-content"></th>
+            <th class="fit-content"></th>
         </tr>
         </thead>
 
@@ -90,12 +90,12 @@
                         {{ $item->published_until->format('d.m.Y') }}
                     @endif
                 </td>
-                <td>
+                <td class="text-end fit-content">
                     @if($item->isPublished)
                         <a href="{{ route('vehicle.show', $item->seo->slug) }}" class="text-secondary text-hover-success" title="{{ __('admin.online_web') }}" target="_blank"><i class="fa fa-globe"></i></a>
                     @endif
                 </td>
-                <td class="text-end">
+                <td class="text-end fit-content">
                     @if($item->task)
                         <a href="{{ route('admin.tasks.show', $item->task) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-list-check"></i></a>
                     @endif
