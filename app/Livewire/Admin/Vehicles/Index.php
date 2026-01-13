@@ -23,12 +23,14 @@ class Index extends Component
         $this->filterOptions = [
             'types' => VehicleTypeEnum::cases(),
             'brands' => Vehicle::query()
+                ->withoutGlobalScopes(['order'])
                 ->distinct('brand')
                 ->whereNotNull('brand')
                 ->orderBy('brand')
                 ->pluck('brand')
                 ->toArray(),
             'models' => Vehicle::query()
+                ->withoutGlobalScopes(['order'])
                 ->distinct('model')
                 ->whereNotNull('model')
                 ->orderBy('model')

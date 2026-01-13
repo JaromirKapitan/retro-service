@@ -27,6 +27,13 @@ class Vehicle extends Model implements HasMedia
         'status' => ContentStatusEnum::Draft->value
     ];
 
+    protected static function booted()
+    {
+        static::addGlobalScope('order', function ($query) {
+            $query->orderBy('id', 'desc');
+        });
+    }
+
     public function webPages()
     {
         return $this->belongsToMany(WebPage::class);
@@ -84,5 +91,9 @@ class Vehicle extends Model implements HasMedia
     public function getTypeEnumAttribute(): VehicleTypeEnum
     {
         return VehicleTypeEnum::from($this->type);
+    }
+
+    public function task(){
+        return $this->hasOne(Task::class);
     }
 }

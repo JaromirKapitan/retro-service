@@ -37,6 +37,15 @@
                                 </div>
 
                                 <div class="card-body">
+                                    @if($task->vehicle)
+                                        <div>
+                                            <i class="fa fa-car"></i>
+                                            <a href="{{ route('admin.vehicles.show', $task->vehicle) }}" class="text-secondary text-hover-info" title="{{ __('admin.vehicle') }}">
+                                                {{ $task->vehicle->title }}
+                                            </a>
+                                        </div>
+                                    @endif
+
                                     <div class="d-flex justify-content-between">
                                         <span>{{ $task->updated_at->format('d.m.Y H:i') }}</span>
                                         <span>{{ optional($task->admin)->name }}</span>

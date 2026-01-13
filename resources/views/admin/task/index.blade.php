@@ -25,6 +25,12 @@
                     <x-status-label :status="$item->statusEnum"/>
                 </td>
                 <td class="text-end">
+                    @if($item->vehicle)
+                        <a href="{{ route('admin.vehicles.show', $item->vehicle) }}" class="text-secondary text-hover-success" title="{{ __('admin.vehicle') }}">
+                            <i class="fa fa-car"></i>
+                        </a>
+                    @endif
+
                     <x-entity.table-buttons entity="tasks" :item="$item"/>
                 </td>
             </tr>

@@ -17,6 +17,7 @@ class Task extends Model
         'due_date',
         'status',
         'admin_id',
+        'vehicle_id',
     ];
 
     public function getStatusEnumAttribute()
@@ -27,5 +28,10 @@ class Task extends Model
     public function admin()
     {
         return $this->belongsTo(Admin::class);
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
     }
 }

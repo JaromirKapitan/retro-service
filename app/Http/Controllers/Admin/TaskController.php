@@ -6,6 +6,7 @@ use App\Enums\TaskStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
+use App\Models\Vehicle;
 use App\Services\AdminService;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,15 @@ class TaskController extends Controller
             // user_options => one of Admins
             //  - id, name => use AdminService to get options
             'user_options' => $this->adminService->getOptions($task->admin_id),
+            // vehicle_id options => one of Vehicles
+            //  - id, name => use AdminService to get vehicle options
+            'vehicle_options' => Vehicle::all()->map(function ($vehicle) use ($task) {
+                return (object)[
+                    'value' => $vehicle->id,
+                    'title' => $vehicle->title,
+                    'selected' => $vehicle->id == $task->vehicle_id ? 'selected="selected"' : '',
+                ];
+            }),
         ];
     }
 

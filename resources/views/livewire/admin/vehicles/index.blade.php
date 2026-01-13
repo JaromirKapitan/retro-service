@@ -90,7 +90,11 @@
                     @endif
                 </td>
                 <td class="text-end">
-                    <a href="{{ route('admin.vehicles.show', $item) }}" class="text-secondary text-hover-success" title="{{ __('admin.detail') }}"><i class="fa fa-eye"></i></a>
+
+                    @if($item->task)
+                        <a href="{{ route('admin.tasks.show', $item->task) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-list-check"></i></a>
+                    @endif
+
 
                     <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()"/>
                 </td>

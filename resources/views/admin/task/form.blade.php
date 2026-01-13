@@ -28,12 +28,16 @@
                         <x-form.textarea name="description" :label="__('admin.description')">{{ $model->description }}</x-form.textarea>
                     </div>
 
-                    <div class="mb-3">
-                        <x-form.select name="admin_id" :label="__('admin.assign_to')" :options="$form->user_options" :emptyLabel="__('admin.select_option')"/>
-                    </div>
-
-                    <div class="mb-3">
-                        <x-form.input name="due_date" :value="optional($model->due_date)->format('Y-m-d')" :label="__('admin.due_date')" :inputAttributes="['type'=>'date']"/>
+                    <div class="mb-3 row">
+                        <div class="col-4">
+                            <x-form.select name="vehicle_id" :label="__('admin.vehicle')" :options="$form->vehicle_options" :emptyLabel="__('admin.select_option')"/>
+                        </div>
+                        <div class="col-4">
+                            <x-form.select name="admin_id" :label="__('admin.assign_to')" :options="$form->user_options" :emptyLabel="__('admin.select_option')"/>
+                        </div>
+                        <div class="col-4">
+                            <x-form.input name="due_date" :value="optional($model->due_date)->format('Y-m-d')" :label="__('admin.due_date')" :inputAttributes="['type'=>'date']"/>
+                        </div>
                     </div>
 
                     <div class="mb-3 text-end">
