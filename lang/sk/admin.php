@@ -10,6 +10,7 @@ return [
     'web_pages' => 'Web stránky',
     'web_page' => 'Web page',
     'dashboard' => 'Dashboard',
+    'online_web' => 'Online Web',
 
     'do_you_really_want_to_delete_this_record' => 'Skutočne chcete vymazať tento záznam?',
     'forgot_your_password' => 'Zabudli ste heslo?',

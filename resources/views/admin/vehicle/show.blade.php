@@ -8,5 +8,4 @@
         <h1 class="mt-3">{{ __('admin.files') }}</h1>
         <livewire:Admin.MediaFiles :model="$model" />
     </div>
-
 @endsection

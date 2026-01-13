@@ -15,15 +15,15 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-                    <li class="nav-item" title="{{ __('admin.dashboard') }}">
-                        <a class="nav-link" href="{{ route('admin.dashboard') }}">
-                            <i class="fa fa-home"></i>
-                            <span class="d-md-none">{{ __('admin.dashboard') }}</span>
+                    <li class="nav-item" title="{{ __('admin.online_web') }}">
+                        <a class="nav-link" href="/">
+                            <i class="fa fa-globe"></i>
+                            <span class="d-md-none">{{ __('admin.online_web') }}</span>
                         </a>
                     </li>
                     <li class="nav-item" title="{{ __('admin.web_pages') }}">
                         <a @class(['nav-link', 'active'=>request()->routeIs('admin.web-pages.*')]) href="{{ route('admin.web-pages.index') }}">
-                            <i class="fa fa-globe"></i>
+                            <i class="fa fa-copy"></i>
                             <span class="d-md-none">{{ __('admin.web_pages') }}</span>
                         </a>
                     </li>
