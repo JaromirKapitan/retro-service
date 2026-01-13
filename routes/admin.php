@@ -28,6 +28,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
     Route::middleware('auth:admin')->group(function () {
+        Route::get('/check', function () {
+            return response()->json(['isAdmin' => true]);
+        })->name('login');
+
         Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/pull', [\App\Http\Controllers\Admin\SystemController::class, 'pull'])->name('pull');

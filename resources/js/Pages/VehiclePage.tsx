@@ -6,6 +6,8 @@ import BaseLayout from '@/layouts/BaseLayout'
 import {useEffect, useState} from 'react'
 import {VehicleInfo} from "@/lib/types/VehicleInfo";
 import VehicleGallery from '@/components/vehicle/VehicleGallery'
+import {Link} from "@inertiajs/react";
+import Admin from "@/components/Admin";
 
 const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
     const [activeTab, setActiveTab] = useState('description')
@@ -63,6 +65,11 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                         {hasGallery && (
                             <TabsTrigger className='w-full' value="photogallery">{__('web.gallery')}</TabsTrigger>
                         )}
+                        <Admin>
+                            <a href={`/admin/vehicles/${vehicle.id}`} className='w-full px-2' target='_blank'>
+                                {__('web.admin')}
+                            </a>
+                        </Admin>
                     </TabsList>
 
                     {hasContent && (

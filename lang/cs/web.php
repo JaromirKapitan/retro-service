@@ -16,4 +16,5 @@ return [
     'documents_and_links' => 'Dokumenty a odkazy',
     'gallery' => 'Galerie',
     'modifications' => 'Modifikace',
+    'admin' => 'Admin',
 ];
