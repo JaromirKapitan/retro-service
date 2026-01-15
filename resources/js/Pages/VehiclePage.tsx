@@ -4,10 +4,10 @@ import Container from '@/components/ui/container'
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs'
 import BaseLayout from '@/layouts/BaseLayout'
 import {useEffect, useState} from 'react'
-import {VehicleInfo} from "@/lib/types/VehicleInfo";
+import {VehicleInfo} from "@/lib/types/VehicleInfo"
 import VehicleGallery from '@/components/vehicle/VehicleGallery'
-import {Link} from "@inertiajs/react";
-import Admin from "@/components/Admin";
+import Admin from "@/components/Admin"
+import { Button } from '@/components/ui/button'
 
 const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
     const [activeTab, setActiveTab] = useState('description')
@@ -49,51 +49,55 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
             </Hero>
             <Container className='p-4'>
                 <Tabs value={activeTab} onValueChange={onTabChange} defaultValue="description">
-                    <TabsList className="mx-auto mt-4 flex-col h-auto w-full md:w-auto md:flex-row">
-                        {hasContent && (
-                            <TabsTrigger className='w-full' value="description">{__('web.description')}</TabsTrigger>
-                        )}
-                        {hasSpecs && (
-                            <TabsTrigger className='w-full' value="params">{__('web.params')}</TabsTrigger>
-                        )}
-                        {hasMods && (
-                            <TabsTrigger className='w-full' value="modifications">{__('web.modifications')}</TabsTrigger>
-                        )}
-                        {hasLinks && (
-                            <TabsTrigger className='w-full' value="docs&links">{__('web.documents_and_links')}</TabsTrigger>
-                        )}
-                        {hasGallery && (
-                            <TabsTrigger className='w-full' value="photogallery">{__('web.gallery')}</TabsTrigger>
-                        )}
+                    <div className='flex flex-col md:flex-row gap-4 mt-4 w-full relative px-4'>
+                        <TabsList className="mx-auto flex-col h-auto w-full md:w-auto md:flex-row">
+                            {hasContent && (
+                                <TabsTrigger className='w-full' value="description">{__('web.description')}</TabsTrigger>
+                            )}
+                            {hasSpecs && (
+                                <TabsTrigger className='w-full' value="params">{__('web.params')}</TabsTrigger>
+                            )}
+                            {hasMods && (
+                                <TabsTrigger className='w-full' value="modifications">{__('web.modifications')}</TabsTrigger>
+                            )}
+                            {hasLinks && (
+                                <TabsTrigger className='w-full' value="docs&links">{__('web.documents_and_links')}</TabsTrigger>
+                            )}
+                            {hasGallery && (
+                                <TabsTrigger className='w-full' value="photogallery">{__('web.gallery')}</TabsTrigger>
+                            )}
+                        </TabsList>
                         <Admin>
-                            <a href={`/admin/vehicles/${vehicle.id}`} className='w-full px-2' target='_blank'>
-                                {__('web.admin')}
-                            </a>
+                            <Button className='w-full md:w-fit md:absolute right-0' variant={'outline'} size={'sm'} asChild>
+                                <a href={`/admin/vehicles/${vehicle.id}`} target='_blank'>
+                                    {__('web.admin')}
+                                </a>
+                            </Button>
                         </Admin>
-                    </TabsList>
+                    </div>
 
                     {hasContent && (
-                        <TabsContent value="description" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
+                        <TabsContent value="description" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
                             <div dangerouslySetInnerHTML={{__html: vehicle.content_html}}/>
                         </TabsContent>
                     )}
                     {hasSpecs && (
-                        <TabsContent value="params" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
+                        <TabsContent value="params" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
                             <div dangerouslySetInnerHTML={{__html: vehicle.specs_html}}/>
                         </TabsContent>
                     )}
                     {hasMods && (
-                        <TabsContent value="modifications" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
+                        <TabsContent value="modifications" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
                             <div dangerouslySetInnerHTML={{__html: vehicle.modifications_html}}/>
                         </TabsContent>
                     )}
                     {hasLinks && (
-                        <TabsContent value="docs&links" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
+                        <TabsContent value="docs&links" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
                             <div dangerouslySetInnerHTML={{__html: vehicle.links_html}}/>
                         </TabsContent>
                     )}
                     {hasGallery && (
-                        <TabsContent value="photogallery" className='p-4 w-full prose prose-stone dark:prose-invert mx-auto'>
+                        <TabsContent value="photogallery" className='p-4 w-full max-w-full mx-auto'>
                             {
                                 vehicle.images.length > 0 ? (
                                     <VehicleGallery id="gallery" images={vehicle.images} />

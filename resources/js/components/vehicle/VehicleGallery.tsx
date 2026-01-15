@@ -25,17 +25,17 @@ const VehicleGallery = ({ id, images }: { id: string, images: Image[] }) => {
   }, [])
 
   return (
-    <div className="pswp-gallery" id={id}>
+    <div className="pswp-gallery grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id={id}>
       {images.map((image, index) => (
         <a
           href={image.url}
-          data-pswp-width={1280}
-          data-pswp-height={720}
+          data-pswp-width={480/9*16}
+          data-pswp-height={480}
           key={id + '-' + index}
           target="_blank"
           rel="noreferrer"
         >
-          <img src={image.thumb_url.replace('http://retro-servis.test', '')} alt="" />
+          <img src={image.thumb_url} alt="" />
         </a>
       ))}
     </div>
