@@ -30,7 +30,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/check', function () {
             return response()->json(['isAdmin' => true]);
-        })->name('login');
+        })->name('check');
 
         Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
