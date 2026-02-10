@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <>
       <header className='flex items-center justify-between p-2'>
-        <Link href={'/'} className='px-2 text-2xl font-semibold'>Retro Servis</Link>
+        <Link href={'/'} className='px-2 text-4xl font-semibold font-allura'>RS</Link>
         <div className='flex gap-2'>
           <Button variant='ghost' asChild>
             <Link href='/'>Domov</Link>
