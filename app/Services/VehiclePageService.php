@@ -12,7 +12,7 @@ class VehiclePageService
 {
     public function getWebPage()
     {
-        return WebPageResource::make(WebPage::for(WebPageEnum::VEHICLES)->first());
+        return WebPageResource::make(WebPage::findOrFail(WebPageEnum::VEHICLES));
     }
 
     public function getFilter(): array

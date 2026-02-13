@@ -22,6 +22,6 @@ class HomePageService
 
     public function getPage()
     {
-        return WebPageResource::make(WebPage::for(WebPageEnum::HOME)->first());
+        return WebPageResource::make(WebPage::findOrFail(WebPageEnum::HOME));
     }
 }

@@ -16,13 +16,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class WebPage extends Model implements HasMedia
 {
-    use SoftDeletes, HasFactory, Seoble, InteractsWithMedia, LangMutation, ContentAble;
+    use HasFactory, Seoble, InteractsWithMedia, LangMutation, ContentAble;
 
-    protected $fillable = ['title', 'description', 'content', 'status', 'lang', 'parent_id', 'home', 'for_vehicles'];
-
-    protected $attributes = [
-        'status' => ContentStatusEnum::Draft->value
-    ];
+    protected $fillable = ['title', 'description', 'content', 'lang', 'parent_id'];
 
     public function parent()
     {
@@ -34,51 +30,15 @@ class WebPage extends Model implements HasMedia
         return $query->whereNull('parent_id');
     }
 
+    // idea: presunut do resources !!!
     public function articles()
     {
         return $this->belongsToMany(Article::class)->published();
     }
 
+    // idea: presunut do resources !!!
     public function vehicles()
     {
         return $this->belongsToMany(Vehicle::class)->published();
-    }
-
-    public function getListAttribute()
-    {
-        $collection = collect()->merge($this->articles)->merge($this->vehicles);
-        return $collection->sortBy('created_at')->reverse();
-    }
-
-    public function setHomeAttribute($value)
-    {
-        // ak nastala zmena domovskej stranky zrus oznacenie pri ostatnych strankach
-        if ($value == 1) {
-            self::where('home', 1)->where('id', '!=', $this->id)->update(['home' => null]);
-            $this->attributes['home'] = 1;
-        }else{
-            $this->attributes['home'] = $value;
-        }
-    }
-
-    public function scopeFor(Builder $query, WebPageEnum $for)
-    {
-        $query->where('for', $for->value);
-    }
-
-    public function setForVehiclesAttribute($value)
-    {
-        // ak nastala zmena domovskej stranky zrus oznacenie pri ostatnych strankach
-        if ($value == 1) {
-            self::where('for_vehicles', 1)->where('id', '!=', $this->id)->update(['for_vehicles' => null]);
-            $this->attributes['for_vehicles'] = 1;
-        }else{
-            $this->attributes['for_vehicles'] = $value;
-        }
-    }
-
-    public function scopeForVehicles(Builder $query)
-    {
-        $query->where('for_vehicles', 1);
     }
 }

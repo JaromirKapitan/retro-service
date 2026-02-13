@@ -24,11 +24,6 @@
                             <i class="fa fa-plus"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a @class(['nav-link', 'active'=>request()->routeIs('admin.web-menu.edit')]) href="{{ route('admin.web-menu.edit') }}">
-                            <i class="fa fa-folder-tree"></i>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>

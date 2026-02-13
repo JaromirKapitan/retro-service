@@ -45,7 +45,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
         // web-pages
-        Route::resource('web-pages', \App\Http\Controllers\Admin\WebPageController::class);
+        Route::resource('web-pages', \App\Http\Controllers\Admin\WebPageController::class, ['except' => ['destroy']]);
         Route::get('/web-menu/edit', [\App\Http\Controllers\Admin\WebMenuController::class, 'edit'])->name('web-menu.edit');
 
         // articles

@@ -21,46 +21,26 @@
                     <input type="hidden" id="lang" name="lang" value="{{ $model->lang ?? '' }}">
 
 
-                    <div class="mb-3 row">
-                        <div class="col-sm-2">
-                            @if(!$model->parent_id)
-                                <x-form.checkbox name="home"
-                                                 value="1"
-                                                 :label="__('admin.home_page')"
-                                                 :checked="$model->home"
-                                />
-                                <x-form.checkbox name="for_vehicles"
-                                                 value="1"
-                                                 :label="__('admin.vehicles')"
-                                                 :checked="$model->for_vehicles"
-                                />
-                            @endif
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="mb-3">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <x-form.input name="title" :value="$model->title" :label="__('admin.title')" :inputAttributes="['data-seo' => 'slug']"/>
-                                    </div>
+                    <div class="mb-3">
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="{{ !$model->parent_id ? 'col-sm-6' : 'col-sm-12' }}">
+                                    <x-form.input name="title" :value="$model->title" :label="__('admin.title')" :input-attributes="!$model->id ? ['data-seo' => 'slug'] : []"/>
+                                </div>
+                                @if(!$model->parent_id)
                                     <div class="col-sm-6">
                                         <x-form.input name="slug" :value="optional($model->seo)->slug" :label="__('Slug')"/>
                                     </div>
-                                </div>
+                                @endif
                             </div>
+                        </div>
 
-                            <div class="mb-3">
-                                <x-form.textarea name="description" :label="__('admin.description')">{{ $model->description }}</x-form.textarea>
-                            </div>
+                        <div class="mb-3">
+                            <x-form.textarea name="description" :label="__('admin.description')">{{ $model->description }}</x-form.textarea>
+                        </div>
 
-                            <div class="mb-3">
-                                <x-form.textarea name="content" :label="__('admin.content')" addClass="ckeditor">{{ $model->content }}</x-form.textarea>
-                            </div>
-
-                            @if(!$model->parent_id)
-                                <div class="text-end">
-                                    <x-form.content-status :value="$model->status"/>
-                                </div>
-                            @endif
+                        <div class="mb-3">
+                            <x-form.textarea name="content" :label="__('admin.content')" addClass="ckeditor">{{ $model->content }}</x-form.textarea>
                         </div>
                     </div>
 

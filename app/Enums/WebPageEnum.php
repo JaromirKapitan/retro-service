@@ -2,8 +2,8 @@
 
 namespace App\Enums;
 
-enum WebPageEnum: string
+enum WebPageEnum: int
 {
-    case HOME = 'home';
-    case VEHICLES = 'vehicles';
+    case HOME = 1;
+    case VEHICLES = 2;
 }
