@@ -47,7 +47,7 @@
             <input type="text" class="form-control" id="year" placeholder="1885" wire:model.live="filter.year">
         </div>
 
-{{-- status --}}
+        {{-- status --}}
         <div class="col-sm-3 mt-3">
             <div>
                 <label for="status" class="form-label">{{ __('Status') }}</label>
@@ -92,15 +92,21 @@
                 </td>
                 <td class="text-end fit-content">
                     @if($item->isPublished)
-                        <a href="{{ route('vehicle.show', $item->seo->slug) }}" class="text-secondary text-hover-success" title="{{ __('admin.online_web') }}" target="_blank"><i class="fa fa-globe"></i></a>
+                        <a href="{{ route('vehicle.show', $item->seo->slug) }}" class="text-secondary text-hover-success" title="{{ __('admin.online_web') }}"
+                           target="_blank"><i class="fa fa-globe"></i></a>
                     @endif
                 </td>
                 <td class="text-end fit-content">
                     @if($item->task)
-                        <a href="{{ route('admin.tasks.show', $item->task) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-list-check"></i></a>
+                        <a href="{{ route('admin.tasks.show', $item->task) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i
+                                class="fa fa-list-check"></i></a>
                     @endif
 
-                    <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()"/>
+                    <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()">
+                        <a href="{{ route('admin.vehicles.docs', $item) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-book"></i></a>
+                        <a href="{{ route('admin.vehicles.links', $item) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-link"></i></a>
+                        <a href="{{ route('admin.vehicles.mods', $item) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-wrench"></i></a>
+                    </x-entity.table-buttons>
                 </td>
             </tr>
         @endforeach

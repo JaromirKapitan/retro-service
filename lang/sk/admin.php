@@ -59,6 +59,8 @@ return [
     'modifications_on_vehicle' => 'Modifikácie na vozidle',
     'specs' => 'Parametre',
     'links' => 'Odkazy',
+    'docs' => 'Dokumentacie',
+    'mods' => 'Modifikacie',
 
     'vehicles' => 'Vozidlá',
     'vehicle' => 'Vozidlo',

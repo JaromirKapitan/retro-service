@@ -8,7 +8,7 @@ const VehicleCard = ({ vehicle }: { vehicle: VehicleCardInfo }) => {
   return (
     <Card className="p-4 flex flex-col gap-2 mb-auto">
       <Link href={vehicle.url}>
-        <img src={vehicle.thumbnail} alt={vehicle.title} className='w-full h-full object-cover rounded-xl' />
+        <img src={vehicle.thumbnail} alt={vehicle.title} className='w-full h-full object-cover rounded-xl aspect-[16/9]' />
       </Link>
       <div className="flex gap-2 w-full justify-between items-center">
         <Link href={vehicle.url}>

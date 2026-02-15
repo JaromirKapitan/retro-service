@@ -27,6 +27,8 @@
 
     @endif
 
+    {{ $slot }}
+
     @if(Route::has('admin.'.$entity.'.destroy'))
         <a class="text-secondary text-hover-danger submit-form" href="#" data-ask="{{ __('admin.do_you_really_want_to_delete_this_record') }}"
            title="{{ __('admin.delete') }}">

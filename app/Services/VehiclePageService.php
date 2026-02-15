@@ -106,6 +106,7 @@ class VehiclePageService
             'title' => $vehicle->title,
             'sub_title' => $vehicle->sub_title,
             'description' => $vehicle->description,
+            'docs_html' => $vehicle->docs_html,
             'content_html' => $vehicle->content_html,
             'type' => $vehicle->typeEnum,
             'brand' => $vehicle->brand,

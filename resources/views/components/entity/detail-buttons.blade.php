@@ -39,6 +39,9 @@
             </a>
         </li>
     @endif
+
+    {{ $slot }}
+
     @if(Route::has('admin.'.$entity.'.destroy'))
         <li class="nav-item">
             <a class="nav-link submit-form text-hover-danger" href="#" data-ask="{{ __('admin.do_you_really_want_to_delete_this_record') }}"

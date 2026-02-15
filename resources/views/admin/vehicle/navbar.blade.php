@@ -41,7 +41,31 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <x-entity.detail-buttons entity="vehicles" :model="$model" :multilang="\App\Enums\LangEnum::isMultilang()"/>
+                    <x-entity.detail-buttons entity="vehicles" :model="$model" :multilang="\App\Enums\LangEnum::isMultilang()">
+                        <li class="nav-item">
+                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.vehicles.docs')]) href="{{ route('admin.vehicles.docs', $model) }}"
+                               title="{{ __('admin.docs') }}">
+                                <i class="fa fa-book"></i>
+                                <span class="d-md-none">{{ __('admin.docs') }}</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.vehicles.links')]) href="{{ route('admin.vehicles.links', $model) }}"
+                               title="{{ __('admin.links') }}">
+                                <i class="fa fa-link"></i>
+                                <span class="d-md-none">{{ __('admin.links') }}</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.vehicles.mods')]) href="{{ route('admin.vehicles.mods', $model) }}"
+                               title="{{ __('admin.mods') }}">
+                                <i class="fa fa-wrench"></i>
+                                <span class="d-md-none">{{ __('admin.mods') }}</span>
+                            </a>
+                        </li>
+                    </x-entity.detail-buttons>
                 </div>
             </div>
         @endif

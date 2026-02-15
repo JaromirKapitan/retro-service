@@ -45,10 +45,11 @@ class VehicleController extends Controller
         ]);
     }
 
-    protected function getFormData(Vehicle $vehicle){
+    protected function getFormData(Vehicle $vehicle)
+    {
         return (object)[
             'web_page_options' => WebPage::whereNull('parent_id')->get(),
-            'type_options' => collect(VehicleTypeEnum::cases())->map(function ($item) use ($vehicle){
+            'type_options' => collect(VehicleTypeEnum::cases())->map(function ($item) use ($vehicle) {
                 return (object)[
                     'value' => $item->value,
                     'title' => $item->getTitle(),
@@ -65,7 +66,7 @@ class VehicleController extends Controller
         $vehicle->webPages()->sync($request->get('web_pages'));
 
         return redirect()
-            ->route('admin.vehicles.edit', $vehicle)
+            ->route('admin.vehicles.docs', $vehicle)
             ->with('success', trans('admin.saved'));
     }
 
@@ -102,5 +103,65 @@ class VehicleController extends Controller
             'model' => Vehicle::findOrFail($id),
             'layout' => 'admin.vehicle.layout',
         ];
+    }
+
+    public function docs($id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        return view('admin.vehicle.docs', [
+            'model' => $vehicle,
+            'form' => $this->getFormData($vehicle),
+        ]);
+    }
+
+    public function docsStore(Request $request, $id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        $vehicle->docs = $request->input('docs');
+        $vehicle->save();
+
+        return redirect()
+            ->route('admin.vehicles.docs', $vehicle)
+            ->with('success', trans('admin.saved'));
+    }
+
+    public function links($id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        return view('admin.vehicle.links', [
+            'model' => $vehicle,
+            'form' => $this->getFormData($vehicle),
+        ]);
+    }
+
+    public function linksStore(Request $request, $id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        $vehicle->links = $request->input('links');
+        $vehicle->save();
+
+        return redirect()
+            ->route('admin.vehicles.links', $vehicle)
+            ->with('success', trans('admin.saved'));
+    }
+
+    public function mods($id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        return view('admin.vehicle.mods', [
+            'model' => $vehicle,
+            'form' => $this->getFormData($vehicle),
+        ]);
+    }
+
+    public function modsStore(Request $request, $id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        $vehicle->modifications = $request->input('modifications');
+        $vehicle->save();
+
+        return redirect()
+            ->route('admin.vehicles.mods', $vehicle)
+            ->with('success', trans('admin.saved'));
     }
 }

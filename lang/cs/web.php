@@ -14,7 +14,10 @@ return [
     'description' => 'Popis',
     'params' => 'Parametry',
     'documents_and_links' => 'Dokumenty a odkazy',
+    'links' => 'Odkazy',
     'gallery' => 'Galerie',
     'modifications' => 'Modifikace',
     'admin' => 'Admin',
+    'docs' => 'Dokumentace',
+    'no_docs_available' => 'Žádné dokumenty nejsou k dispozici',
 ];

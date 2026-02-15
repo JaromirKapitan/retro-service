@@ -10,7 +10,8 @@ import Admin from "@/components/Admin"
 import { Button } from '@/components/ui/button'
 
 const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
-    const [activeTab, setActiveTab] = useState('description')
+    const [activeTab, setActiveTab] = useState('docs')
+    const hasDocs = typeof vehicle.docs_html === 'string' && vehicle.docs_html.replace(/<[^>]*>/g, '').trim().length > 0
     const hasContent = typeof vehicle.content_html === 'string' && vehicle.content_html.replace(/<[^>]*>/g, '').trim().length > 0
     const hasSpecs = typeof vehicle.specs_html === 'string' && vehicle.specs_html.replace(/<[^>]*>/g, '').trim().length > 0
     const hasMods = typeof vehicle.modifications_html === 'string' && vehicle.modifications_html.replace(/<[^>]*>/g, '').trim().length > 0
@@ -20,7 +21,7 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
     useEffect(() => {
         const handleHashChange = () => {
             const hash = window.location.hash.replace('#', '')
-            const validTabs = ['description', 'docs&links', 'photogallery']
+            const validTabs = ['description', 'links', 'photogallery']
 
             if (validTabs.includes(hash)) {
                 setActiveTab(hash)
@@ -42,7 +43,6 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                 <div className='flex flex-col gap-4 items-center justify-center relative'>
                     <h1 className='text-4xl font-semibold text-center'>{vehicle.title}</h1>
                     <div className='flex gap-4 absolute right-4 -bottom-28'>
-                        <Badge>Auto</Badge>
                         <Badge>{vehicle.sub_title}</Badge>
                     </div>
                 </div>
@@ -51,6 +51,8 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                 <Tabs value={activeTab} onValueChange={onTabChange} defaultValue="description">
                     <div className='flex flex-col md:flex-row gap-4 mt-4 w-full relative px-4'>
                         <TabsList className="mx-auto flex-col h-auto w-full md:w-auto md:flex-row">
+                            <TabsTrigger className='w-full' value="docs">{__('web.docs')}</TabsTrigger>
+
                             {hasContent && (
                                 <TabsTrigger className='w-full' value="description">{__('web.description')}</TabsTrigger>
                             )}
@@ -61,7 +63,7 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                                 <TabsTrigger className='w-full' value="modifications">{__('web.modifications')}</TabsTrigger>
                             )}
                             {hasLinks && (
-                                <TabsTrigger className='w-full' value="docs&links">{__('web.documents_and_links')}</TabsTrigger>
+                                <TabsTrigger className='w-full' value="links">{__('web.links')}</TabsTrigger>
                             )}
                             {hasGallery && (
                                 <TabsTrigger className='w-full' value="photogallery">{__('web.gallery')}</TabsTrigger>
@@ -75,6 +77,16 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                             </Button>
                         </Admin>
                     </div>
+
+                    <TabsContent value="docs" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
+                        {hasDocs ? (
+                            <div dangerouslySetInnerHTML={{__html: vehicle.docs_html}}/>
+                        ) : (
+                            <div className="col-span-full text-center py-10">
+                                {__('web.no_docs_available')}
+                            </div>
+                        )}
+                    </TabsContent>
 
                     {hasContent && (
                         <TabsContent value="description" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
@@ -92,7 +104,7 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                         </TabsContent>
                     )}
                     {hasLinks && (
-                        <TabsContent value="docs&links" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
+                        <TabsContent value="links" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
                             <div dangerouslySetInnerHTML={{__html: vehicle.links_html}}/>
                         </TabsContent>
                     )}
