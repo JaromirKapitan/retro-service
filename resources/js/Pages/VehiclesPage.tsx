@@ -82,8 +82,8 @@ const VehiclesPage = ({filter, vehicles, page }: {filter?: FilterOptions | null,
 
   return (
     <BaseLayout>
-      <Hero size='lg' img={page.data.hero_img}>
-        <h1 className='text-4xl font-semibold text-center'>{page.data.title}</h1>
+      <Hero size='md' img={page.data.hero_img}>
+        <h1 className='text-8xl font-semibold text-center font-allura text-shadow-lg/30'>{page.data.title}</h1>
       </Hero>
       <Container className='flex flex-col gap-4 p-4'>
         <VehicleFilter

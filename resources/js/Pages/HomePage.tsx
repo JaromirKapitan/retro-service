@@ -7,8 +7,8 @@ import React from "react";
 export default function HomePage(props: any) {
     return (
         <BaseLayout>
-            <Hero size='lg' img={props.page.data.hero_img}>
-                <h1 className='text-6xl font-semibold text-center'>{__('web.welcome')}</h1>
+            <Hero size='md' img={props.page.data.hero_img}>
+                <h1 className='text-8xl font-semibold text-center font-allura text-shadow-lg/30'>{ props.page.data.title }</h1>
             </Hero>
             <Stats stats={props.stats} />
             {/* <About page={props.page.data}/> */}

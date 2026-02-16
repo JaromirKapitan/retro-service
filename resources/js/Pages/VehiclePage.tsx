@@ -40,7 +40,7 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
         <BaseLayout>
             <Hero img={vehicle.hero_img}>
                 <div className='flex flex-col gap-4 items-center justify-center relative'>
-                    <h1 className='text-4xl font-semibold text-center'>{vehicle.title}</h1>
+                    <h1 className='text-6xl font-semibold text-center font-allura text-shadow-lg/30'>{vehicle.title}</h1>
                     <div className='flex gap-4 absolute right-4 -bottom-28'>
                         <Badge>{vehicle.sub_title}</Badge>
                     </div>
