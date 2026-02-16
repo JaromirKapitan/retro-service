@@ -42,13 +42,6 @@
                 </div>
                 <div class="offcanvas-body">
                     <x-entity.detail-buttons entity="vehicles" :model="$model" :multilang="\App\Enums\LangEnum::isMultilang()">
-                        <li class="nav-item">
-                            <a @class(['nav-link', 'active'=>request()->routeIs('admin.vehicles.docs')]) href="{{ route('admin.vehicles.docs', $model) }}"
-                               title="{{ __('admin.docs') }}">
-                                <i class="fa fa-book"></i>
-                                <span class="d-md-none">{{ __('admin.docs') }}</span>
-                            </a>
-                        </li>
 
                         <li class="nav-item">
                             <a @class(['nav-link', 'active'=>request()->routeIs('admin.vehicles.links')]) href="{{ route('admin.vehicles.links', $model) }}"

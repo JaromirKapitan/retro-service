@@ -55,8 +55,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // vehicles
         Route::resource('vehicles', \App\Http\Controllers\Admin\VehicleController::class);
-        Route::get('/vehicles/{id}/docs', [\App\Http\Controllers\Admin\VehicleController::class, 'docs'])->name('vehicles.docs');
-        Route::put('/vehicles/{id}/docs', [\App\Http\Controllers\Admin\VehicleController::class, 'docsStore'])->name('vehicles.update-docs');
         Route::get('/vehicles/{id}/links', [\App\Http\Controllers\Admin\VehicleController::class, 'links'])->name('vehicles.links');
         Route::put('/vehicles/{id}/links', [\App\Http\Controllers\Admin\VehicleController::class, 'linksStore'])->name('vehicles.update-links');
         Route::get('/vehicles/{id}/mods', [\App\Http\Controllers\Admin\VehicleController::class, 'mods'])->name('vehicles.mods');

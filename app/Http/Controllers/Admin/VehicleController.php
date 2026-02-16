@@ -66,7 +66,7 @@ class VehicleController extends Controller
         $vehicle->webPages()->sync($request->get('web_pages'));
 
         return redirect()
-            ->route('admin.vehicles.docs', $vehicle)
+            ->route('admin.vehicles.links', $vehicle)
             ->with('success', trans('admin.saved'));
     }
 
@@ -103,26 +103,6 @@ class VehicleController extends Controller
             'model' => Vehicle::findOrFail($id),
             'layout' => 'admin.vehicle.layout',
         ];
-    }
-
-    public function docs($id)
-    {
-        $vehicle = Vehicle::findOrFail($id);
-        return view('admin.vehicle.docs', [
-            'model' => $vehicle,
-            'form' => $this->getFormData($vehicle),
-        ]);
-    }
-
-    public function docsStore(Request $request, $id)
-    {
-        $vehicle = Vehicle::findOrFail($id);
-        $vehicle->docs = $request->input('docs');
-        $vehicle->save();
-
-        return redirect()
-            ->route('admin.vehicles.docs', $vehicle)
-            ->with('success', trans('admin.saved'));
     }
 
     public function links($id)

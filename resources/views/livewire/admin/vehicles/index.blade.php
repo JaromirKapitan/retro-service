@@ -103,7 +103,6 @@
                     @endif
 
                     <x-entity.table-buttons entity="vehicles" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()">
-                        <a href="{{ route('admin.vehicles.docs', $item) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-book"></i></a>
                         <a href="{{ route('admin.vehicles.links', $item) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-link"></i></a>
                         <a href="{{ route('admin.vehicles.mods', $item) }}" class="text-secondary text-hover-success" title="{{ __('admin.task') }}"><i class="fa fa-wrench"></i></a>
                     </x-entity.table-buttons>

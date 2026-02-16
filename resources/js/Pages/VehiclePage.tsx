@@ -10,8 +10,7 @@ import Admin from "@/components/Admin"
 import { Button } from '@/components/ui/button'
 
 const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
-    const [activeTab, setActiveTab] = useState('docs')
-    const hasDocs = typeof vehicle.docs_html === 'string' && vehicle.docs_html.replace(/<[^>]*>/g, '').trim().length > 0
+    const [activeTab, setActiveTab] = useState('links')
     const hasContent = typeof vehicle.content_html === 'string' && vehicle.content_html.replace(/<[^>]*>/g, '').trim().length > 0
     const hasSpecs = typeof vehicle.specs_html === 'string' && vehicle.specs_html.replace(/<[^>]*>/g, '').trim().length > 0
     const hasMods = typeof vehicle.modifications_html === 'string' && vehicle.modifications_html.replace(/<[^>]*>/g, '').trim().length > 0
@@ -51,8 +50,7 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                 <Tabs value={activeTab} onValueChange={onTabChange} defaultValue="description">
                     <div className='flex flex-col md:flex-row gap-4 mt-4 w-full relative px-4'>
                         <TabsList className="mx-auto flex-col h-auto w-full md:w-auto md:flex-row">
-                            <TabsTrigger className='w-full' value="docs">{__('web.docs')}</TabsTrigger>
-
+                            <TabsTrigger className='w-full' value="links">{__('web.documents_and_links')}</TabsTrigger>
                             {hasContent && (
                                 <TabsTrigger className='w-full' value="description">{__('web.description')}</TabsTrigger>
                             )}
@@ -61,9 +59,6 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                             )}
                             {hasMods && (
                                 <TabsTrigger className='w-full' value="modifications">{__('web.modifications')}</TabsTrigger>
-                            )}
-                            {hasLinks && (
-                                <TabsTrigger className='w-full' value="links">{__('web.links')}</TabsTrigger>
                             )}
                             {hasGallery && (
                                 <TabsTrigger className='w-full' value="photogallery">{__('web.gallery')}</TabsTrigger>
@@ -78,9 +73,9 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                         </Admin>
                     </div>
 
-                    <TabsContent value="docs" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
-                        {hasDocs ? (
-                            <div dangerouslySetInnerHTML={{__html: vehicle.docs_html}}/>
+                    <TabsContent value="links" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
+                        {hasLinks ? (
+                            <div dangerouslySetInnerHTML={{__html: vehicle.links_html}}/>
                         ) : (
                             <div className="col-span-full text-center py-10">
                                 {__('web.no_docs_available')}
@@ -101,11 +96,6 @@ const VehiclePage = ({vehicle}: { vehicle: VehicleInfo }) => {
                     {hasMods && (
                         <TabsContent value="modifications" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
                             <div dangerouslySetInnerHTML={{__html: vehicle.modifications_html}}/>
-                        </TabsContent>
-                    )}
-                    {hasLinks && (
-                        <TabsContent value="links" className='p-4 w-full prose prose-stone dark:prose-invert max-w-full mx-auto'>
-                            <div dangerouslySetInnerHTML={{__html: vehicle.links_html}}/>
                         </TabsContent>
                     )}
                     {hasGallery && (

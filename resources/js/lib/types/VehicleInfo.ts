@@ -2,7 +2,6 @@ export interface VehicleInfo {
   id: number
   title: string
   sub_title: string
-  docs_html: string
   content_html: string
   brand: string
   model: string

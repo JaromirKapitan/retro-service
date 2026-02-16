@@ -19,7 +19,7 @@ class Vehicle extends Model implements HasMedia
 {
     use SoftDeletes, HasFactory, Seoble, InteractsWithMedia, LangMutation, ContentAble;
 
-    protected $fillable = ['type', 'brand', 'model', 'year_from', 'year_to', 'description', 'content', 'status', 'lang', 'parent_id', 'specs', 'modifications', 'links', 'published_at', 'published_until', 'docs'];
+    protected $fillable = ['type', 'brand', 'model', 'year_from', 'year_to', 'description', 'content', 'status', 'lang', 'parent_id', 'specs', 'modifications', 'links', 'published_at', 'published_until'];
 
     protected $dates = ['published_at', 'published_until'];
 
@@ -61,11 +61,6 @@ class Vehicle extends Model implements HasMedia
 
         $this->addMediaConversion('small')
             ->height(360);
-    }
-
-    public function getDocsHtmlAttribute()
-    {
-        return Str::of($this->docs)->markdown()->value;
     }
 
     public function getContentHtmlAttribute()
