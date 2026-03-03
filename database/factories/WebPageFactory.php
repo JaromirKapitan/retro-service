@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\ContentStatusEnum;
+use App\Enums\LangEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,14 +17,18 @@ class WebPageFactory extends Factory
      */
     public function definition(): array
     {
-        // 'title', 'text_short', 'text', 'status'
-        $statuses = ContentStatusEnum::values();
-
         return [
             'title' => fake()->sentence(3),
             'description' => fake()->text(150),
             'content' => fake()->text(300),
-            'status' => $statuses[array_rand($statuses)]
+            'lang' => fake()->randomElement(LangEnum::values()),
         ];
+    }
+
+    public function withParent(int $parentId): static
+    {
+        return $this->state(fn(array $attributes) => [
+            'parent_id' => $parentId,
+        ]);
     }
 }
