@@ -2,51 +2,49 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\ContentStatusEnum;
 use App\Enums\LangEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\WebPageRequest;
-use App\Models\SeoData;
 use App\Models\WebPage;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use LogicException;
 
 class WebPageController extends Controller
 {
-    use SeoController;
+    use SeoControllerTrait;
 
-    public function index()
+    public function index(): View
     {
         return view('admin.web-page.index', [
             'list' => WebPage::parents()->get(),
         ]);
     }
 
-    public function show(WebPage $webPage)
+    public function show(WebPage $webPage): View
     {
         return view('admin.web-page.show', [
             'model' => $webPage,
         ]);
     }
 
-    public function create(Request $request)
+    public function create(Request $request): View
     {
-        $webPage = new WebPage(session()->get('_old_input') ?? [
-            'lang' => $request->get('lang') ?? LangEnum::getPrimary(),
-            'parent_id' => $request->get('parent_id') ?? null,
+        $webPage = new WebPage([
+            'lang'      => $request->get('lang') ?? LangEnum::getPrimary(),
+            'parent_id' => $request->get('parent_id'),
         ]);
-
-        if (!empty(session()->get('_old_input'))) {
-            $webPage->seo = new SeoData(session()->get('_old_input'));
-        }
 
         return view('admin.web-page.form', [
             'model' => $webPage,
         ]);
     }
 
-    public function store(WebPageRequest $request)
+    public function store(WebPageRequest $request): RedirectResponse
     {
-        $webPage = WebPage::create($request->all());
+        /** @var WebPage $webPage */
+        $webPage = WebPage::create($request->validated());
         $webPage->seo()->create($this->getSeoData());
 
         return redirect()
@@ -54,20 +52,25 @@ class WebPageController extends Controller
             ->with('success', trans('admin.saved'));
     }
 
-    public function edit(WebPage $webPage)
+    public function edit(WebPage $webPage): View
     {
         return view('admin.web-page.form', [
             'model' => $webPage,
         ]);
     }
 
-    public function update(WebPageRequest $request, WebPage $webPage)
+    public function update(WebPageRequest $request, WebPage $webPage): RedirectResponse
     {
-        $webPage->update($request->all());
-        $webPage->seo()->update($this->getSeoData());
+        $webPage->update($request->validated());
+        $webPage->seo()->updateOrCreate([], $this->getSeoData());
 
         return redirect()
             ->route('admin.web-pages.index')
             ->with('success', trans('admin.saved'));
+    }
+
+    public function destroy(): never
+    {
+        throw new LogicException('WebPage records cannot be deleted.');
     }
 }

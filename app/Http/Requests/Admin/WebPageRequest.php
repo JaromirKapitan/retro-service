@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Enums\ContentStatusEnum;
 use App\Enums\LangEnum;
-use App\Enums\VehicleTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class WebPageRequest extends FormRequest

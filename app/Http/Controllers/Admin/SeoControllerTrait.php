@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Rule;
 
-trait SeoController
+trait SeoControllerTrait
 {
-    protected function getSeoRules()
+    protected function getSeoRules(): array
     {
         // ziskaj seo model
         $params = request()->route()->parameters();
@@ -31,7 +31,7 @@ trait SeoController
         ];
     }
 
-    protected function getSeoData()
+    protected function getSeoData(): array
     {
         return [
             'lang' => request()->input('lang'),

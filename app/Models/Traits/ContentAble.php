@@ -9,6 +9,15 @@ use Illuminate\Support\Str;
 
 trait ContentAble
 {
+    public function initializeContentAble(): void
+    {
+        $this->mergeCasts([
+            'status'          => ContentStatusEnum::class,
+            'published_at'    => 'datetime',
+            'published_until' => 'datetime',
+        ]);
+    }
+
     public function scopePublished(Builder $query)
     {
         // (published_at IS nULL OR published_at <= NOW()) AND (published_until IS NULL OR published_until > NOW()) AND status = 'published'
@@ -57,15 +66,6 @@ trait ContentAble
 
         // draft - never published
         return ContentStatusAltEnum::Draft;
-    }
-
-    public function getPublishedAtAttribute($value)
-    {
-        return !is_null($value) ? \Carbon\Carbon::parse($value) : null;
-    }
-    public function getPublishedUntilAttribute($value)
-    {
-        return !is_null($value) ? \Carbon\Carbon::parse($value) : null;
     }
 
     public function getContentHtmlAttribute()

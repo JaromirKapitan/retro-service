@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    use MediaController, SeoController;
+    use MediaController, SeoControllerTrait;
 
     public function index()
     {

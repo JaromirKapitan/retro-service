@@ -4,7 +4,7 @@
     >{{ $slot }}</textarea>
 
     @error($name)
-    <div class="invalid-feedback">{!! nl2br($message) !!}</div>
+        <div class="invalid-feedback">{!! nl2br($message) !!}</div>
     @enderror
 
 </div>

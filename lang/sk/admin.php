@@ -91,4 +91,5 @@ return [
     'assign_to_me' => 'Priradiť mne',
     'task_assigned_success' => 'Úloha bola úspešne priradená',
     'task_reordered_success' => 'Úlohy boli úspešne preusporiadané',
+    'description_hint' => 'Zobrazuje sa ako meta popis v prehliadačoch (max. 160 znakov).',
 ];

@@ -16,7 +16,6 @@
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->title }}</td>
                 <td class="text-end">
-                    <span class="pe-5"></span>
                     <x-entity.table-buttons entity="web-pages" :item="$item" :multilang="\App\Enums\LangEnum::isMultilang()"/>
                 </td>
             </tr>

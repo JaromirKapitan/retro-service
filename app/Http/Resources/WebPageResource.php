@@ -19,14 +19,13 @@ class WebPageResource extends JsonResource
             'title',
             'slug',
             'content',
-            'meta_title',
-            'meta_description',
-            'meta_keywords',
             'lang',
         ]);
 
         $media = $this->getMedia('images');
-        $data['hero_img'] = !empty($media) && $media->isNotEmpty() ? $media->first()->getUrl() : asset('images/no_image_car_detail.png');
+        $data['hero_img'] = $media->isNotEmpty()
+            ? $media->first()->getUrl()
+            : asset('images/no_image_car_detail.png');
 
         return $data;
     }
