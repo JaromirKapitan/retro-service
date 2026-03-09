@@ -24,4 +24,9 @@ class HomePageService
     {
         return WebPageResource::make(WebPage::findOrFail(WebPageEnum::HOME->value));
     }
+
+    public function getCalendarPage()
+    {
+        return WebPageResource::make(WebPage::findOrFail(WebPageEnum::CALENDAR->value));
+    }
 }

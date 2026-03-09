@@ -15,6 +15,9 @@ const Header = () => {
           <Button variant='ghost' asChild>
             <Link href='/vehicles'>Vozidla</Link>
           </Button>
+          <Button variant='ghost' asChild>
+            <Link href='/calendar'>Kalendář</Link>
+          </Button>
           {/* <LanguageSwitch /> */}
           <ThemeSwitch />
         </div>

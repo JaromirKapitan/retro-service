@@ -8,6 +8,7 @@ Route::middleware(['sync.lang'])->group(function () {
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/vehicles', [\App\Http\Controllers\VehicleController::class, 'index']);
     Route::get('/vehicle/{seo}', [\App\Http\Controllers\VehicleController::class, 'show'])->name('vehicle.show');
+    Route::get('/calendar', [\App\Http\Controllers\HomeController::class, 'calendar'])->name('web_page.calendar');
 });
 
 Route::get('/login', function () {

@@ -25,54 +25,61 @@ class HomeController extends Controller
         ]);
     }
 
-    // legacy code
-    public function show($slug)
+    public function calendar()
     {
-        $seo = SeoData::slug($slug)->lang(app()->getLocale())->first();
-
-        if(empty($seo)) {
-            $seo = SeoData::slug($slug)->first();
-            if(!empty($seo)){
-                app()->setLocale($seo->lang);
-                session()->put('locale', $seo->lang);
-            }
-        }
-
-        if (empty($seo) || !$seo->seoble->isPublished)
-            return abort(404);
-
-        return view($this->getTempleBySeo($seo), [
-            'menu' => $this->getMenu(),
-            'model' => $seo->seoble
+        return inertia('WebPage', [
+            'page' => $this->homePageService->getCalendarPage(),
         ]);
     }
 
-    protected function getMenu()
-    {
-        return WebMenu::whereNull('parent_id')->get()
-            ->map(function ($item) {
-                if (LangEnum::isMultilang() && app()->getLocale() != $item->target->lang) {
-                    return $item->target->childrens->firstWhere('lang', app()->getLocale());
-                }
-
-                return $item->target;
-            })->filter(function ($item) {
-                return !empty($item) && $item->isPublished;
-            });
-    }
-
-    protected function getTempleBySeo(SeoData $seo)
-    {
-        $class = get_class($seo->seoble);
-        $view = 'app.'.Str::slug(class_basename($class));
-
-        if(view()->exists($view))
-            return $view;
-
-        if($class === WebPage::class && $seo->seoble->for_vehicles) {
-            return 'app.web-page-vehicles';
-        }
-
-        return 'app.web-page';
-    }
+//    // legacy code
+//    public function show($slug)
+//    {
+//        $seo = SeoData::slug($slug)->lang(app()->getLocale())->first();
+//
+//        if(empty($seo)) {
+//            $seo = SeoData::slug($slug)->first();
+//            if(!empty($seo)){
+//                app()->setLocale($seo->lang);
+//                session()->put('locale', $seo->lang);
+//            }
+//        }
+//
+//        if (empty($seo) || !$seo->seoble->isPublished)
+//            return abort(404);
+//
+//        return view($this->getTempleBySeo($seo), [
+//            'menu' => $this->getMenu(),
+//            'model' => $seo->seoble
+//        ]);
+//    }
+//
+//    protected function getMenu()
+//    {
+//        return WebMenu::whereNull('parent_id')->get()
+//            ->map(function ($item) {
+//                if (LangEnum::isMultilang() && app()->getLocale() != $item->target->lang) {
+//                    return $item->target->childrens->firstWhere('lang', app()->getLocale());
+//                }
+//
+//                return $item->target;
+//            })->filter(function ($item) {
+//                return !empty($item) && $item->isPublished;
+//            });
+//    }
+//
+//    protected function getTempleBySeo(SeoData $seo)
+//    {
+//        $class = get_class($seo->seoble);
+//        $view = 'app.'.Str::slug(class_basename($class));
+//
+//        if(view()->exists($view))
+//            return $view;
+//
+//        if($class === WebPage::class && $seo->seoble->for_vehicles) {
+//            return 'app.web-page-vehicles';
+//        }
+//
+//        return 'app.web-page';
+//    }
 }
