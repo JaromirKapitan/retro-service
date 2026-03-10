@@ -8,11 +8,11 @@ const CookiePopup = () => {
   const handleAgree = () => {
     setOpened(false)
 
-    sessionStorage.setItem('cookies', 'true')
+    localStorage.setItem('cookies', 'true')
   }
 
   useEffect(() => {
-    if (sessionStorage.getItem('cookies') !== 'true') {
+    if (localStorage.getItem('cookies') !== 'true') {
       setOpened(true)
     }
   }, [])
